@@ -95,6 +95,59 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Enum.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Anagrafica.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Anagrafica.Designer.cs">
+      <DependentUpon>Anagrafica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Apparato.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Apparato.Designer.cs">
+      <DependentUpon>Apparato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Articolo.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Articolo.Designer.cs">
+      <DependentUpon>Articolo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Cliente.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Cliente.Designer.cs">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Contratto.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Contratto.Designer.cs">
+      <DependentUpon>Contratto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDT.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDT.Designer.cs">
+      <DependentUpon>DDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Documento.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Documento.Designer.cs">
+      <DependentUpon>Documento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Fornitore.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Fornitore.Designer.cs">
+      <DependentUpon>Fornitore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Installazione.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Installazione.Designer.cs">
+      <DependentUpon>Installazione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Intervento.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Intervento.Designer.cs">
+      <DependentUpon>Intervento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\OggettoBase.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\OggettoBase.Designer.cs">
+      <DependentUpon>OggettoBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Ricambio.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Ricambio.Designer.cs">
+      <DependentUpon>Ricambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\RigaDDT.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\RigaDDT.Designer.cs">
+      <DependentUpon>RigaDDT.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -109,6 +162,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BusinessObjects\ReadMe.txt" />
+    <None Include="BusinessObjects\xMaxDataModel.xpo" />
+    <None Include="BusinessObjects\xMaxDataModel.xpo.diagram">
+      <DependentUpon>xMaxDataModel.xpo</DependentUpon>
+    </None>
     <None Include="Controllers\ReadMe.txt" />
     <None Include="DatabaseUpdate\ReadMe.txt" />
     <None Include="Images\ReadMe.txt" />
@@ -131,4 +188,3 @@
   </Target>
   -->
 </Project>
-
