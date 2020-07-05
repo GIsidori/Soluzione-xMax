@@ -243,6 +243,12 @@
     <Compile Include="Controllers\GeneraDDTdaIntervento.Designer.cs">
       <DependentUpon>GeneraDDTdaIntervento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ResetImpostazioniDefault.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ResetImpostazioniDefault.Designer.cs">
+      <DependentUpon>ResetImpostazioniDefault.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\GeneraDDTdaIntervento.resx">
       <DependentUpon>GeneraDDTdaIntervento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ResetImpostazioniDefault.resx">
+      <DependentUpon>ResetImpostazioniDefault.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">
