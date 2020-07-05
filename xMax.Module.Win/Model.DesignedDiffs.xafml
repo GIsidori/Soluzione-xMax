@@ -1,2 +1,15 @@
-﻿<?xml version="1.0" ?>
-<Application />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SchedulerModuleBase" Version="20.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerWindowsFormsModule" Version="20.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="20.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="20.1.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="BaseEvent_ListView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+    <ListView Id="Installazione_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+    <ListView Id="Intervento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+    <ListView Id="ScadenzaPagamento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+  </Views>
+</Application>

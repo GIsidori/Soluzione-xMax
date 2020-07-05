@@ -27,29 +27,13 @@
             this.module2 = new DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule();
             this.module3 = new xMax.Module.xMaxModule();
             this.module4 = new xMax.Module.Win.xMaxWindowsFormsModule();
-            this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
-            this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
             this.objectsModule = new DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule();
-            this.fileAttachmentsWindowsFormsModule = new DevExpress.ExpressApp.FileAttachments.Win.FileAttachmentsWindowsFormsModule();
+            this.conditionalAppearanceModule = new DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule();
+            this.schedulerModuleBase = new DevExpress.ExpressApp.Scheduler.SchedulerModuleBase();
+            this.schedulerWindowsFormsModule = new DevExpress.ExpressApp.Scheduler.Win.SchedulerWindowsFormsModule();
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
             this.validationWindowsFormsModule = new DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule();
-            this.authenticationStandard1 = new DevExpress.ExpressApp.Security.AuthenticationStandard();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            // 
-            // securityStrategyComplex1
-            // 
-            this.securityStrategyComplex1.Authentication = this.authenticationStandard1;
-            this.securityStrategyComplex1.RoleType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole);
-            this.securityStrategyComplex1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
-            // 
-            // securityModule1
-            // 
-            this.securityModule1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
-            // 
-            // authenticationStandard1
-            // 
-            this.authenticationStandard1.LogonParametersType = typeof(DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters);
             // 
             // xMaxWindowsFormsApplication
             // 
@@ -59,10 +43,10 @@
             this.Modules.Add(this.module2);
             this.Modules.Add(this.module3);
             this.Modules.Add(this.module4);
-            this.Modules.Add(this.securityModule1);
-            this.Security = this.securityStrategyComplex1;
             this.Modules.Add(this.objectsModule);
-            this.Modules.Add(this.fileAttachmentsWindowsFormsModule);
+            this.Modules.Add(this.conditionalAppearanceModule);
+            this.Modules.Add(this.schedulerModuleBase);
+            this.Modules.Add(this.schedulerWindowsFormsModule);
             this.Modules.Add(this.validationModule);
             this.Modules.Add(this.validationWindowsFormsModule);
             this.UseOldTemplates = false;
@@ -79,11 +63,10 @@
         private DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule module2;
         private xMax.Module.xMaxModule module3;
         private xMax.Module.Win.xMaxWindowsFormsModule module4;
-        private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
-        private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
-        private DevExpress.ExpressApp.Security.AuthenticationStandard authenticationStandard1;
         private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule;
-        private DevExpress.ExpressApp.FileAttachments.Win.FileAttachmentsWindowsFormsModule fileAttachmentsWindowsFormsModule;
+        private DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule conditionalAppearanceModule;
+        private DevExpress.ExpressApp.Scheduler.SchedulerModuleBase schedulerModuleBase;
+        private DevExpress.ExpressApp.Scheduler.Win.SchedulerWindowsFormsModule schedulerWindowsFormsModule;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
         private DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule validationWindowsFormsModule;
     }

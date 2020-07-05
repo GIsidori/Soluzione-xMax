@@ -13,11 +13,59 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class Anagrafica : OggettoBase
+    public partial class Anagrafica : BaseXPObject
     {
+        string fNome;
+        public string Nome
+        {
+            get { return fNome; }
+            set { SetPropertyValue<string>(nameof(Nome), ref fNome, value); }
+        }
+        string fCognome;
+        public string Cognome
+        {
+            get { return fCognome; }
+            set { SetPropertyValue<string>(nameof(Cognome), ref fCognome, value); }
+        }
+        string fRagioneSociale;
+        public string RagioneSociale
+        {
+            get { return fRagioneSociale; }
+            set { SetPropertyValue<string>(nameof(RagioneSociale), ref fRagioneSociale, value); }
+        }
+        string fCF;
+        public string CF
+        {
+            get { return fCF; }
+            set { SetPropertyValue<string>(nameof(CF), ref fCF, value); }
+        }
+        string fPiva;
+        public string Piva
+        {
+            get { return fPiva; }
+            set { SetPropertyValue<string>(nameof(Piva), ref fPiva, value); }
+        }
+        string fIndirizzo;
+        public string Indirizzo
+        {
+            get { return fIndirizzo; }
+            set { SetPropertyValue<string>(nameof(Indirizzo), ref fIndirizzo, value); }
+        }
+        string fTelefono;
+        public string Telefono
+        {
+            get { return fTelefono; }
+            set { SetPropertyValue<string>(nameof(Telefono), ref fTelefono, value); }
+        }
+        string fEMail;
+        public string EMail
+        {
+            get { return fEMail; }
+            set { SetPropertyValue<string>(nameof(EMail), ref fEMail, value); }
+        }
     }
 
 }

@@ -12,20 +12,11 @@ using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
-using DevExpress.Persistent.BaseImpl;
 
 namespace xMax.Module.Win {
     [ToolboxItemFilter("Xaf.Platform.Win")]
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
     public sealed partial class xMaxWindowsFormsModule : ModuleBase {
-        //private void Application_CreateCustomModelDifferenceStore(Object sender, CreateCustomModelDifferenceStoreEventArgs e) {
-        //    e.Store = new ModelDifferenceDbStore((XafApplication)sender, typeof(ModelDifference), true, "Win");
-        //    e.Handled = true;
-        //}
-        private void Application_CreateCustomUserModelDifferenceStore(Object sender, CreateCustomModelDifferenceStoreEventArgs e) {
-            e.Store = new ModelDifferenceDbStore((XafApplication)sender, typeof(ModelDifference), false, "Win");
-            e.Handled = true;
-        }
         public xMaxWindowsFormsModule() {
             InitializeComponent();
         }
@@ -34,8 +25,6 @@ namespace xMax.Module.Win {
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
-            //application.CreateCustomModelDifferenceStore += Application_CreateCustomModelDifferenceStore;
-            application.CreateCustomUserModelDifferenceStore += Application_CreateCustomUserModelDifferenceStore;
             // Manage various aspects of the application UI and behavior at the module level.
         }
     }

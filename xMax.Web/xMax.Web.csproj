@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D4816A9-E3CE-4BA4-8FB0-9A10562726EE}</ProjectGuid>
+    <ProjectGuid>{EBAB9AB3-B084-445B-A2F6-4B9944C2A82D}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -50,7 +50,7 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.FileAttachment.Web.v20.1">
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -58,11 +58,11 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.Xpo.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.Web.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -110,6 +110,10 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.Web.ASPxScheduler.v20.1">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.Web.ASPxThemes.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -126,6 +130,10 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="mscorlib">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -138,11 +146,19 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Drawing">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -242,12 +258,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xMax.Module.Web\xMax.Module.Web.csproj">
-      <Project>{A90DF53C-B0A5-45BB-AB63-DCF1A9581135}</Project>
+      <Project>{53C3378E-4039-4504-923F-58593C86BF47}</Project>
       <Name>xMax.Module.Web</Name>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\xMax.Module\xMax.Module.csproj">
-      <Project>{C8335DA2-E3AF-4415-AFA8-7F0B60BBED7B}</Project>
+      <Project>{A9AD6457-8267-4B33-9B59-E7D97274E004}</Project>
       <Name>xMax.Module</Name>
       <Private>True</Private>
     </ProjectReference>

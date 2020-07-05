@@ -1,0 +1,6 @@
+﻿- Classi base impostate come NonPersistent
+- TipoAnagrafica in ModelWizard
+- Enum in PascalCase
+- Classi che contengono scadenze ereditano da Event
+- ScheduleListView con tutti gli eventi di vario tipo (Interventi, scadenze, pulizie,...)
+

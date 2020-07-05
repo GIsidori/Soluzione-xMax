@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEC18985-CB68-4DDC-9240-52CDE1CB3F11}</ProjectGuid>
+    <ProjectGuid>{AB2EB7A0-62C0-4D45-A905-6CEC223A4D56}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>xMax.Win</RootNamespace>
@@ -51,7 +51,7 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.FileAttachment.Win.v20.1">
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -59,11 +59,11 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.Xpo.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.Win.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -147,6 +147,14 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v20.1">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.XtraTreeList.v20.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -172,6 +180,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -226,18 +238,19 @@
     <Compile Include="XafSplashScreen.Designer.cs">
       <DependentUpon>XafSplashScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="XafSplashScreen.resx">
       <DependentUpon>XafSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xMax.Module.Win\xMax.Module.Win.csproj">
-      <Project>{315B8C7D-2067-4989-B7A3-C4D989C6B241}</Project>
+      <Project>{D976F285-1C97-4784-860A-5ED864C20671}</Project>
       <Name>xMax.Module.Win</Name>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\xMax.Module\xMax.Module.csproj">
-      <Project>{C8335DA2-E3AF-4415-AFA8-7F0B60BBED7B}</Project>
+      <Project>{A9AD6457-8267-4B33-9B59-E7D97274E004}</Project>
       <Name>xMax.Module</Name>
       <Private>True</Private>
     </ProjectReference>

@@ -13,10 +13,10 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class Contratto : XPObject
+    public partial class Contratto : BaseXPObject
     {
         Cliente fCliente;
         [Association(@"ContrattoReferencesCliente")]
@@ -37,8 +37,22 @@ namespace xMax.Module.BusinessObjects.xMaxDataModel
             get { return fDataScadenza; }
             set { SetPropertyValue<DateTime>(nameof(DataScadenza), ref fDataScadenza, value); }
         }
+        TipoContratto fTipoContratto;
+        public TipoContratto TipoContratto
+        {
+            get { return fTipoContratto; }
+            set { SetPropertyValue<TipoContratto>(nameof(TipoContratto), ref fTipoContratto, value); }
+        }
+        decimal fImportoAnnuale;
+        public decimal ImportoAnnuale
+        {
+            get { return fImportoAnnuale; }
+            set { SetPropertyValue<decimal>(nameof(ImportoAnnuale), ref fImportoAnnuale, value); }
+        }
         [Association(@"InterventoReferencesContratto")]
         public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
+        [Association(@"ScadenzaPagamentoReferencesContratto")]
+        public XPCollection<ScadenzaPagamento> ScadenzePagamento { get { return GetCollection<ScadenzaPagamento>(nameof(ScadenzePagamento)); } }
     }
 
 }

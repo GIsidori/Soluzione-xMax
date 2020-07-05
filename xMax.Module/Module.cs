@@ -7,7 +7,6 @@ using DevExpress.ExpressApp.DC;
 using System.Collections.Generic;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.ExpressApp.Editors;
@@ -16,6 +15,7 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.Xpo;
+using DevExpress.Xpo;
 
 namespace xMax.Module {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
@@ -35,6 +35,8 @@ namespace xMax.Module {
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
+            //Se non commento la seguente riga di codice, il comando UpdateModel su moduli Win e Web va in errore....
+            //typesInfo.FindTypeInfo(typeof(XPObject)).KeyMember.AddAttribute(new BrowsableAttribute(false));
         }
     }
 }

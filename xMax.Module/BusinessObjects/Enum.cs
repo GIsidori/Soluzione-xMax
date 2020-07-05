@@ -11,4 +11,24 @@ namespace xMax.Module.BusinessObjects
         Acquisto,
         Vendita
     }
+
+    public enum tipoAnagrafica
+    {
+        Privato,
+        Business
+    }
+
+
+    public enum tipoFatturaRicevuta
+    {
+        Ricevuta,
+        Fattura
+    }
+
+
+    public enum tipoStatoAttrezzatura
+    {
+        InUso,
+        sospeso
+    }
 }

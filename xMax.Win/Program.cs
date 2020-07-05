@@ -29,7 +29,6 @@ namespace xMax.Win {
             }
             Tracing.Initialize();
             xMaxWindowsFormsApplication winApplication = new xMaxWindowsFormsApplication();
-            winApplication.GetSecurityStrategy().RegisterXPOAdapterProviders();
             if(ConfigurationManager.ConnectionStrings["ConnectionString"] != null) {
                 winApplication.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             }

@@ -26,8 +26,6 @@ namespace xMax.Web {
         protected void Session_Start(Object sender, EventArgs e) {
             Tracing.Initialize();
             WebApplication.SetInstance(Session, new xMaxAspNetApplication());
-            SecurityStrategy security = WebApplication.Instance.GetSecurityStrategy();
-            security.RegisterXPOAdapterProviders();
             DevExpress.ExpressApp.Web.Templates.DefaultVerticalTemplateContentNew.ClearSizeLimit();
             WebApplication.Instance.SwitchToNewStyle();
             if(ConfigurationManager.ConnectionStrings["ConnectionString"] != null) {

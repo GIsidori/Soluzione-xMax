@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Win.Utils;
 using DevExpress.ExpressApp.Xpo;
-using DevExpress.ExpressApp.Security;
-using DevExpress.ExpressApp.Security.ClientServer;
 
 namespace xMax.Win {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Win.WinApplication._members
@@ -19,10 +17,9 @@ namespace xMax.Win {
             DevExpress.ExpressApp.BaseObjectSpace.ThrowExceptionForNotRegisteredEntityType = true;
 			DevExpress.ExpressApp.Utils.ImageLoader.Instance.UseSvgImages = true;
 			DetailView.UseAsyncLoading = true;
-            DevExpress.ExpressApp.Security.SecurityStrategy.EnableSecurityForActions = true;
         }
         private void InitializeDefaults() {
-            LinkNewObjectToParentImmediately = false;
+            LinkNewObjectToParentImmediately = true;
             OptimizedControllersCreation = true;
             UseLightStyle = true;
 			SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
@@ -34,7 +31,7 @@ namespace xMax.Win {
 			InitializeDefaults();
         }
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
-            args.ObjectSpaceProviders.Add(new SecuredObjectSpaceProvider((SecurityStrategyComplex)Security, XPObjectSpaceProvider.GetDataStoreProvider(args.ConnectionString, args.Connection, true), false));
+            args.ObjectSpaceProviders.Add(new XPObjectSpaceProvider(XPObjectSpaceProvider.GetDataStoreProvider(args.ConnectionString, args.Connection, true), false));
             args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));
         }
         private void xMaxWindowsFormsApplication_CustomizeLanguagesList(object sender, CustomizeLanguagesListEventArgs e) {

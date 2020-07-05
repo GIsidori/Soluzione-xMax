@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="ScadenzaPagamento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Web.ASPxSchedulerListEditor" />
+    <ListView Id="Intervento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Web.ASPxSchedulerListEditor" />
+    <ListView Id="Installazione_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Web.ASPxSchedulerListEditor" />
+  </Views>
+</Application>

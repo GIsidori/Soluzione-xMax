@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="Installazione_ListView" Criteria="">
+      <Variants Id="Variants" Current="ElencoInstallazione">
+        <Variant Id="CalendarioInstallazione" ViewID="Installazione_ScheduleView" Caption="Calendario" />
+        <Variant Id="ElencoInstallazione" ViewID="Installazione_ListView" Caption="Elenco" />
+      </Variants>
+    </ListView>
+    <ListView Id="Intervento_ListView" EditorTypeName="DevExpress.ExpressApp.Win.Editors.GridListEditor" />
+    <ListView Id="ScadenzaPagamento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+    <ListView Id="Intervento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+    <ListView Id="Installazione_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+  </Views>
+</Application>

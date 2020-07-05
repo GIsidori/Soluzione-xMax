@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A90DF53C-B0A5-45BB-AB63-DCF1A9581135}</ProjectGuid>
+    <ProjectGuid>{53C3378E-4039-4504-923F-58593C86BF47}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>xMax.Module.Web</RootNamespace>
@@ -41,16 +41,16 @@
     <Reference Include="DevExpress.Data.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.FileAttachment.Web.v20.1">
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Objects.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.Xpo.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.Web.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.v20.1">
@@ -62,6 +62,7 @@
     <Reference Include="DevExpress.ExpressApp.Validation.Web.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.ExpressApp.ViewVariantsModule.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Web.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -77,10 +78,16 @@
     <Reference Include="DevExpress.Printing.v20.1.Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.Web.ASPxScheduler.v20.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="DevExpress.Web.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.Xpo.v20.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="mscorlib">
@@ -92,10 +99,16 @@
     <Reference Include="System.Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="System.Data">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.Drawing">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System.Web">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Xml">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System">
@@ -109,6 +122,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editors\EventGridEditor.cs" />
     <Compile Include="WebModule.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,6 +133,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WebModule.resx">
+      <DependentUpon>WebModule.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Controllers\ReadMe.txt" />
@@ -132,7 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xMax.Module\xMax.Module.csproj">
-      <Project>{C8335DA2-E3AF-4415-AFA8-7F0B60BBED7B}</Project>
+      <Project>{A9AD6457-8267-4B33-9B59-E7D97274E004}</Project>
       <Name>xMax.Module</Name>
       <Private>True</Private>
     </ProjectReference>

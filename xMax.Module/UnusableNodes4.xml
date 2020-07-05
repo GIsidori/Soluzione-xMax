@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="Intervento_ScheduleView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="AppointmentId" PropertyName="AppointmentId" Width="70" Index="10" />
+        <ColumnInfo Id="ResourceId" PropertyName="ResourceId" Width="70" Index="9" />
+        <ColumnInfo Id="Type" PropertyName="Type" Width="50" Index="8" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="50" Index="7" />
+        <ColumnInfo Id="Label" PropertyName="Label" Width="50" Index="6" />
+        <ColumnInfo Id="Location" PropertyName="Location" Width="70" Index="5" />
+        <ColumnInfo Id="AllDay" PropertyName="AllDay" Width="50" Index="4" />
+        <ColumnInfo Id="EndOn" PropertyName="EndOn" Width="70" Index="3" />
+        <ColumnInfo Id="StartOn" PropertyName="StartOn" Width="70" Index="2" />
+        <ColumnInfo Id="Description" PropertyName="Description" Width="70" Index="1" />
+        <ColumnInfo Id="Subject" PropertyName="Subject" Width="70" Index="0" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

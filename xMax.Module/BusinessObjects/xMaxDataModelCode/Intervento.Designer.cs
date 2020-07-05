@@ -13,27 +13,72 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class Intervento : XPObject
+    public partial class Intervento : BaseEvent
     {
-        Apparato fApparato;
-        [Association(@"InterventoReferencesApparato")]
-        public Apparato Apparato
+        Cliente fCliente;
+        [Association(@"InterventoReferencesCliente")]
+        public Cliente Cliente
         {
-            get { return fApparato; }
-            set { SetPropertyValue<Apparato>(nameof(Apparato), ref fApparato, value); }
+            get { return fCliente; }
+            set { SetPropertyValue<Cliente>(nameof(Cliente), ref fCliente, value); }
+        }
+        DateTime fDataIntervento;
+        public DateTime DataIntervento
+        {
+            get { return fDataIntervento; }
+            set { SetPropertyValue<DateTime>(nameof(DataIntervento), ref fDataIntervento, value); }
+        }
+        TipoIntervento fTipoIntervento;
+        public TipoIntervento TipoIntervento
+        {
+            get { return fTipoIntervento; }
+            set { SetPropertyValue<TipoIntervento>(nameof(TipoIntervento), ref fTipoIntervento, value); }
         }
         Installazione fInstallazione;
-        [Association(@"InterventoReferencesInstallazione")]
+        [Association(@"InterventiReferencesInstallazione")]
         public Installazione Installazione
         {
             get { return fInstallazione; }
             set { SetPropertyValue<Installazione>(nameof(Installazione), ref fInstallazione, value); }
         }
-        [Association(@"RicambioReferencesIntervento"), Aggregated]
-        public XPCollection<Ricambio> Ricambi { get { return GetCollection<Ricambio>(nameof(Ricambi)); } }
+        tipoFatturaRicevuta fFatturaRicevuta;
+        public tipoFatturaRicevuta FatturaRicevuta
+        {
+            get { return fFatturaRicevuta; }
+            set { SetPropertyValue<tipoFatturaRicevuta>(nameof(FatturaRicevuta), ref fFatturaRicevuta, value); }
+        }
+        string fDescrizioneIntervento;
+        [Size(2048)]
+        public string DescrizioneIntervento
+        {
+            get { return fDescrizioneIntervento; }
+            set { SetPropertyValue<string>(nameof(DescrizioneIntervento), ref fDescrizioneIntervento, value); }
+        }
+        decimal fImportoIncassato;
+        public decimal ImportoIncassato
+        {
+            get { return fImportoIncassato; }
+            set { SetPropertyValue<decimal>(nameof(ImportoIncassato), ref fImportoIncassato, value); }
+        }
+        Contratto fContratto;
+        [Association(@"InterventoReferencesContratto")]
+        public Contratto Contratto
+        {
+            get { return fContratto; }
+            set { SetPropertyValue<Contratto>(nameof(Contratto), ref fContratto, value); }
+        }
+        string fNote;
+        [Size(2048)]
+        public string Note
+        {
+            get { return fNote; }
+            set { SetPropertyValue<string>(nameof(Note), ref fNote, value); }
+        }
+        [Association(@"RicambiUtilizzatiReferencesIntervento")]
+        public XPCollection<RicambiUtilizzati> RicambiUtilizzati { get { return GetCollection<RicambiUtilizzati>(nameof(RicambiUtilizzati)); } }
     }
 
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8335DA2-E3AF-4415-AFA8-7F0B60BBED7B}</ProjectGuid>
+    <ProjectGuid>{A9AD6457-8267-4B33-9B59-E7D97274E004}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>xMax.Module</RootNamespace>
@@ -41,13 +41,13 @@
     <Reference Include="DevExpress.Data.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v20.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="DevExpress.ExpressApp.Objects.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.v20.1">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Security.Xpo.v20.1">
+    <Reference Include="DevExpress.ExpressApp.Scheduler.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.v20.1">
@@ -56,6 +56,7 @@
     <Reference Include="DevExpress.ExpressApp.Validation.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.ExpressApp.ViewVariantsModule.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Xpo.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -71,16 +72,23 @@
     <Reference Include="DevExpress.Xpo.v20.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="mscorlib">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System.Drawing">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Xml">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System">
@@ -108,25 +116,70 @@
     <Compile Include="BusinessObjects\xMaxDataModelCode\Articolo.Designer.cs">
       <DependentUpon>Articolo.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Attestato.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Attestato.Designer.cs">
+      <DependentUpon>Attestato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Attrezzatura.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Attrezzatura.Designer.cs">
+      <DependentUpon>Attrezzatura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\BaseEvent.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\BaseEvent.Designer.cs">
+      <DependentUpon>BaseEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\BaseXPObject.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\BaseXPObject.Designer.cs">
+      <DependentUpon>BaseXPObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessObjects\xMaxDataModelCode\Cliente.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Cliente.Designer.cs">
       <DependentUpon>Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\ConnectionHelper.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Contratto.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Contratto.Designer.cs">
       <DependentUpon>Contratto.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\xMaxDataModelCode\DDT.cs" />
-    <Compile Include="BusinessObjects\xMaxDataModelCode\DDT.Designer.cs">
-      <DependentUpon>DDT.cs</DependentUpon>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTAcquisto.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTAcquisto.Designer.cs">
+      <DependentUpon>DDTAcquisto.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\xMaxDataModelCode\Documento.cs" />
-    <Compile Include="BusinessObjects\xMaxDataModelCode\Documento.Designer.cs">
-      <DependentUpon>Documento.cs</DependentUpon>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTVendita.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTVendita.Designer.cs">
+      <DependentUpon>DDTVendita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTVenditaElencoMateriale.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTVenditaElencoMateriale.Designer.cs">
+      <DependentUpon>DDTVenditaElencoMateriale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Dipendente.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Dipendente.Designer.cs">
+      <DependentUpon>Dipendente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTAcquistoElencoMateriale.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\DDTAcquistoElencoMateriale.Designer.cs">
+      <DependentUpon>DDTAcquistoElencoMateriale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\ElencoVerifiche.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\ElencoVerifiche.Designer.cs">
+      <DependentUpon>ElencoVerifiche.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\xMaxDataModelCode\Fornitore.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Fornitore.Designer.cs">
       <DependentUpon>Fornitore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\FornitoreArticolo.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\FornitoreArticolo.Designer.cs">
+      <DependentUpon>FornitoreArticolo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\IdoneitaAttestatiFormazione.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\IdoneitaAttestatiFormazione.Designer.cs">
+      <DependentUpon>IdoneitaAttestatiFormazione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Impostazioni.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Impostazioni.Designer.cs">
+      <DependentUpon>Impostazioni.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\xMaxDataModelCode\Installazione.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Installazione.Designer.cs">
@@ -136,17 +189,57 @@
     <Compile Include="BusinessObjects\xMaxDataModelCode\Intervento.Designer.cs">
       <DependentUpon>Intervento.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\xMaxDataModelCode\OggettoBase.cs" />
-    <Compile Include="BusinessObjects\xMaxDataModelCode\OggettoBase.Designer.cs">
-      <DependentUpon>OggettoBase.cs</DependentUpon>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Mansione.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Mansione.Designer.cs">
+      <DependentUpon>Mansione.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\xMaxDataModelCode\Ricambio.cs" />
-    <Compile Include="BusinessObjects\xMaxDataModelCode\Ricambio.Designer.cs">
-      <DependentUpon>Ricambio.cs</DependentUpon>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Produttore.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Produttore.Designer.cs">
+      <DependentUpon>Produttore.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusinessObjects\xMaxDataModelCode\RigaDDT.cs" />
-    <Compile Include="BusinessObjects\xMaxDataModelCode\RigaDDT.Designer.cs">
-      <DependentUpon>RigaDDT.cs</DependentUpon>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\RicambiUtilizzati.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\RicambiUtilizzati.Designer.cs">
+      <DependentUpon>RicambiUtilizzati.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Rischi.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Rischi.Designer.cs">
+      <DependentUpon>Rischi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\ScadenzaPagamento.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\ScadenzaPagamento.Designer.cs">
+      <DependentUpon>ScadenzaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoArticolo.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoArticolo.Designer.cs">
+      <DependentUpon>TipoArticolo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoAttrezzatura.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoAttrezzatura.Designer.cs">
+      <DependentUpon>TipoAttrezzatura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoContratto.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoContratto.Designer.cs">
+      <DependentUpon>TipoContratto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoIntervento.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\TipoIntervento.Designer.cs">
+      <DependentUpon>TipoIntervento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\UnitaMisura.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\UnitaMisura.Designer.cs">
+      <DependentUpon>UnitaMisura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CaricaDaDDTAcquisto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\CaricaDaDDTAcquisto.Designer.cs">
+      <DependentUpon>CaricaDaDDTAcquisto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\GeneraDDTdaIntervento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\GeneraDDTdaIntervento.Designer.cs">
+      <DependentUpon>GeneraDDTdaIntervento.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
@@ -158,9 +251,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controllers\CaricaDaDDTAcquisto.resx">
+      <DependentUpon>CaricaDaDDTAcquisto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\GeneraDDTdaIntervento.resx">
+      <DependentUpon>GeneraDDTdaIntervento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Module.resx">
+      <DependentUpon>Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="BusinessObjects\ReadMe.txt" />
     <None Include="BusinessObjects\xMaxDataModel.xpo" />
     <None Include="BusinessObjects\xMaxDataModel.xpo.diagram">
@@ -178,6 +282,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Welcome.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UnusableNodes3.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UnusableNodes4.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

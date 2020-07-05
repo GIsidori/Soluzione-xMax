@@ -13,10 +13,10 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class Installazione : XPObject
+    public partial class Installazione : BaseEvent
     {
         Cliente fCliente;
         [Association(@"InstallazioneReferencesCliente")]
@@ -38,19 +38,31 @@ namespace xMax.Module.BusinessObjects.xMaxDataModel
             get { return fMatricola; }
             set { SetPropertyValue<string>(nameof(Matricola), ref fMatricola, value); }
         }
-        DateTime fDataInizio;
-        public DateTime DataInizio
+        DateTime fDataInstallazione;
+        public DateTime DataInstallazione
         {
-            get { return fDataInizio; }
-            set { SetPropertyValue<DateTime>(nameof(DataInizio), ref fDataInizio, value); }
+            get { return fDataInstallazione; }
+            set { SetPropertyValue<DateTime>(nameof(DataInstallazione), ref fDataInstallazione, value); }
         }
-        DateTime fDataScadenza;
-        public DateTime DataScadenza
+        string fCodiceTargaturaCRITER;
+        public string CodiceTargaturaCRITER
         {
-            get { return fDataScadenza; }
-            set { SetPropertyValue<DateTime>(nameof(DataScadenza), ref fDataScadenza, value); }
+            get { return fCodiceTargaturaCRITER; }
+            set { SetPropertyValue<string>(nameof(CodiceTargaturaCRITER), ref fCodiceTargaturaCRITER, value); }
         }
-        [Association(@"InterventoReferencesInstallazione")]
+        DateTime fDataProssimaPulizia;
+        public DateTime DataProssimaPulizia
+        {
+            get { return fDataProssimaPulizia; }
+            set { SetPropertyValue<DateTime>(nameof(DataProssimaPulizia), ref fDataProssimaPulizia, value); }
+        }
+        Contratto fContratto;
+        public Contratto Contratto
+        {
+            get { return fContratto; }
+            set { SetPropertyValue<Contratto>(nameof(Contratto), ref fContratto, value); }
+        }
+        [Association(@"InterventiReferencesInstallazione")]
         public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
     }
 

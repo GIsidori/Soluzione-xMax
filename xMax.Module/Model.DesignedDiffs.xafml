@@ -1,8 +1,180 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="xMax">
+  <BOModel>
+    <Class Name="xMax.Module.BusinessObjects.Database.Anagrafica">
+      <AppearanceRules>
+        <AppearanceRule Id="AnagraficaBusinessRule" TargetItems="Nome;Cognome;CF" Criteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Business#" Visibility="Hide" IsNewNode="True" />
+        <AppearanceRule Id="AnagraficaPrivatoRule" Visibility="Hide" Criteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" TargetItems="RagioneSociale;Piva" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+    <Class Name="xMax.Module.BusinessObjects.Database.Articolo">
+      <AppearanceRules>
+        <AppearanceRule Id="ApparatoRule" Visibility="Hide" TargetItems="Apparati" Criteria="[Ricambio] = False" IsNewNode="True" />
+        <AppearanceRule Id="RicambioRule" Criteria="[Ricambio] = True" Visibility="Hide" TargetItems="TipoApparato;Marca;Modello;Produttore" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+    <Class Name="xMax.Module.BusinessObjects.Database.Dipendente">
+      <AppearanceRules>
+        <AppearanceRule Id="DipendeteTipoRule" Visibility="Hide" TargetItems="Tipo" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+    <Class Name="xMax.Module.BusinessObjects.Database.Fornitore">
+      <AppearanceRules>
+        <AppearanceRule Id="FornitoreTipoRule" Visibility="Hide" TargetItems="Tipo" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+    <Class Name="xMax.Module.BusinessObjects.Database.Produttore">
+      <AppearanceRules>
+        <AppearanceRule Id="ProduttoreTipoRule" TargetItems="Tipo" Visibility="Hide" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+  </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Default" Caption="Gestione Magazzino, Clienti e Interventi" Index="0">
+        <Items>
+          <Item Id="Cliente_ListView" Index="0" Caption="Clienti" />
+          <Item Id="Intervento_ListView" Caption="Interventi" Index="1" />
+          <Item Id="Installazione_ListView" Caption="Pulizia caldaie" Index="2" Removed="True" />
+          <Item Id="Contratto_ListView" Caption="Contratti" Index="3" />
+          <Item Id="ScadenzaPagamento_ListView" Caption="Scadenze contratti" Index="4" Removed="True" />
+          <Item Id="Scadenziario" Caption="Scadenziario" Index="5" ViewId="BaseEvent_ListView" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Installazione_ListView" Index="2" ObjectKey="" ViewId="Installazione_ListView" Caption="Pulizia caldaie" IsNewNode="True" />
+              <Item Id="ScadenzaPagamento" ViewId="ScadenzaPagamento_ListView" Caption="Scadenze Pagamento" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="DDTAcquisto_ListView" Index="6" Caption="DDT di acquisto" />
+          <Item Id="DDTVendita_ListView" Index="7" Caption="DDT di vendita" />
+          <Item Id="Articolo_ListView" Caption="Articoli" Index="8" />
+          <Item Id="Fornitore_ListView" Index="9" Caption="Fornitori" />
+          <Item Id="Produttore_ListView" Index="10" Caption="Produttori" />
+          <Item Id="Apparato_ListView" Index="11" Caption="Apparati" />
+          <Item Id="Attestato_ListView" Removed="True" />
+          <Item Id="Attrezzatura_ListView" Removed="True" />
+          <Item Id="Dipendente_ListView" Removed="True" />
+          <Item Id="Event_ListView" Visible="False" Removed="True" />
+          <Item Id="Impostazioni_ListView" Removed="True" />
+          <Item Id="Mansione_ListView" Removed="True" />
+          <Item Id="Rischi_ListView" Removed="True" />
+          <Item Id="TipoApparato_ListView" Removed="True" />
+          <Item Id="TipoAttrezzatura_ListView" Removed="True" />
+          <Item Id="TipoContratto_ListView" Removed="True" />
+          <Item Id="TipoIntervento_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Sicurezza" Index="1" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Dipendente_ListView" ViewId="Dipendente_ListView" ObjectKey="" Caption="Dipendenti" Index="0" IsNewNode="True" />
+          <Item Id="Mansione_ListView" ViewId="Mansione_ListView" ObjectKey="" Caption="Mansioni" Index="1" IsNewNode="True" />
+          <Item Id="Rischi_ListView" ViewId="Rischi_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+          <Item Id="Attestato_ListView" ViewId="Attestato_ListView" ObjectKey="" Caption="Attestati" Index="3" IsNewNode="True" />
+          <Item Id="Attrezzatura_ListView" ViewId="Attrezzatura_ListView" ObjectKey="" Caption="Attrezzature" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Configurazione" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="TipoContratto_ListView" ViewId="TipoContratto_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+          <Item Id="TipoApparato_ListView" ViewId="TipoApparato_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="TipoIntervento_ListView" ViewId="TipoIntervento_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+          <Item Id="TipoAttrezzatura_ListView" ViewId="TipoAttrezzatura_ListView" ObjectKey="" Index="3" IsNewNode="True" />
+          <Item Id="Impostazioni_ListView" ViewId="Impostazioni_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
+  <SchemaModules>
+    <SchemaModule Name="SchedulerModuleBase" Version="20.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="20.1.4.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
+    <ListView Id="Installazione_ListView" Criteria="[DataProssimaPulizia] Is Not Null">
+      <Variants Current="ElencoInstallazioni">
+        <Variant Id="ElencoInstallazioni" Caption="Elenco" Index="0" ViewID="Installazione_ListViewElenco" IsNewNode="True" />
+        <Variant Id="CalendarioInstallazioni" ViewID="Installazione_ScheduleView" Caption="Calendario" Index="1" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="Installazione_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Database.Installazione" Criteria="[DataProssimaPulizia] Is Not Null" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Nome" PropertyName="Nome" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Apparato" PropertyName="Apparato" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Matricola" PropertyName="Matricola" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="DataInstallazione" PropertyName="DataInstallazione" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="CodiceTargaturaCRITER" PropertyName="CodiceTargaturaCRITER" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="DataProssimaPulizia" PropertyName="DataProssimaPulizia" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Installazione_ScheduleView" ClassName="xMax.Module.BusinessObjects.Database.Installazione" Criteria="[DataProssimaPulizia] Is Not Null" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Nome" PropertyName="Nome" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Apparato" PropertyName="Apparato" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Matricola" PropertyName="Matricola" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="DataInstallazione" PropertyName="DataInstallazione" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="CodiceTargaturaCRITER" PropertyName="CodiceTargaturaCRITER" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="DataProssimaPulizia" PropertyName="DataProssimaPulizia" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Intervento_ListView">
+      <Variants Current="ElencoInterventi">
+        <Variant Id="CalendarioInterventi" ViewID="Intervento_ScheduleView" Caption="Calendario" IsNewNode="True" />
+        <Variant Id="ElencoInterventi" Caption="Elenco" ViewID="Intervento_ListViewElenco" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="Intervento_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="DescrizioneIntervento" PropertyName="DescrizioneIntervento" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="NomeCompleto" PropertyName="NomeCompleto" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Note" PropertyName="Note" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="DataIntervento" PropertyName="DataIntervento" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="TipoIntervento" PropertyName="TipoIntervento" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Installazione" PropertyName="Installazione" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="FatturaRicevuta" PropertyName="FatturaRicevuta" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="ImportoIncassato" PropertyName="ImportoIncassato" Width="50" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Intervento_ScheduleView" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="DescrizioneIntervento" PropertyName="DescrizioneIntervento" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="NomeCompleto" PropertyName="NomeCompleto" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Note" PropertyName="Note" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="11" IsNewNode="True" />
+        <ColumnInfo Id="DataIntervento" PropertyName="DataIntervento" Width="70" Index="12" IsNewNode="True" />
+        <ColumnInfo Id="Installazione" PropertyName="Installazione" Width="70" Index="13" IsNewNode="True" />
+        <ColumnInfo Id="TipoIntervento" PropertyName="TipoIntervento" Width="70" Index="14" IsNewNode="True" />
+        <ColumnInfo Id="ImportoIncassato" PropertyName="ImportoIncassato" Width="50" Index="15" IsNewNode="True" />
+        <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="16" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="ScadenzaPagamento_ListView">
+      <Variants>
+        <Variant Id="CalendarioScadenzaPagamento" ViewID="ScadenzaPagamento_ScheduleView" Caption="Calendario" IsNewNode="True" />
+        <Variant Id="ElencoScadenzaPagamento" Caption="Elenco" ViewID="ScadenzaPagamento_ListViewElenco" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="ScadenzaPagamento_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Database.ScadenzaPagamento" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Pagamento" PropertyName="Pagamento" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Data" PropertyName="Data" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Importo" PropertyName="Importo" Width="50" Index="2" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="ScadenzaPagamento_ScheduleView" ClassName="xMax.Module.BusinessObjects.Database.ScadenzaPagamento" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Pagamento" PropertyName="Pagamento" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Data" PropertyName="Data" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Importo" PropertyName="Importo" Width="50" Index="2" IsNewNode="True" />
+      </Columns>
+    </ListView>
   </Views>
 </Application>

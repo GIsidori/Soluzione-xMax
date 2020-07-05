@@ -4,8 +4,6 @@ using System.ComponentModel;
 using DevExpress.ExpressApp.Web;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Xpo;
-using DevExpress.ExpressApp.Security;
-using DevExpress.ExpressApp.Security.ClientServer;
 
 namespace xMax.Web {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Web.WebApplication
@@ -14,11 +12,10 @@ namespace xMax.Web {
         private DevExpress.ExpressApp.Web.SystemModule.SystemAspNetModule module2;
         private xMax.Module.xMaxModule module3;
         private xMax.Module.Web.xMaxAspNetModule module4;
-        private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
-        private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
-        private DevExpress.ExpressApp.Security.AuthenticationStandard authenticationStandard1;
         private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule;
-        private DevExpress.ExpressApp.FileAttachments.Web.FileAttachmentsAspNetModule fileAttachmentsAspNetModule;
+        private DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule conditionalAppearanceModule;
+        private DevExpress.ExpressApp.Scheduler.SchedulerModuleBase schedulerModuleBase;
+        private DevExpress.ExpressApp.Scheduler.Web.SchedulerAspNetModule schedulerAspNetModule;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
         private DevExpress.ExpressApp.Validation.Web.ValidationAspNetModule validationAspNetModule;
 
@@ -32,10 +29,9 @@ namespace xMax.Web {
             DevExpress.Persistent.Base.PasswordCryptographer.EnableRfc2898 = true;
             DevExpress.Persistent.Base.PasswordCryptographer.SupportLegacySha512 = false;
             DevExpress.ExpressApp.BaseObjectSpace.ThrowExceptionForNotRegisteredEntityType = true;
-            DevExpress.ExpressApp.Security.SecurityStrategy.EnableSecurityForActions = true;
         }
         private void InitializeDefaults() {
-            LinkNewObjectToParentImmediately = false;
+            LinkNewObjectToParentImmediately = true;
             OptimizedControllersCreation = true;
         }
         #endregion
@@ -47,7 +43,7 @@ namespace xMax.Web {
             return new ViewUrlManager();
         }
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
-            args.ObjectSpaceProvider = new SecuredObjectSpaceProvider((SecurityStrategyComplex)Security, GetDataStoreProvider(args.ConnectionString, args.Connection), true);
+            args.ObjectSpaceProvider = new XPObjectSpaceProvider(GetDataStoreProvider(args.ConnectionString, args.Connection), true);
             args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));
         }
         private IXpoDataStoreProvider GetDataStoreProvider(string connectionString, System.Data.IDbConnection connection) {
@@ -92,29 +88,13 @@ namespace xMax.Web {
             this.module2 = new DevExpress.ExpressApp.Web.SystemModule.SystemAspNetModule();
             this.module3 = new xMax.Module.xMaxModule();
             this.module4 = new xMax.Module.Web.xMaxAspNetModule();
-            this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
-            this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
-            this.authenticationStandard1 = new DevExpress.ExpressApp.Security.AuthenticationStandard();
             this.objectsModule = new DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule();
-            this.fileAttachmentsAspNetModule = new DevExpress.ExpressApp.FileAttachments.Web.FileAttachmentsAspNetModule();
+            this.conditionalAppearanceModule = new DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule();
+            this.schedulerModuleBase = new DevExpress.ExpressApp.Scheduler.SchedulerModuleBase();
+            this.schedulerAspNetModule = new DevExpress.ExpressApp.Scheduler.Web.SchedulerAspNetModule();
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
             this.validationAspNetModule = new DevExpress.ExpressApp.Validation.Web.ValidationAspNetModule();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            // 
-            // securityStrategyComplex1
-            // 
-            this.securityStrategyComplex1.Authentication = this.authenticationStandard1;
-            this.securityStrategyComplex1.RoleType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole);
-            this.securityStrategyComplex1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
-            // 
-            // securityModule1
-            // 
-            this.securityModule1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
-            // 
-            // authenticationStandard1
-            // 
-            this.authenticationStandard1.LogonParametersType = typeof(DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters);
             // 
             // xMaxAspNetApplication
             // 
@@ -124,10 +104,10 @@ namespace xMax.Web {
             this.Modules.Add(this.module2);
             this.Modules.Add(this.module3);
             this.Modules.Add(this.module4);
-            this.Modules.Add(this.securityModule1);
-            this.Security = this.securityStrategyComplex1;
             this.Modules.Add(this.objectsModule);
-            this.Modules.Add(this.fileAttachmentsAspNetModule);
+            this.Modules.Add(this.conditionalAppearanceModule);
+            this.Modules.Add(this.schedulerModuleBase);
+            this.Modules.Add(this.schedulerAspNetModule);
             this.Modules.Add(this.validationModule);
             this.Modules.Add(this.validationAspNetModule);
             this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.xMaxAspNetApplication_DatabaseVersionMismatch);

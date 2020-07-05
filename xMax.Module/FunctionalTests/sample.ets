@@ -2,11 +2,6 @@
 
 #Application xMaxWin
 #Application xMaxWeb
-
-*FillForm
- User Name = Admin
-*Action Log In
-
 #IfDef xMaxWin
 
 *Action About...
@@ -16,5 +11,5 @@
 #EndIf
 
 #IfDef xMaxWeb
-*Action Navigation(My Details)
+!Action Navigation(My Details)
 #EndIf

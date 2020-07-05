@@ -13,13 +13,13 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class Apparato : OggettoBase
+    public partial class Apparato : Articolo
     {
-        [Association(@"InterventoReferencesApparato")]
-        public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
+        [Association(@"ApparatoReferencesArticolo")]
+        public XPCollection<Articolo> Ricambi { get { return GetCollection<Articolo>(nameof(Ricambi)); } }
         [Association(@"InstallazioneReferencesApparato")]
         public XPCollection<Installazione> Installazioni { get { return GetCollection<Installazione>(nameof(Installazioni)); } }
     }

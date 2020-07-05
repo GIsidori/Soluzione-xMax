@@ -13,10 +13,10 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class Articolo : OggettoBase
+    public partial class Articolo : BaseXPObject
     {
         string fDescrizione;
         public string Descrizione
@@ -24,12 +24,59 @@ namespace xMax.Module.BusinessObjects.xMaxDataModel
             get { return fDescrizione; }
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
         }
-        string fUM;
-        public string UM
+        TipoApparato fTipoApparato;
+        public TipoApparato TipoApparato
         {
-            get { return fUM; }
-            set { SetPropertyValue<string>(nameof(UM), ref fUM, value); }
+            get { return fTipoApparato; }
+            set { SetPropertyValue<TipoApparato>(nameof(TipoApparato), ref fTipoApparato, value); }
         }
+        Produttore fProduttore;
+        public Produttore Produttore
+        {
+            get { return fProduttore; }
+            set { SetPropertyValue<Produttore>(nameof(Produttore), ref fProduttore, value); }
+        }
+        string fMarca;
+        public string Marca
+        {
+            get { return fMarca; }
+            set { SetPropertyValue<string>(nameof(Marca), ref fMarca, value); }
+        }
+        string fModello;
+        public string Modello
+        {
+            get { return fModello; }
+            set { SetPropertyValue<string>(nameof(Modello), ref fModello, value); }
+        }
+        UnitaMisura fUnitaMisura;
+        public UnitaMisura UnitaMisura
+        {
+            get { return fUnitaMisura; }
+            set { SetPropertyValue<UnitaMisura>(nameof(UnitaMisura), ref fUnitaMisura, value); }
+        }
+        bool fVisualizzaInSchedaIntervento;
+        [ColumnDefaultValue(true)]
+        public bool VisualizzaInSchedaIntervento
+        {
+            get { return fVisualizzaInSchedaIntervento; }
+            set { SetPropertyValue<bool>(nameof(VisualizzaInSchedaIntervento), ref fVisualizzaInSchedaIntervento, value); }
+        }
+        int fQuantitaIniziale;
+        public int QuantitaIniziale
+        {
+            get { return fQuantitaIniziale; }
+            set { SetPropertyValue<int>(nameof(QuantitaIniziale), ref fQuantitaIniziale, value); }
+        }
+        [Association(@"ApparatoReferencesArticolo")]
+        public XPCollection<Apparato> Apparati { get { return GetCollection<Apparato>(nameof(Apparati)); } }
+        [Association(@"FornitoreArticoloReferencesArticolo")]
+        public XPCollection<FornitoreArticolo> Fornitori { get { return GetCollection<FornitoreArticolo>(nameof(Fornitori)); } }
+        [MemberDesignTimeVisibility(false)]
+        [Association(@"DTTAcquistoElencoMaterialeReferencesArticolo")]
+        public XPCollection<DDTAcquistoElencoMateriale> DTTAcquistoArticolo { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(DTTAcquistoArticolo)); } }
+        [MemberDesignTimeVisibility(false)]
+        [Association(@"DDTVenditaElencoMaterialeReferencesArticolo")]
+        public XPCollection<DDTVenditaElencoMateriale> DDTVenditaArticolo { get { return GetCollection<DDTVenditaElencoMateriale>(nameof(DDTVenditaArticolo)); } }
     }
 
 }
