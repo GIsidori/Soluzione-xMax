@@ -7,7 +7,21 @@
     <SchemaModule Name="SystemWindowsFormsModule" Version="20.1.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <DetailView Id="Attrezzatura_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="ElencoVerifiche_Group" TextAlignMode="AlignWithChildren" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="BaseEvent_ListView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
+    <DetailView Id="Dipendente_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="IdoneitaAttestatiFormazione_Group" TextAlignMode="AlignWithChildren" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Installazione_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
     <ListView Id="Intervento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />
     <ListView Id="ScadenzaPagamento_ScheduleView" EditorTypeName="DevExpress.ExpressApp.Scheduler.Win.SchedulerListEditor" />

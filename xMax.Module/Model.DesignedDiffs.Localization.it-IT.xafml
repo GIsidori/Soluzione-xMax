@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views>
+    <DetailView Id="Apparato_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Articolo">
+              <LayoutGroup Id="Articolo_col2">
+                <LayoutGroup Id="Auto1cd4e061-130c-4979-a999-9d359127f15d" Caption="">
+                  <LayoutGroup Id="Auto69eba9a7-93e2-44a3-a48b-eb5a51caf9ac" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Articolo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Articolo">
+              <LayoutGroup Id="Articolo_col2">
+                <LayoutGroup Id="Auto72218fdb-1410-4036-93fb-730865dcd61a" Caption="">
+                  <LayoutGroup Id="Auto647580c7-ae19-42cb-87cd-7b12006fe164" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Produttore_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="BaseXPObject" Caption="Codice" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

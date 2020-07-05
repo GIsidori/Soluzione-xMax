@@ -36,7 +36,7 @@ namespace xMax.Module {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
             //Se non commento la seguente riga di codice, il comando UpdateModel su moduli Win e Web va in errore....
-            //typesInfo.FindTypeInfo(typeof(XPObject)).KeyMember.AddAttribute(new BrowsableAttribute(false));
+            typesInfo.FindTypeInfo(typeof(XPObject)).KeyMember.AddAttribute(new BrowsableAttribute(false));
         }
     }
 }

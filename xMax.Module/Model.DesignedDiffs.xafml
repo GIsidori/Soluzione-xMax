@@ -13,6 +13,8 @@
         <AppearanceRule Id="RicambioRule" Criteria="[Ricambio] = True" Visibility="Hide" TargetItems="TipoApparato;Marca;Modello;Produttore" IsNewNode="True" />
       </AppearanceRules>
     </Class>
+    <Class Name="xMax.Module.BusinessObjects.Database.DDTAcquistoElencoMateriale" DefaultListViewAllowEdit="True" DefaultListViewNewItemRowPosition="Bottom" />
+    <Class Name="xMax.Module.BusinessObjects.Database.DDTVenditaElencoMateriale" DefaultListViewAllowEdit="True" DefaultListViewNewItemRowPosition="Bottom" />
     <Class Name="xMax.Module.BusinessObjects.Database.Dipendente">
       <AppearanceRules>
         <AppearanceRule Id="DipendeteTipoRule" Visibility="Hide" TargetItems="Tipo" IsNewNode="True" />
@@ -88,11 +90,413 @@
   </Options>
   <SchemaModules>
     <SchemaModule Name="SchedulerModuleBase" Version="20.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerWindowsFormsModule" Version="20.1.4.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="20.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="20.1.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <DetailView Id="Apparato_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="34.235976789168276">
+            <LayoutGroup Id="Articolo" Index="0" RelativeSize="100">
+              <LayoutGroup Id="Articolo_col1" RelativeSize="49.950738916256157">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="Descrizione" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="TipoApparato" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Produttore" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Marca" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Quantita" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Articolo_col2" RelativeSize="50.049261083743843">
+                <LayoutItem Id="Modello" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="UnitaMisura" RelativeSize="17.647058823529413" />
+                <LayoutGroup Id="Auto1cd4e061-130c-4979-a999-9d359127f15d" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="58.8235294117647" IsNewNode="True">
+                  <LayoutGroup Id="Auto69eba9a7-93e2-44a3-a48b-eb5a51caf9ac" ShowCaption="False" Index="0" RelativeSize="62.795275590551178" IsNewNode="True">
+                    <LayoutItem Id="QuantitaIniziale" ViewItem="QuantitaIniziale" Index="0" RelativeSize="30" IsNewNode="True" />
+                    <LayoutItem Id="Quantita" ViewItem="Quantita" Index="1" RelativeSize="70" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="VisualizzaInSchedaIntervento" ViewItem="VisualizzaInSchedaIntervento" Index="1" RelativeSize="37.204724409448822" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="QuantitaIniziale" Removed="True" />
+                <LayoutItem Id="VisualizzaInSchedaIntervento" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="65.764023210831724">
+            <LayoutGroup Id="Ricambi" RelativeSize="100">
+              <LayoutItem Id="Ricambi" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Installazioni" RelativeSize="100">
+              <LayoutItem Id="Installazioni" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Apparati" RelativeSize="100">
+              <LayoutItem Id="Apparati" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Fornitori" RelativeSize="100">
+              <LayoutItem Id="Fornitori" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Apparato_ListView">
+      <Columns>
+        <ColumnInfo Id="Codice" Index="0" />
+        <ColumnInfo Id="Descrizione" Index="1" Width="169" />
+        <ColumnInfo Id="Nome" Width="362" Index="2" />
+        <ColumnInfo Id="Quantita" Index="3" />
+        <ColumnInfo Id="TipoApparato" Index="4" Width="62" />
+        <ColumnInfo Id="Marca" Index="5" Width="62" />
+        <ColumnInfo Id="Modello" Index="6" Width="62" />
+        <ColumnInfo Id="Produttore" Index="7" />
+        <ColumnInfo Id="UnitaMisura" Index="8" Width="62" />
+        <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="9" Width="53" />
+        <ColumnInfo Id="QuantitaIniziale" Index="10" />
+      </Columns>
+    </ListView>
+    <ListView Id="Apparato_Ricambi_ListView">
+      <Columns>
+        <ColumnInfo Id="Marca" Index="-1" />
+        <ColumnInfo Id="Modello" Index="-1" />
+        <ColumnInfo Id="Produttore" Index="-1" />
+        <ColumnInfo Id="TipoApparato" Index="-1" />
+        <ColumnInfo Id="UnitaMisura" Index="2" />
+        <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="3" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Articolo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="34.235976789168276">
+            <LayoutGroup Id="Articolo" RelativeSize="100">
+              <LayoutGroup Id="Articolo_col1" RelativeSize="50.935960591133004">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="Descrizione" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="TipoApparato" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Produttore" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Marca" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Quantita" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Articolo_col2" RelativeSize="49.064039408866996">
+                <LayoutItem Id="Modello" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="UnitaMisura" RelativeSize="23.529411764705884" />
+                <LayoutGroup Id="Auto72218fdb-1410-4036-93fb-730865dcd61a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="58.8235294117647" IsNewNode="True">
+                  <LayoutGroup Id="Auto647580c7-ae19-42cb-87cd-7b12006fe164" ShowCaption="False" Index="0" RelativeSize="61.847389558232933" IsNewNode="True">
+                    <LayoutItem Id="QuantitaIniziale" ViewItem="QuantitaIniziale" Index="0" RelativeSize="30" IsNewNode="True" />
+                    <LayoutItem Id="Quantita" ViewItem="Quantita" Index="1" RelativeSize="70" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="VisualizzaInSchedaIntervento" ViewItem="VisualizzaInSchedaIntervento" Index="1" RelativeSize="38.152610441767067" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="QuantitaIniziale" Removed="True" />
+                <LayoutItem Id="VisualizzaInSchedaIntervento" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="65.764023210831724">
+            <LayoutGroup Id="Apparati" RelativeSize="100">
+              <LayoutItem Id="Apparati" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Fornitori" RelativeSize="100">
+              <LayoutItem Id="Fornitori" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Articolo_ListView">
+      <Columns>
+        <ColumnInfo Id="Marca" Index="-1" />
+        <ColumnInfo Id="Modello" Index="-1" />
+        <ColumnInfo Id="QuantitaIniziale" Width="91" Index="-1" />
+        <ColumnInfo Id="TipoApparato" Index="-1" />
+        <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="-1" Width="84" />
+        <ColumnInfo Id="Nome" Width="120" SortIndex="1" SortOrder="Ascending" />
+        <ColumnInfo Id="Descrizione" SortIndex="0" SortOrder="Ascending" Width="401" Index="1" />
+        <ColumnInfo Id="Quantita" Width="84" Index="2" />
+        <ColumnInfo Id="UnitaMisura" Index="2" Width="117" />
+        <ColumnInfo Id="Produttore" Width="117" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Attrezzatura_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="35.260115606936417">
+            <LayoutGroup Id="Attrezzatura" RelativeSize="100">
+              <LayoutGroup Id="Attrezzatura_col1" RelativeSize="50">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="22.535211267605632" IsNewNode="True" />
+                <LayoutItem Id="Descrizione" Index="1" RelativeSize="16.901408450704224" />
+                <LayoutItem Id="TipoAttrezzatura" Index="2" RelativeSize="16.901408450704224" />
+                <LayoutItem Id="Matricola" Index="3" RelativeSize="16.901408450704224" />
+                <LayoutItem Id="Marca" Index="4" RelativeSize="26.760563380281692" />
+              </LayoutGroup>
+              <LayoutGroup Id="Attrezzatura_col2" RelativeSize="50">
+                <LayoutItem Id="AnnoConstruzione" RelativeSize="22.535211267605632" />
+                <LayoutItem Id="Stato" RelativeSize="16.901408450704224" />
+                <LayoutItem Id="MarcaturaCE" RelativeSize="16.901408450704224" />
+                <LayoutItem Id="Note" ViewItem="Note" Index="3" RelativeSize="43.661971830985912" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="ElencoVerifiche_Group" Direction="Vertical" Index="1" RelativeSize="64.739884393063591">
+            <LayoutItem Id="ElencoVerifiche" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Attrezzatura_ListView">
+      <Columns>
+        <ColumnInfo Id="Nome" Width="133" />
+        <ColumnInfo Id="Descrizione" Width="142" />
+        <ColumnInfo Id="TipoAttrezzatura" Width="142" />
+        <ColumnInfo Id="Matricola" Width="142" />
+        <ColumnInfo Id="Marca" Width="142" />
+        <ColumnInfo Id="AnnoConstruzione" Width="142" />
+        <ColumnInfo Id="Stato" Width="142" />
+        <ColumnInfo Id="MarcaturaCE" Width="158" />
+      </Columns>
+    </ListView>
+    <ListView Id="BaseEvent_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-12-31" SelectedIntervalEnd="2021-01-01" />
+    <ListView Id="Cliente_Contratti_ListView">
+      <Columns>
+        <ColumnInfo Id="DataInizio" Width="161" />
+        <ColumnInfo Id="DataScadenza" Width="306" />
+        <ColumnInfo Id="TipoContratto" Width="306" />
+        <ColumnInfo Id="ImportoAnnuale" Width="219" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Cliente_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="40.03868471953578">
+            <LayoutGroup Id="Anagrafica" Index="0" RelativeSize="100">
+              <LayoutGroup Id="Anagrafica_col1" RelativeSize="49.950738916256157">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="20.930232558139537" IsNewNode="True" />
+                <LayoutItem Id="Tipo" Index="1" RelativeSize="18.6046511627907" />
+                <LayoutItem Id="Nome" Index="2" RelativeSize="13.953488372093023" />
+                <LayoutItem Id="Cognome" Index="3" RelativeSize="13.953488372093023" />
+                <LayoutItem Id="RagioneSociale" Index="4" RelativeSize="13.953488372093023" />
+                <LayoutItem Id="CF" Index="5" RelativeSize="18.6046511627907" />
+              </LayoutGroup>
+              <LayoutGroup Id="Anagrafica_col2" RelativeSize="50.049261083743843">
+                <LayoutItem Id="Piva" RelativeSize="13.953488372093023" />
+                <LayoutItem Id="Indirizzo" RelativeSize="18.6046511627907" />
+                <LayoutItem Id="Telefono" RelativeSize="13.953488372093023" />
+                <LayoutItem Id="EMail" RelativeSize="53.488372093023258" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="59.96131528046422">
+            <LayoutGroup Id="Installazioni" RelativeSize="100">
+              <LayoutItem Id="Installazioni" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Interventi" RelativeSize="100">
+              <LayoutItem Id="Interventi" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Contratti" RelativeSize="100">
+              <LayoutItem Id="Contratti" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Cliente_Installazioni_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-04" SelectedIntervalEnd="2020-07-05">
+      <Columns>
+        <ColumnInfo Id="Apparato" SortIndex="0" SortOrder="Ascending" />
+      </Columns>
+    </ListView>
+    <ListView Id="Cliente_Interventi_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-04" SelectedIntervalEnd="2020-07-05" />
+    <ListView Id="Cliente_ListView">
+      <Columns>
+        <ColumnInfo Id="Piva" Width="96" Index="-1" />
+        <ColumnInfo Id="RagioneSociale" Width="92" Index="-1" />
+        <ColumnInfo Id="NomeCompleto" SortOrder="Descending" Width="106" />
+        <ColumnInfo Id="Cognome" Width="314" Index="1" />
+        <ColumnInfo Id="Nome" Width="314" Index="2" />
+        <ColumnInfo Id="CF" Width="92" Index="3" />
+      </Columns>
+    </ListView>
+    <ListView Id="Cliente_LookupListView">
+      <Columns>
+        <ColumnInfo Id="NomeCompleto" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Contratto_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="29.593810444874276">
+            <LayoutGroup Id="Contratto" RelativeSize="100">
+              <LayoutGroup Id="Contratto_col1" RelativeSize="49.950738916256157">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutItem Id="Cliente" Index="1" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="DataInizio" Index="2" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="DataScadenza" Index="3" RelativeSize="28.571428571428573" />
+              </LayoutGroup>
+              <LayoutGroup Id="Contratto_col2" RelativeSize="50.049261083743843">
+                <LayoutItem Id="TipoContratto" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="ImportoAnnuale" RelativeSize="71.428571428571431" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="70.406189555125721">
+            <LayoutGroup Id="Interventi" RelativeSize="100">
+              <LayoutItem Id="Interventi" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ScadenzePagamento" RelativeSize="100">
+              <LayoutItem Id="ScadenzePagamento" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DDTAcquisto_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="16.634429400386846">
+            <LayoutGroup Id="DDTAcquisto" RelativeSize="100">
+              <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="37.2093023255814" IsNewNode="True" />
+              <LayoutItem Id="Data" Index="1" RelativeSize="27.906976744186046" />
+              <LayoutItem Id="Fornitore" Index="2" RelativeSize="34.883720930232556" />
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="ElencoMateriale_Group" Direction="Vertical" RelativeSize="83.36557059961315">
+            <LayoutItem Id="ElencoMateriale" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="DDTAcquisto_ElencoMateriale_ListView">
+      <Columns>
+        <ColumnInfo Id="ArticoloFornitore" Width="130" />
+        <ColumnInfo Id="Articolo" Width="354" />
+        <ColumnInfo Id="Quantita" Width="252" />
+        <ColumnInfo Id="Importo" Width="256" />
+      </Columns>
+    </ListView>
+    <ListView Id="DDTAcquisto_ListView">
+      <Columns>
+        <ColumnInfo Id="Codice" Width="103" Index="0" />
+        <ColumnInfo Id="Data" Width="110" Index="1" />
+        <ColumnInfo Id="Fornitore" Width="930" SortIndex="0" SortOrder="Ascending" Index="2" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DDTVendita_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="16.634429400386846">
+            <LayoutGroup Id="DDTVendita" RelativeSize="100">
+              <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="37.2093023255814" IsNewNode="True" />
+              <LayoutItem Id="Data" Index="1" RelativeSize="27.906976744186046" />
+              <LayoutItem Id="Cliente" Index="2" RelativeSize="34.883720930232556" />
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="ElencoMateriale_Group" Direction="Vertical" RelativeSize="83.36557059961315">
+            <LayoutItem Id="ElencoMateriale" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Dipendente_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="38.728323699421964">
+            <LayoutGroup Id="Anagrafica" Index="0" RelativeSize="100">
+              <LayoutGroup Id="Anagrafica_col1" RelativeSize="50">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="20" IsNewNode="True" />
+                <LayoutItem Id="Tipo" Index="1" RelativeSize="15" />
+                <LayoutItem Id="Nome" Index="2" RelativeSize="15" />
+                <LayoutItem Id="Cognome" Index="3" RelativeSize="15" />
+                <LayoutItem Id="RagioneSociale" Index="4" RelativeSize="15" />
+                <LayoutItem Id="CF" Index="5" RelativeSize="20" />
+              </LayoutGroup>
+              <LayoutGroup Id="Anagrafica_col2" RelativeSize="50">
+                <LayoutItem Id="Piva" RelativeSize="15" />
+                <LayoutItem Id="Indirizzo" RelativeSize="20" />
+                <LayoutItem Id="Telefono" RelativeSize="15" />
+                <LayoutItem Id="EMail" RelativeSize="15" />
+                <LayoutItem Id="Reparto" ViewItem="Reparto" Index="4" RelativeSize="15" IsNewNode="True" />
+                <LayoutItem Id="Mansione" ViewItem="Mansione" Index="5" RelativeSize="20" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+            <LayoutGroup Id="Dipendente" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="IdoneitaAttestatiFormazione_Group" Direction="Vertical" RelativeSize="61.271676300578036">
+            <LayoutItem Id="IdoneitaAttestatiFormazione" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Fornitore_Articoli_ListView">
+      <Columns>
+        <ColumnInfo Id="CodiceArticoloFornitore" Index="0" />
+        <ColumnInfo Id="Articolo" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Fornitore_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="34.235976789168276">
+            <LayoutGroup Id="Anagrafica" Index="0" RelativeSize="100">
+              <LayoutGroup Id="Anagrafica_col1" RelativeSize="49.950738916256157">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="Tipo" Index="1" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Nome" Index="2" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Cognome" Index="3" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="RagioneSociale" Index="4" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="CF" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Anagrafica_col2" RelativeSize="50.049261083743843">
+                <LayoutItem Id="Piva" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="CF" ViewItem="CF" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                <LayoutItem Id="Indirizzo" Index="2" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Telefono" Index="3" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="EMail" Index="4" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="65.764023210831724">
+            <LayoutGroup Id="Articoli" RelativeSize="100">
+              <LayoutItem Id="Articoli" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ElencoDDT" RelativeSize="100">
+              <LayoutItem Id="ElencoDDT" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Fornitore_ElencoDDT_ListView">
+      <Columns>
+        <ColumnInfo Id="Codice" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Fornitore_ListView">
+      <Columns>
+        <ColumnInfo Id="Tipo" Index="-1" />
+        <ColumnInfo Id="NomeCompleto" Width="158" />
+        <ColumnInfo Id="RagioneSociale" Index="0" Width="122" />
+        <ColumnInfo Id="Nome" Index="2" Width="122" />
+        <ColumnInfo Id="Cognome" Index="3" Width="131" />
+        <ColumnInfo Id="Indirizzo" Index="4" Width="122" />
+        <ColumnInfo Id="Telefono" Index="5" Width="122" />
+        <ColumnInfo Id="EMail" Index="6" Width="122" />
+        <ColumnInfo Id="Piva" Index="7" Width="122" />
+        <ColumnInfo Id="CF" Index="8" Width="122" />
+      </Columns>
+    </ListView>
+    <ListView Id="Installazione_Interventi_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-04" SelectedIntervalEnd="2020-07-05" />
     <ListView Id="Installazione_ListView" Criteria="[DataProssimaPulizia] Is Not Null">
-      <Variants Current="ElencoInstallazioni">
+      <Variants Current="CalendarioInstallazioni">
         <Variant Id="ElencoInstallazioni" Caption="Elenco" Index="0" ViewID="Installazione_ListViewElenco" IsNewNode="True" />
         <Variant Id="CalendarioInstallazioni" ViewID="Installazione_ScheduleView" Caption="Calendario" Index="1" IsNewNode="True" />
       </Variants>
@@ -109,7 +513,12 @@
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="Installazione_ScheduleView" ClassName="xMax.Module.BusinessObjects.Database.Installazione" Criteria="[DataProssimaPulizia] Is Not Null" IsNewNode="True">
+    <ListView Id="Installazione_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Nome" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <ListView Id="Installazione_ScheduleView" Criteria="[DataProssimaPulizia] Is Not Null" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-06-29" SelectedIntervalEnd="2020-08-03" SchedulerViewType="Month" ClassName="xMax.Module.BusinessObjects.Database.Installazione" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Nome" PropertyName="Nome" Width="400" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="0" IsNewNode="True" />
@@ -121,6 +530,34 @@
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
       </Columns>
     </ListView>
+    <DetailView Id="Intervento_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="36.815920398009951">
+            <LayoutGroup Id="Intervento" RelativeSize="100">
+              <LayoutGroup Id="Intervento_col1" RelativeSize="49.855491329479769">
+                <LayoutItem Id="Cliente" Index="0" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="DataIntervento" Index="1" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="TipoIntervento" Index="2" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Installazione" Index="3" RelativeSize="28.571428571428573" />
+              </LayoutGroup>
+              <LayoutGroup Id="Intervento_col2" RelativeSize="50.144508670520231">
+                <LayoutItem Id="FatturaRicevuta" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="ImportoIncassato" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Contratto" RelativeSize="50" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="31.094527363184081">
+            <LayoutItem Id="DescrizioneIntervento" RelativeSize="49.6" />
+            <LayoutItem Id="Note" RelativeSize="50.4" />
+          </LayoutGroup>
+          <LayoutGroup Id="RicambiUtilizzati_Group" Direction="Vertical" RelativeSize="32.089552238805972">
+            <LayoutItem Id="RicambiUtilizzati" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Intervento_ListView">
       <Variants Current="ElencoInterventi">
         <Variant Id="CalendarioInterventi" ViewID="Intervento_ScheduleView" Caption="Calendario" IsNewNode="True" />
@@ -141,7 +578,7 @@
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="Intervento_ScheduleView" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
+    <ListView Id="Intervento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-24" SelectedIntervalEnd="2020-07-25" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="DescrizioneIntervento" PropertyName="DescrizioneIntervento" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="NomeCompleto" PropertyName="NomeCompleto" Width="400" Index="-1" IsNewNode="True" />
@@ -154,8 +591,49 @@
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="16" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="ScadenzaPagamento_ListView">
-      <Variants>
+    <DetailView Id="Produttore_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Anagrafica" Index="0" RelativeSize="37.717601547388782">
+              <LayoutGroup Id="Anagrafica_col1" RelativeSize="49.950738916256157">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="20" IsNewNode="True" />
+                <LayoutItem Id="Tipo" Index="1" RelativeSize="15" />
+                <LayoutItem Id="Nome" Index="2" RelativeSize="15" />
+                <LayoutItem Id="Cognome" Index="3" RelativeSize="15" />
+                <LayoutItem Id="RagioneSociale" Index="4" RelativeSize="20" />
+                <LayoutItem Id="CF" Index="5" RelativeSize="15" />
+              </LayoutGroup>
+              <LayoutGroup Id="Anagrafica_col2" RelativeSize="50.049261083743843">
+                <LayoutItem Id="Piva" RelativeSize="20" />
+                <LayoutItem Id="Indirizzo" RelativeSize="15" />
+                <LayoutItem Id="Telefono" RelativeSize="15" />
+                <LayoutItem Id="EMail" RelativeSize="50" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="BaseXPObject" Index="1" RelativeSize="62.282398452611218">
+              <LayoutItem Id="Codice" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Produttore_ListView">
+      <Columns>
+        <ColumnInfo Id="Tipo" Index="-1" />
+        <ColumnInfo Id="NomeCompleto" Width="160" />
+        <ColumnInfo Id="RagioneSociale" Index="0" Width="122" />
+        <ColumnInfo Id="Nome" Index="2" Width="122" />
+        <ColumnInfo Id="Cognome" Index="3" Width="129" />
+        <ColumnInfo Id="Indirizzo" Index="4" Width="122" />
+        <ColumnInfo Id="Telefono" Index="5" Width="122" />
+        <ColumnInfo Id="EMail" Index="6" Width="122" />
+        <ColumnInfo Id="Piva" Index="7" Width="122" />
+        <ColumnInfo Id="CF" Index="8" Width="122" />
+      </Columns>
+    </ListView>
+    <ListView Id="ScadenzaPagamento_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-04" SelectedIntervalEnd="2020-07-05">
+      <Variants Current="CalendarioScadenzaPagamento">
         <Variant Id="CalendarioScadenzaPagamento" ViewID="ScadenzaPagamento_ScheduleView" Caption="Calendario" IsNewNode="True" />
         <Variant Id="ElencoScadenzaPagamento" Caption="Elenco" ViewID="ScadenzaPagamento_ListViewElenco" IsNewNode="True" />
       </Variants>
@@ -168,7 +646,7 @@
         <ColumnInfo Id="Importo" PropertyName="Importo" Width="50" Index="2" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="ScadenzaPagamento_ScheduleView" ClassName="xMax.Module.BusinessObjects.Database.ScadenzaPagamento" IsNewNode="True">
+    <ListView Id="ScadenzaPagamento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-08-01" SelectedIntervalEnd="2020-08-02" SchedulerViewType="Day" ClassName="xMax.Module.BusinessObjects.Database.ScadenzaPagamento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Pagamento" PropertyName="Pagamento" Width="400" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="0" IsNewNode="True" />

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Reflection;
 using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.DC;
+using System.Linq;
 
 namespace xMax.Module.BusinessObjects.Database
 {
@@ -29,6 +30,11 @@ namespace xMax.Module.BusinessObjects.Database
             {
                 return ObjectFormatter.Format("{Codice} - {RagioneSociale}", this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
             }
+        }
+
+        public FornitoreArticolo GetArticolo(string codiceFornitore)
+        {
+            return this.Articoli.FirstOrDefault(a => a.CodiceArticoloFornitore.ToLower() == codiceFornitore.ToLower());
         }
     }
 

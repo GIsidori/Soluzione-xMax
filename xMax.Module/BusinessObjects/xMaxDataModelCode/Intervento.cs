@@ -38,7 +38,7 @@ namespace xMax.Module.BusinessObjects.Database
         {
             get
             {
-                return ObjectFormatter.Format("{Codice} - {Cliente.NomeCognomeRagioneSociale} - {TipoIntervento}", this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
+                return ObjectFormatter.Format("{DataIntervento:d} - {Cliente?.NomeCognomeRagioneSociale} - {TipoIntervento}", this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
             }
         }
 

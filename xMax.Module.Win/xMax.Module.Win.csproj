@@ -183,6 +183,10 @@
     <None Include="Images\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.it-IT.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

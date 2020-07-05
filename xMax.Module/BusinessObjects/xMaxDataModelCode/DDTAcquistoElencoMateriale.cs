@@ -16,27 +16,67 @@ namespace xMax.Module.BusinessObjects.Database
         public DDTAcquistoElencoMateriale(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
+        protected override void OnSaving()
+        {
+            if (string.IsNullOrWhiteSpace(CodiceArticoloFornitore) == false && Articolo != null && this.DDT.Fornitore != null)
+            {
+                var artForn = this.DDT.Fornitore.GetArticolo(codiceArticoloFornitore);
+                if (artForn == null)
+                    artForn = new FornitoreArticolo(Session) { Fornitore = this.DDT.Fornitore, Articolo = this.Articolo };
+                artForn.CodiceArticoloFornitore = codiceArticoloFornitore;
+            }
+            base.OnSaving();
+        }
 
+        //[NonPersistent]
+        //public string CodiceArticoloFornitore
+        //{
+        //    get
+        //    {
+        //        //TODO Giorgio: da rifare
+        //        return Articolo.Fornitori.ToList()?.Where(f => f.Fornitore.Oid == DDT.Fornitore.Oid).FirstOrDefault()?.CodiceArticoloFornitore;
+        //    }
+        //}
+
+        //[NonPersistent]
+        //public string DescrizioneArticoloFornitore
+        //{
+        //    get
+        //    {
+        //        //TODO Giorgio: da rifare
+        //        return Articolo.Fornitori.ToList()?.Where(f => f.Fornitore.Oid == DDT.Fornitore.Oid).FirstOrDefault()?.DescrizioneArticoloFornitore;
+        //    }
+        //}
+
+        private string codiceArticoloFornitore;
         [NonPersistent]
         public string CodiceArticoloFornitore
         {
-            get
+            get => codiceArticoloFornitore;
+            set
             {
-                //TODO Giorgio: da rifare
-                return Articolo.Fornitori.ToList()?.Where(f => f.Fornitore.Oid == DDT.Fornitore.Oid).FirstOrDefault()?.CodiceArticoloFornitore;
+                if (this.DDT.Fornitore != null && string.IsNullOrWhiteSpace(value) == false)
+                {
+                    var artForn = this.DDT.Fornitore.GetArticolo(CodiceArticoloFornitore);
+                    if (artForn != null)
+                        this.Articolo = artForn.Articolo;
+                }
+                SetPropertyValue<string>(nameof(CodiceArticoloFornitore), ref codiceArticoloFornitore, value);
             }
         }
 
+        private FornitoreArticolo articoloFornitore;
         [NonPersistent]
-        public string DescrizioneArticoloFornitore
-        {
-            get
+        [DataSourceCriteria("Fornitore = '@This.DDT.Fornitore'")]
+        public FornitoreArticolo ArticoloFornitore
+        { 
+            get => articoloFornitore;
+            set
             {
-                //TODO Giorgio: da rifare
-                return Articolo.Fornitori.ToList()?.Where(f => f.Fornitore.Oid == DDT.Fornitore.Oid).FirstOrDefault()?.DescrizioneArticoloFornitore;
+                SetPropertyValue<FornitoreArticolo>(nameof(ArticoloFornitore), ref articoloFornitore, value);
+                this.Articolo = value?.Articolo;
             }
         }
-
     }
 
 }

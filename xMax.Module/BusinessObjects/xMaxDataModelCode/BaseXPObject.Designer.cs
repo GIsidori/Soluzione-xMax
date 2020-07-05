@@ -19,6 +19,7 @@ namespace xMax.Module.BusinessObjects.Database
     public partial class BaseXPObject : XPObject
     {
         string fCodice;
+        [Indexed(@"GCRecord;ObjectType", Name = @"UXCodice", Unique = true)]
         public string Codice
         {
             get { return fCodice; }
@@ -30,6 +31,12 @@ namespace xMax.Module.BusinessObjects.Database
         {
             get { return fNumero; }
             set { SetPropertyValue<int>(nameof(Numero), ref fNumero, value); }
+        }
+        string fProgressivo;
+        public string Progressivo
+        {
+            get { return fProgressivo; }
+            set { SetPropertyValue<string>(nameof(Progressivo), ref fProgressivo, value); }
         }
     }
 

@@ -20,14 +20,17 @@ namespace xMax.Module.BusinessObjects.Database
             if (!(Session is NestedUnitOfWork) && (Session.DataLayer != null) && Session.IsNewObject(this) && (Session.ObjectLayer is SimpleObjectLayer))
             {
                 if (Numero == 0)
-                    Numero = DistributedIdGeneratorHelper.Generate(Session.DataLayer, this.GetType().FullName, String.Empty);
+                {
+                    this.Progressivo = Session.FindObject<Impostazioni>(CriteriaOperator.Parse($"[Chiave]='{this.ClassInfo.TableName}_Progressivo'"), false)?.Valore;
+                    Numero = DistributedIdGeneratorHelper.Generate(Session.DataLayer, this.GetType().FullName, this.Progressivo);
+                }
 
                 if (String.IsNullOrEmpty(Codice))
                 {
-                    var f = Session.FindObject<Impostazioni>(CriteriaOperator.Parse($"[Chiave]='{this.ClassInfo.TableName}Format'"), false)?.Valore;
+                    var f = Session.FindObject<Impostazioni>(CriteriaOperator.Parse($"[Chiave]='{this.ClassInfo.TableName}_Formato'"), false)?.Valore;
 
                     if (f == null)
-                        f = String.Concat(this.ClassInfo.TableName.Substring(0, 1), "{Numero:0000}");
+                        f = String.Concat(this.ClassInfo.TableName.Substring(0, 4).ToUpper(), "{Numero:00000}/{Progressivo}");
 
                     fCodice = ObjectFormatter.Format(f, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
                 }
