@@ -18,13 +18,11 @@ namespace xMax.Module.BusinessObjects
         Business
     }
 
-
     public enum tipoFatturaRicevuta
     {
         Ricevuta,
         Fattura
     }
-
 
     public enum tipoStatoAttrezzatura
     {
