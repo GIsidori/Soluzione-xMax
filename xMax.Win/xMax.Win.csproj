@@ -218,6 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExpressApp.ico" />
+    <Content Include="Model_it-IT.xafml">
+      <DependentUpon>Model.xafml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="ReadMe.txt" />
     <None Include="Images\ReadMe.txt" />
     <None Include="App.config" />

@@ -47,15 +47,18 @@ namespace xMax.Module.Controllers
 
             // aprire un popup con la scelta del DDT acquisto
             //dell'intervento corrente completarlo all'elenco
+            IObjectSpace space = Application.CreateObjectSpace();   // View.ObjectSpace;
+            Intervento intervento = space.GetObject((Intervento)View.CurrentObject);
+            //IObjectSpace space = View.ObjectSpace.CreateNestedObjectSpace();
 
-         //  Intervento intervento = (Intervento)View.CurrentObject;
-            IObjectSpace space = View.ObjectSpace.CreateNestedObjectSpace();
-            Intervento intervento = space.FindObject<Intervento>(CriteriaOperator.Parse($"[Oid]={((Intervento)View.CurrentObject).Oid}"), false);
+
+           // Intervento intervento = space.FindObject<Intervento>(CriteriaOperator.Parse($"[Oid]={((Intervento)View.CurrentObject).Oid}"), false);
 
             DDTVendita ddtvendita = space.CreateObject<DDTVendita>();
             ddtvendita.Cliente = intervento.Cliente;
             ddtvendita.Data = intervento.DataIntervento;
 
+      
             foreach (var materiale in intervento.RicambiUtilizzati)
             {
                 DDTVenditaElencoMateriale elencoMateriale = space.CreateObject<DDTVenditaElencoMateriale>();
@@ -63,15 +66,15 @@ namespace xMax.Module.Controllers
                 elencoMateriale.DDT = ddtvendita;
             }
 
-            space.CommitChanges();
-            View.ObjectSpace.CommitChanges();
+            //space.CommitChanges();
+            //View.ObjectSpace.CommitChanges();
 
             //se utilizzo lo stesso ObjectSpace
             //Error message: The ObjectSpace has already been assigned to another root view: 'DetailView, ID:Intervento_DetailView'.This error occurs only when you try to assign an ObjectSpace that is already used by a root View to another root view. For instance, you may receive this error when using the XafApplication.CreateDetailView / CreateListView methods in a ViewController and passing the View.ObjectSpace object as a parameter to these methods when the View.IsRoot property is true.
             //To avoid this error it's sufficient to pass a new ObjectSpace instance created via the XafApplication.CreateObjectSpace method in these methods, or create non-root Views by passing a corresponding parameter to these methods.
             //If this doesn't help, please contact our Support Team at http://
 
-            DetailView dv = Application.CreateDetailView(space, ddtvendita);
+            DetailView dv = Application.CreateDetailView(space, ddtvendita, true);
             dv.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
             e.ShowViewParameters.CreatedView = dv;
         }

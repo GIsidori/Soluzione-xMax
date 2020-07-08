@@ -16,7 +16,7 @@ using System.Reflection;
 namespace xMax.Module.BusinessObjects.Database
 {
 
-    public partial class TipoApparato : XPObject
+    public partial class TipoArticolo : XPObject
     {
         string fTipo;
         public string Tipo

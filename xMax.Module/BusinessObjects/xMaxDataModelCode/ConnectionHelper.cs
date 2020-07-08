@@ -19,7 +19,7 @@ namespace xMax.Module.BusinessObjects.Database
     {
         static Type[] persistentTypes = new Type[] {
             typeof(Articolo),
-            typeof(TipoApparato),
+            typeof(TipoArticolo),
             typeof(Installazione),
             typeof(Cliente),
             typeof(Anagrafica),

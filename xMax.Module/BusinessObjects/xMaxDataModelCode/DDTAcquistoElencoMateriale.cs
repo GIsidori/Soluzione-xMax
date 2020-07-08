@@ -48,6 +48,16 @@ namespace xMax.Module.BusinessObjects.Database
         //    }
         //}
 
+        protected override void OnLoaded()
+        {
+            base.OnLoaded();
+            if (this.Articolo != null)
+            {
+                articoloFornitore = this.DDT.Fornitore.Articoli.FirstOrDefault(af => af.Articolo == this.Articolo);
+                codiceArticoloFornitore = articoloFornitore?.CodiceArticoloFornitore;
+            }
+        }
+
         private string codiceArticoloFornitore;
         [NonPersistent]
         public string CodiceArticoloFornitore
@@ -57,7 +67,7 @@ namespace xMax.Module.BusinessObjects.Database
             {
                 if (this.DDT.Fornitore != null && string.IsNullOrWhiteSpace(value) == false)
                 {
-                    var artForn = this.DDT.Fornitore.GetArticolo(CodiceArticoloFornitore);
+                    var artForn = this.DDT.Fornitore.GetArticolo(value);
                     if (artForn != null)
                         this.Articolo = artForn.Articolo;
                 }

@@ -43,13 +43,12 @@ namespace xMax.Module.Controllers
 
         private void popupWindowShowAction1_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
         {
-            IObjectSpace space = View.ObjectSpace.CreateNestedObjectSpace();
+            IObjectSpace space = View.ObjectSpace;  //.CreateNestedObjectSpace();
 
-            Intervento intervento = space.FindObject<Intervento>(CriteriaOperator.Parse($"[Oid]={((Intervento)View.CurrentObject).Oid}"), false); 
+            Intervento intervento = View.CurrentObject as Intervento;   // space.FindObject<Intervento>(CriteriaOperator.Parse($"[Oid]={((Intervento)View.CurrentObject).Oid}"), false); 
 
-            foreach (DDTAcquisto ret in e.PopupWindowViewSelectedObjects)
+            foreach (DDTAcquisto ddtAcquisto in e.PopupWindowViewSelectedObjects)
             {
-                DDTAcquisto ddtAcquisto = space.FindObject<DDTAcquisto>(CriteriaOperator.Parse($"[Oid]={ret.Oid}"), false);
 
                 foreach (DDTAcquistoElencoMateriale materiale in ddtAcquisto.ElencoMateriale)
                 {
@@ -59,16 +58,16 @@ namespace xMax.Module.Controllers
                 }
             }
 
-            space.CommitChanges();
             View.ObjectSpace.CommitChanges();
         }
 
         private void popupWindowShowAction1_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)
         {
-            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(DDTAcquisto));
+            IObjectSpace objectSpace = View.ObjectSpace;    // Application.CreateObjectSpace(typeof(DDTAcquisto));
             string ddtID = Application.FindLookupListViewId(typeof(DDTAcquisto));
             CollectionSourceBase collectionSource = Application.CreateCollectionSource(objectSpace, typeof(DDTAcquisto), ddtID);
-            e.View = Application.CreateListView(ddtID, collectionSource, true);
+            e.View = Application.CreateListView(ddtID, collectionSource,false);
+            e.DialogController.SaveOnAccept = false;
 
         }
     }

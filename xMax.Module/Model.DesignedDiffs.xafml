@@ -59,7 +59,7 @@
           <Item Id="Impostazioni_ListView" Removed="True" />
           <Item Id="Mansione_ListView" Removed="True" />
           <Item Id="Rischi_ListView" Removed="True" />
-          <Item Id="TipoApparato_ListView" Removed="True" />
+          <Item Id="TipoArticolo_ListView" Removed="True" />
           <Item Id="TipoAttrezzatura_ListView" Removed="True" />
           <Item Id="TipoContratto_ListView" Removed="True" />
           <Item Id="TipoIntervento_ListView" Removed="True" />
@@ -81,6 +81,7 @@
           <Item Id="TipoIntervento_ListView" ViewId="TipoIntervento_ListView" ObjectKey="" Index="2" IsNewNode="True" />
           <Item Id="TipoAttrezzatura_ListView" ViewId="TipoAttrezzatura_ListView" ObjectKey="" Index="3" IsNewNode="True" />
           <Item Id="Impostazioni_ListView" ViewId="Impostazioni_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="TipoArticolo_ListView" ViewId="TipoArticolo_ListView" ObjectKey="" IsNewNode="True" />
         </Items>
       </Item>
     </Items>
@@ -94,6 +95,18 @@
     <SchemaModule Name="SystemModule" Version="20.1.4.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="20.1.4.0" IsNewNode="True" />
   </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleRequiredField Id="Apparato.Marca.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Marca" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Modello.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Modello" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Tipo.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="TipoApparato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleUniqueValue Id="BaseXPObject.Codice.Unique" TargetType="xMax.Module.BusinessObjects.Database.BaseXPObject" TargetPropertyName="Codice" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Business.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Business#" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Indirizzo.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Indirizzo" TargetCriteria="" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Privato.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Cognome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Privato.Nome.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
+    </Rules>
+  </Validation>
   <Views>
     <DetailView Id="Apparato_DetailView">
       <Layout>
@@ -103,7 +116,6 @@
               <LayoutGroup Id="Articolo_col1" RelativeSize="49.950738916256157">
                 <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
                 <LayoutItem Id="Descrizione" RelativeSize="17.647058823529413" />
-                <LayoutItem Id="TipoApparato" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Produttore" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Marca" RelativeSize="23.529411764705884" />
                 <LayoutItem Id="Quantita" Removed="True" />
@@ -147,7 +159,6 @@
         <ColumnInfo Id="Descrizione" Index="1" Width="169" />
         <ColumnInfo Id="Nome" Width="362" Index="2" />
         <ColumnInfo Id="Quantita" Index="3" />
-        <ColumnInfo Id="TipoApparato" Index="4" Width="62" />
         <ColumnInfo Id="Marca" Index="5" Width="62" />
         <ColumnInfo Id="Modello" Index="6" Width="62" />
         <ColumnInfo Id="Produttore" Index="7" />
@@ -161,7 +172,6 @@
         <ColumnInfo Id="Marca" Index="-1" />
         <ColumnInfo Id="Modello" Index="-1" />
         <ColumnInfo Id="Produttore" Index="-1" />
-        <ColumnInfo Id="TipoApparato" Index="-1" />
         <ColumnInfo Id="UnitaMisura" Index="2" />
         <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="3" />
       </Columns>
@@ -174,7 +184,6 @@
               <LayoutGroup Id="Articolo_col1" RelativeSize="50.935960591133004">
                 <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
                 <LayoutItem Id="Descrizione" RelativeSize="23.529411764705884" />
-                <LayoutItem Id="TipoApparato" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Produttore" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Marca" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Quantita" Removed="True" />
@@ -211,7 +220,6 @@
         <ColumnInfo Id="Marca" Index="-1" />
         <ColumnInfo Id="Modello" Index="-1" />
         <ColumnInfo Id="QuantitaIniziale" Width="91" Index="-1" />
-        <ColumnInfo Id="TipoApparato" Index="-1" />
         <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="-1" Width="84" />
         <ColumnInfo Id="Nome" Width="120" SortIndex="1" SortOrder="Ascending" />
         <ColumnInfo Id="Descrizione" SortIndex="0" SortOrder="Ascending" Width="401" Index="1" />

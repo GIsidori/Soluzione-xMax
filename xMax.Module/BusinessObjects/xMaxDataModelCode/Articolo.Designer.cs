@@ -24,11 +24,11 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fDescrizione; }
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
         }
-        TipoApparato fTipoApparato;
-        public TipoApparato TipoApparato
+        TipoArticolo fTipoApparato;
+        public TipoArticolo TipoApparato
         {
             get { return fTipoApparato; }
-            set { SetPropertyValue<TipoApparato>(nameof(TipoApparato), ref fTipoApparato, value); }
+            set { SetPropertyValue<TipoArticolo>(nameof(TipoApparato), ref fTipoApparato, value); }
         }
         Produttore fProduttore;
         public Produttore Produttore

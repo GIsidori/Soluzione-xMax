@@ -16,6 +16,7 @@ using System.Reflection;
 namespace xMax.Module.BusinessObjects.Database
 {
 
+    [MapInheritance(MapInheritanceType.OwnTable)]
     public partial class Apparato : Articolo
     {
         [Association(@"ApparatoReferencesArticolo")]

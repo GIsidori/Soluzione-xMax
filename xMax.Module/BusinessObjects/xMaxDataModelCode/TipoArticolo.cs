@@ -12,9 +12,9 @@ namespace xMax.Module.BusinessObjects.Database
 {
     [DefaultClassOptions]
     [XafDefaultProperty(nameof(Tipo))]
-    public partial class TipoApparato
+    public partial class TipoArticolo
     {
-        public TipoApparato(Session session) : base(session) { }
+        public TipoArticolo(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
