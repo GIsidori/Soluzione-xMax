@@ -31,11 +31,11 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fArticolo; }
             set { SetPropertyValue<Articolo>(nameof(Articolo), ref fArticolo, value); }
         }
-        short fQT;
-        public short QT
+        int fQT;
+        public int QT
         {
             get { return fQT; }
-            set { SetPropertyValue<short>(nameof(QT), ref fQT, value); }
+            set { SetPropertyValue<int>(nameof(QT), ref fQT, value); }
         }
     }
 

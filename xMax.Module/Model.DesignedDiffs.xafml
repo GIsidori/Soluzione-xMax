@@ -99,12 +99,56 @@
     <Rules>
       <RuleRequiredField Id="Apparato.Marca.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Marca" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Apparato.Modello.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Modello" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Produttore.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Produttore" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Apparato.Tipo.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="TipoApparato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Articolo.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Articolo" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Attestato.Titolo.Required" TargetType="xMax.Module.BusinessObjects.Database.Attestato" TargetPropertyName="Titolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Attrezzatura.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Attrezzatura" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Attrezzatura.TipoAttrezzatura.Required" TargetType="xMax.Module.BusinessObjects.Database.Attrezzatura" TargetPropertyName="TipoAttrezzatura" TargetContextIDs="Save" IsNewNode="True" />
       <RuleUniqueValue Id="BaseXPObject.Codice.Unique" TargetType="xMax.Module.BusinessObjects.Database.BaseXPObject" TargetPropertyName="Codice" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Cliente.Business.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Business#" IsNewNode="True" />
       <RuleRequiredField Id="Cliente.Indirizzo.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Indirizzo" TargetCriteria="" IsNewNode="True" />
       <RuleRequiredField Id="Cliente.Privato.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Cognome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
       <RuleRequiredField Id="Cliente.Privato.Nome.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
+      <RuleRequiredField Id="Contratto.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Contratto" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Contratto.DataInizio.Required" TargetType="xMax.Module.BusinessObjects.Database.Contratto" TargetPropertyName="DataInizio" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Contratto.TipoContratto.Required" TargetType="xMax.Module.BusinessObjects.Database.Contratto" TargetPropertyName="TipoContratto" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquisto.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquisto" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquisto.ElencoMateriale.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquisto" TargetPropertyName="ElencoMateriale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquisto.Fornitore.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquisto" TargetPropertyName="Fornitore" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquistoElencoMateriale.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquistoElencoMateriale" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleValueComparison Id="DDTAcquistoElencoMateriale.Quantita.GreaterThan0" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquistoElencoMateriale" TargetPropertyName="Quantita" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVendita.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVendita" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVendita.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVendita" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVendita.ElencoMateriale.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVendita" TargetPropertyName="ElencoMateriale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVenditaElencoMateriale.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVenditaElencoMateriale" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleValueComparison Id="DDTVenditaElencoMateriale.Quantita.GreaterThan0" TargetType="xMax.Module.BusinessObjects.Database.DDTVenditaElencoMateriale" TargetPropertyName="Quantita" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleRequiredField Id="Dipendente.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Database.Dipendente" TargetPropertyName="Cognome" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Dipendente.Mansione.Required" TargetType="xMax.Module.BusinessObjects.Database.Dipendente" TargetPropertyName="Mansione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Dipendente.Nome.Required" TargetType="xMax.Module.BusinessObjects.Database.Dipendente" TargetPropertyName="Nome" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.Attrezzatura.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="Attrezzatura" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.DataProssimaScadenza.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="DataProssimaScadenza" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.Responsabile.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="Responsabile" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Fornitore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Fornitore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="FornitoreArticolo.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.FornitoreArticolo" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="IdoneitaAttestatiFormazione.Attestato.Required" TargetType="xMax.Module.BusinessObjects.Database.IdoneitaAttestatiFormazione" TargetPropertyName="Attestato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="IdoneitaAttestatiFormazione.DataRilascio.Required" TargetType="xMax.Module.BusinessObjects.Database.IdoneitaAttestatiFormazione" TargetPropertyName="DataRilascio" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="IdoneitaAttestatiFormazione.Dipendente.Required" TargetType="xMax.Module.BusinessObjects.Database.IdoneitaAttestatiFormazione" TargetPropertyName="Dipendente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.Apparato.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Apparato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.DataInstallazione.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="DataInstallazione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.DataProssimaPulizia.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="DataProssimaPulizia" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.Matricola.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Matricola" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="DataIntervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.TipoIntervento.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="TipoIntervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Mansione.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Mansione" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Produttore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Produttore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RicambiUtilizzati.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.RicambiUtilizzati" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RicambiUtilizzati.Intervento.Required" TargetType="xMax.Module.BusinessObjects.Database.RicambiUtilizzati" TargetPropertyName="Intervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleValueComparison Id="RicambiUtilizzati.QT.GreaterThan0" TargetType="xMax.Module.BusinessObjects.Database.RicambiUtilizzati" TargetPropertyName="QT" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleRequiredField Id="Rischi.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Rischi" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
     </Rules>
   </Validation>
   <Views>

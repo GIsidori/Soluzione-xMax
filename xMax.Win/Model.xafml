@@ -9,7 +9,7 @@
           <Item Id="PermissionPolicyUser_ListView" Removed="True" />
         </Items>
       </Item>
-      <Item Id="Sicurezza">
+      <Item Id="Configurazione">
         <Items>
           <Item Id="MyDetails" ViewId="PermissionPolicyUser_DetailView" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" IsNewNode="True" />
           <Item Id="PermissionPolicyRole_ListView" ViewId="PermissionPolicyRole_ListView" ObjectKey="" IsNewNode="True" />

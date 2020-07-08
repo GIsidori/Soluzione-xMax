@@ -31,17 +31,17 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fAttestato; }
             set { SetPropertyValue<Attestato>(nameof(Attestato), ref fAttestato, value); }
         }
-        string fDataRilascio;
-        public string DataRilascio
+        DateTime fDataRilascio;
+        public DateTime DataRilascio
         {
             get { return fDataRilascio; }
-            set { SetPropertyValue<string>(nameof(DataRilascio), ref fDataRilascio, value); }
+            set { SetPropertyValue<DateTime>(nameof(DataRilascio), ref fDataRilascio, value); }
         }
-        string fDataScadenza;
-        public string DataScadenza
+        DateTime fDataScadenza;
+        public DateTime DataScadenza
         {
             get { return fDataScadenza; }
-            set { SetPropertyValue<string>(nameof(DataScadenza), ref fDataScadenza, value); }
+            set { SetPropertyValue<DateTime>(nameof(DataScadenza), ref fDataScadenza, value); }
         }
         short fOreFormazione;
         public short OreFormazione

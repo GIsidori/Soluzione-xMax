@@ -62,6 +62,24 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fNote; }
             set { SetPropertyValue<string>(nameof(Note), ref fNote, value); }
         }
+        int fContatoreUtilizzo;
+        public int ContatoreUtilizzo
+        {
+            get { return fContatoreUtilizzo; }
+            set { SetPropertyValue<int>(nameof(ContatoreUtilizzo), ref fContatoreUtilizzo, value); }
+        }
+        int fFrequenzaUtilizzo;
+        public int FrequenzaUtilizzo
+        {
+            get { return fFrequenzaUtilizzo; }
+            set { SetPropertyValue<int>(nameof(FrequenzaUtilizzo), ref fFrequenzaUtilizzo, value); }
+        }
+        int fContatoreProssimaScadenza;
+        public int ContatoreProssimaScadenza
+        {
+            get { return fContatoreProssimaScadenza; }
+            set { SetPropertyValue<int>(nameof(ContatoreProssimaScadenza), ref fContatoreProssimaScadenza, value); }
+        }
     }
 
 }

@@ -43,16 +43,17 @@ namespace xMax.Module.BusinessObjects.Database
             set { SetPropertyValue<string>(nameof(Marca), ref fMarca, value); }
         }
         short fAnnoConstruzione;
+        [ColumnDbDefaultValue("Null")]
         public short AnnoConstruzione
         {
             get { return fAnnoConstruzione; }
             set { SetPropertyValue<short>(nameof(AnnoConstruzione), ref fAnnoConstruzione, value); }
         }
-        string fStato;
-        public string Stato
+        tipoStatoAttrezzatura fStato;
+        public tipoStatoAttrezzatura Stato
         {
             get { return fStato; }
-            set { SetPropertyValue<string>(nameof(Stato), ref fStato, value); }
+            set { SetPropertyValue<tipoStatoAttrezzatura>(nameof(Stato), ref fStato, value); }
         }
         string fMarcaturaCE;
         public string MarcaturaCE
