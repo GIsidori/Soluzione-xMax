@@ -38,6 +38,7 @@ namespace xMax.Module.BusinessObjects.Database
             set { SetPropertyValue<DateTime>(nameof(DataScadenza), ref fDataScadenza, value); }
         }
         TipoContratto fTipoContratto;
+        [DevExpress.Persistent.Base.ImmediatePostData]
         public TipoContratto TipoContratto
         {
             get { return fTipoContratto; }
@@ -49,9 +50,10 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fImportoAnnuale; }
             set { SetPropertyValue<decimal>(nameof(ImportoAnnuale), ref fImportoAnnuale, value); }
         }
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [Association(@"InterventoReferencesContratto")]
         public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
-        [Association(@"ScadenzaPagamentoReferencesContratto")]
+        [Association(@"ScadenzaPagamentoReferencesContratto"), Aggregated]
         public XPCollection<ScadenzaPagamento> ScadenzePagamento { get { return GetCollection<ScadenzaPagamento>(nameof(ScadenzePagamento)); } }
     }
 

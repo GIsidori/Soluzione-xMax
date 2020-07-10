@@ -14,6 +14,7 @@ using DevExpress.Persistent.BaseImpl;
 namespace xMax.Module.BusinessObjects.Database
 {
     [DefaultClassOptions]
+    [NavigationItem(false)]
     [XafDefaultProperty(nameof(Nome))]
     public partial class Articolo
     {

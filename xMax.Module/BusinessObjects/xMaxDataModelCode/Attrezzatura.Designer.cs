@@ -25,6 +25,7 @@ namespace xMax.Module.BusinessObjects.Database
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
         }
         TipoAttrezzatura fTipoAttrezzatura;
+        [DevExpress.Persistent.Base.ImmediatePostData]
         public TipoAttrezzatura TipoAttrezzatura
         {
             get { return fTipoAttrezzatura; }

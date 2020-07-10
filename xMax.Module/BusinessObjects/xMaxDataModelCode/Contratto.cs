@@ -17,6 +17,16 @@ namespace xMax.Module.BusinessObjects.Database
         public Contratto(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+            base.OnChanged(propertyName, oldValue, newValue);
+            if (propertyName == "TipoContratto")
+            {
+                if (ImportoAnnuale == 0 &&  TipoContratto != null)
+                    ImportoAnnuale = TipoContratto.ImportoAnnuale;
+            }
+        }
+
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
         [NonPersistent]

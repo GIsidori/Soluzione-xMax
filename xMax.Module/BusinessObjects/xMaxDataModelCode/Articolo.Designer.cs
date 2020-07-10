@@ -24,11 +24,13 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fDescrizione; }
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
         }
-        TipoArticolo fTipoApparato;
-        public TipoArticolo TipoApparato
+        TipoArticolo fTipoArticolo;
+        [Association(@"ArticoloReferencesTipoArticolo")]
+        [DevExpress.Persistent.Base.ImmediatePostData]
+        public TipoArticolo TipoArticolo
         {
-            get { return fTipoApparato; }
-            set { SetPropertyValue<TipoArticolo>(nameof(TipoApparato), ref fTipoApparato, value); }
+            get { return fTipoArticolo; }
+            set { SetPropertyValue<TipoArticolo>(nameof(TipoArticolo), ref fTipoArticolo, value); }
         }
         Produttore fProduttore;
         public Produttore Produttore
@@ -69,11 +71,14 @@ namespace xMax.Module.BusinessObjects.Database
         }
         [Association(@"ApparatoReferencesArticolo")]
         public XPCollection<Apparato> Apparati { get { return GetCollection<Apparato>(nameof(Apparati)); } }
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [Association(@"FornitoreArticoloReferencesArticolo")]
         public XPCollection<FornitoreArticolo> Fornitori { get { return GetCollection<FornitoreArticolo>(nameof(Fornitori)); } }
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [MemberDesignTimeVisibility(false)]
         [Association(@"DTTAcquistoElencoMaterialeReferencesArticolo")]
         public XPCollection<DDTAcquistoElencoMateriale> DTTAcquistoArticolo { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(DTTAcquistoArticolo)); } }
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [MemberDesignTimeVisibility(false)]
         [Association(@"DDTVenditaElencoMaterialeReferencesArticolo")]
         public XPCollection<DDTVenditaElencoMateriale> DDTVenditaArticolo { get { return GetCollection<DDTVenditaElencoMateriale>(nameof(DDTVenditaArticolo)); } }

@@ -31,7 +31,7 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fFornitore; }
             set { SetPropertyValue<Fornitore>(nameof(Fornitore), ref fFornitore, value); }
         }
-        [Association(@"DTTElencoMaterialeReferencesDDTAcquisto")]
+        [Association(@"DDTAcquistoElencoMaterialeReferencesDDTAcquisto"), Aggregated]
         public XPCollection<DDTAcquistoElencoMateriale> ElencoMateriale { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(ElencoMateriale)); } }
     }
 

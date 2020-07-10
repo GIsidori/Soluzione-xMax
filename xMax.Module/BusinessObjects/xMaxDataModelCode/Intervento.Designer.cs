@@ -31,7 +31,14 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fDataIntervento; }
             set { SetPropertyValue<DateTime>(nameof(DataIntervento), ref fDataIntervento, value); }
         }
+        Dipendente fOperatore;
+        public Dipendente Operatore
+        {
+            get { return fOperatore; }
+            set { SetPropertyValue<Dipendente>(nameof(Operatore), ref fOperatore, value); }
+        }
         TipoIntervento fTipoIntervento;
+        [DevExpress.Persistent.Base.ImmediatePostData]
         public TipoIntervento TipoIntervento
         {
             get { return fTipoIntervento; }
@@ -77,7 +84,7 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fNote; }
             set { SetPropertyValue<string>(nameof(Note), ref fNote, value); }
         }
-        [Association(@"RicambiUtilizzatiReferencesIntervento")]
+        [Association(@"RicambiUtilizzatiReferencesIntervento"), Aggregated]
         public XPCollection<RicambiUtilizzati> RicambiUtilizzati { get { return GetCollection<RicambiUtilizzati>(nameof(RicambiUtilizzati)); } }
     }
 

@@ -18,11 +18,12 @@ namespace xMax.Module.BusinessObjects.Database
 
     public partial class Fornitore : Anagrafica
     {
-        [Association(@"FornitoreArticoloReferencesFornitore")]
-        public XPCollection<FornitoreArticolo> Articoli { get { return GetCollection<FornitoreArticolo>(nameof(Articoli)); } }
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [DevExpress.Xpo.DisplayName(@"Elenco DDT")]
         [Association(@"DDTAcquistoReferencesFornitore")]
         public XPCollection<DDTAcquisto> ElencoDDT { get { return GetCollection<DDTAcquisto>(nameof(ElencoDDT)); } }
+        [Association(@"FornitoreArticoloReferencesFornitore"), Aggregated]
+        public XPCollection<FornitoreArticolo> Articoli { get { return GetCollection<FornitoreArticolo>(nameof(Articoli)); } }
     }
 
 }

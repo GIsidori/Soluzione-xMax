@@ -19,7 +19,7 @@ namespace xMax.Module.BusinessObjects.Database
     public partial class DDTAcquistoElencoMateriale : XPObject
     {
         DDTAcquisto fDDT;
-        [Association(@"DTTElencoMaterialeReferencesDDTAcquisto")]
+        [Association(@"DDTAcquistoElencoMaterialeReferencesDDTAcquisto")]
         public DDTAcquisto DDT
         {
             get { return fDDT; }

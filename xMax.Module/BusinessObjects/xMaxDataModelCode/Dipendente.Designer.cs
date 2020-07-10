@@ -30,8 +30,7 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fMansione; }
             set { SetPropertyValue<Mansione>(nameof(Mansione), ref fMansione, value); }
         }
-        [DevExpress.Xpo.DisplayName(@"Idoneità e attestati di formazione")]
-        [Association(@"IdoneitaAttestatiFormazioneReferencesDipendente")]
+        [Association(@"IdoneitaAttestatiFormazioneReferencesDipendente"), Aggregated]
         public XPCollection<IdoneitaAttestatiFormazione> IdoneitaAttestatiFormazione { get { return GetCollection<IdoneitaAttestatiFormazione>(nameof(IdoneitaAttestatiFormazione)); } }
     }
 

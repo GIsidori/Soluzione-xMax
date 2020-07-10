@@ -24,6 +24,8 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fTipo; }
             set { SetPropertyValue<string>(nameof(Tipo), ref fTipo, value); }
         }
+        [Association(@"ArticoloReferencesTipoArticolo")]
+        public XPCollection<Articolo> Articoli { get { return GetCollection<Articolo>(nameof(Articoli)); } }
     }
 
 }

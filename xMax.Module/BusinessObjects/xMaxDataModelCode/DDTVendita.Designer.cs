@@ -30,7 +30,7 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fCliente; }
             set { SetPropertyValue<Cliente>(nameof(Cliente), ref fCliente, value); }
         }
-        [Association(@"DDTVenditaElencoMaterialeReferencesDDTVendita")]
+        [Association(@"DDTVenditaElencoMaterialeReferencesDDTVendita"), Aggregated]
         public XPCollection<DDTVenditaElencoMateriale> ElencoMateriale { get { return GetCollection<DDTVenditaElencoMateriale>(nameof(ElencoMateriale)); } }
     }
 

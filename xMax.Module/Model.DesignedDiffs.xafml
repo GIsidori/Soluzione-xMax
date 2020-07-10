@@ -48,10 +48,10 @@
           </Item>
           <Item Id="DDTAcquisto_ListView" Index="6" Caption="DDT di acquisto" />
           <Item Id="DDTVendita_ListView" Index="7" Caption="DDT di vendita" />
-          <Item Id="Articolo_ListView" Caption="Articoli" Index="8" />
           <Item Id="Fornitore_ListView" Index="9" Caption="Fornitori" />
           <Item Id="Produttore_ListView" Index="10" Caption="Produttori" />
           <Item Id="Apparato_ListView" Index="11" Caption="Apparati" />
+          <Item Id="Articoli" ViewId="TipoArticolo_ListViewMasterDetail" Caption="Articoli" IsNewNode="True" />
           <Item Id="Attestato_ListView" Removed="True" />
           <Item Id="Attrezzatura_ListView" Removed="True" />
           <Item Id="Dipendente_ListView" Removed="True" />
@@ -100,7 +100,7 @@
       <RuleRequiredField Id="Apparato.Marca.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Marca" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Apparato.Modello.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Modello" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Apparato.Produttore.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Produttore" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Apparato.Tipo.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="TipoApparato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Tipo.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="TipoArticolo" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Articolo.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Articolo" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Attestato.Titolo.Required" TargetType="xMax.Module.BusinessObjects.Database.Attestato" TargetPropertyName="Titolo" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Attrezzatura.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Attrezzatura" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
@@ -142,6 +142,7 @@
       <RuleRequiredField Id="Installazione.Matricola.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Matricola" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Intervento.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Intervento.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="DataIntervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.Operatore.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="Operatore" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Intervento.TipoIntervento.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="TipoIntervento" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Mansione.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Mansione" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Produttore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Produttore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
@@ -259,7 +260,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Articolo_ListView">
+    <ListView Id="Articolo_ListView" AllowEdit="True" AllowLink="False" AllowUnlink="False" NewItemRowPosition="Bottom">
       <Columns>
         <ColumnInfo Id="Marca" Index="-1" />
         <ColumnInfo Id="Modello" Index="-1" />
@@ -270,6 +271,11 @@
         <ColumnInfo Id="Quantita" Width="84" Index="2" />
         <ColumnInfo Id="UnitaMisura" Index="2" Width="117" />
         <ColumnInfo Id="Produttore" Width="117" />
+      </Columns>
+    </ListView>
+    <ListView Id="Articolo_LookupListView">
+      <Columns>
+        <ColumnInfo Id="TipoArticoloGruppo" PropertyName="TipoArticolo" GroupIndex="0" Caption="Tipo" LookupEditorMode="AllItemsWithSearch" IsNewNode="True" />
       </Columns>
     </ListView>
     <DetailView Id="Attrezzatura_DetailView">
@@ -344,14 +350,14 @@
             <LayoutGroup Id="BaseXPObject" Removed="True" />
           </LayoutGroup>
           <TabbedGroup Id="Tabs" RelativeSize="59.96131528046422">
-            <LayoutGroup Id="Installazioni" RelativeSize="100">
-              <LayoutItem Id="Installazioni" RelativeSize="100" />
-            </LayoutGroup>
             <LayoutGroup Id="Interventi" RelativeSize="100">
               <LayoutItem Id="Interventi" RelativeSize="100" />
             </LayoutGroup>
             <LayoutGroup Id="Contratti" RelativeSize="100">
               <LayoutItem Id="Contratti" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Installazioni" RelativeSize="100">
+              <LayoutItem Id="Installazioni" RelativeSize="100" />
             </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
@@ -382,18 +388,7 @@
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="29.593810444874276">
-            <LayoutGroup Id="Contratto" RelativeSize="100">
-              <LayoutGroup Id="Contratto_col1" RelativeSize="49.950738916256157">
-                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
-                <LayoutItem Id="Cliente" Index="1" RelativeSize="21.428571428571427" />
-                <LayoutItem Id="DataInizio" Index="2" RelativeSize="21.428571428571427" />
-                <LayoutItem Id="DataScadenza" Index="3" RelativeSize="28.571428571428573" />
-              </LayoutGroup>
-              <LayoutGroup Id="Contratto_col2" RelativeSize="50.049261083743843">
-                <LayoutItem Id="TipoContratto" RelativeSize="28.571428571428573" />
-                <LayoutItem Id="ImportoAnnuale" RelativeSize="71.428571428571431" />
-              </LayoutGroup>
-            </LayoutGroup>
+            <LayoutGroup Id="Contratto" RelativeSize="100" />
             <LayoutGroup Id="BaseXPObject" Removed="True" />
           </LayoutGroup>
           <TabbedGroup Id="Tabs" RelativeSize="70.406189555125721">
@@ -407,6 +402,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Contratto_ListView" AllowEdit="True" AllowLink="False" AllowUnlink="False" NewItemRowPosition="Bottom" />
     <DetailView Id="DDTAcquisto_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -517,11 +513,11 @@
             <LayoutGroup Id="BaseXPObject" Removed="True" />
           </LayoutGroup>
           <TabbedGroup Id="Tabs" RelativeSize="65.764023210831724">
-            <LayoutGroup Id="Articoli" RelativeSize="100">
-              <LayoutItem Id="Articoli" RelativeSize="100" />
-            </LayoutGroup>
             <LayoutGroup Id="ElencoDDT" RelativeSize="100">
               <LayoutItem Id="ElencoDDT" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Articoli" RelativeSize="100">
+              <LayoutItem Id="Articoli" RelativeSize="100" />
             </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
@@ -537,13 +533,13 @@
         <ColumnInfo Id="Tipo" Index="-1" />
         <ColumnInfo Id="NomeCompleto" Width="158" />
         <ColumnInfo Id="RagioneSociale" Index="0" Width="122" />
-        <ColumnInfo Id="Nome" Index="2" Width="122" />
-        <ColumnInfo Id="Cognome" Index="3" Width="131" />
+        <ColumnInfo Id="Nome" Index="2" Width="122" Removed="True" />
+        <ColumnInfo Id="Cognome" Index="3" Width="131" Removed="True" />
         <ColumnInfo Id="Indirizzo" Index="4" Width="122" />
         <ColumnInfo Id="Telefono" Index="5" Width="122" />
         <ColumnInfo Id="EMail" Index="6" Width="122" />
         <ColumnInfo Id="Piva" Index="7" Width="122" />
-        <ColumnInfo Id="CF" Index="8" Width="122" />
+        <ColumnInfo Id="CF" Index="8" Width="122" Removed="True" />
       </Columns>
     </ListView>
     <ListView Id="Installazione_Interventi_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-04" SelectedIntervalEnd="2020-07-05" />
@@ -588,10 +584,8 @@
           <LayoutGroup Id="SimpleEditors" RelativeSize="36.815920398009951">
             <LayoutGroup Id="Intervento" RelativeSize="100">
               <LayoutGroup Id="Intervento_col1" RelativeSize="49.855491329479769">
-                <LayoutItem Id="Cliente" Index="0" RelativeSize="28.571428571428573" />
                 <LayoutItem Id="DataIntervento" Index="1" RelativeSize="21.428571428571427" />
                 <LayoutItem Id="TipoIntervento" Index="2" RelativeSize="21.428571428571427" />
-                <LayoutItem Id="Installazione" Index="3" RelativeSize="28.571428571428573" />
               </LayoutGroup>
               <LayoutGroup Id="Intervento_col2" RelativeSize="50.144508670520231">
                 <LayoutItem Id="FatturaRicevuta" RelativeSize="28.571428571428573" />
@@ -630,6 +624,7 @@
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="6" IsNewNode="True" />
       </Columns>
     </ListView>
+    <ListView Id="Intervento_RicambiUtilizzati_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="True" NewItemRowPosition="Bottom" />
     <ListView Id="Intervento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-24" SelectedIntervalEnd="2020-07-25" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="DescrizioneIntervento" PropertyName="DescrizioneIntervento" Width="70" Index="-1" IsNewNode="True" />
@@ -684,6 +679,7 @@
         <ColumnInfo Id="CF" Index="8" Width="122" />
       </Columns>
     </ListView>
+    <ListView Id="RicambiUtilizzati_ListView" AllowEdit="True" AllowLink="False" AllowUnlink="False" NewItemRowPosition="Bottom" />
     <ListView Id="ScadenzaPagamento_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-04" SelectedIntervalEnd="2020-07-05">
       <Variants Current="CalendarioScadenzaPagamento">
         <Variant Id="CalendarioScadenzaPagamento" ViewID="ScadenzaPagamento_ScheduleView" Caption="Calendario" IsNewNode="True" />
@@ -704,6 +700,11 @@
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="0" IsNewNode="True" />
         <ColumnInfo Id="Data" PropertyName="Data" Width="70" Index="1" IsNewNode="True" />
         <ColumnInfo Id="Importo" PropertyName="Importo" Width="50" Index="2" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="TipoArticolo_ListViewMasterDetail" ClassName="xMax.Module.BusinessObjects.Database.TipoArticolo" MasterDetailMode="ListViewAndDetailView" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Tipo" PropertyName="Tipo" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
       </Columns>
     </ListView>
   </Views>
