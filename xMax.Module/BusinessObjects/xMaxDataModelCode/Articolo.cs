@@ -11,10 +11,8 @@ using DevExpress.ExpressApp.DC;
 using System.Linq;
 using DevExpress.Persistent.BaseImpl;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
-    [NavigationItem(false)]
     [XafDefaultProperty(nameof(Nome))]
     public partial class Articolo
     {
@@ -23,6 +21,7 @@ namespace xMax.Module.BusinessObjects.Database
         {
             base.AfterConstruction();
             Ricambio = true;
+            UnitaMisura = UnitaMisura.GetOrCreate(Session, "Nr");
         }
 
         Boolean fRicambio;
@@ -49,8 +48,38 @@ namespace xMax.Module.BusinessObjects.Database
         {
             get
             {
-                return QuantitaIniziale - DDTVenditaArticolo.Sum(s => s.Quantita) + DTTAcquistoArticolo.Sum(s => s.Quantita);
+                //I movimenti di acquisto e vendita possono essere archiviati (arch=true) e le relative quantità movimentate sommate algebricamente alla quantità totale
+                return QuantitaIniziale - DDTVenditaArticolo.Where(a=>a.DDT.Arch == false).Sum(s => s.Quantita) + DDTAcquistoArticolo.Where(a => a.DDT.Arch == false).Sum(s => s.Quantita);
+            }
+            set
+            {
+                QuantitaIniziale += (value - Quantita);
+                OnChanged(nameof(Quantita));
             }
         }
+
+        public decimal RimanenzaTotale
+        {
+            get
+            {
+                return CostoMedioPonderato * Quantita;
+            }
+        }
+
+        public decimal CostoMedioPonderato
+        {
+            get
+            {
+                //Costo medio ponderato nel periodo (12 mesi)
+                var ddt = this.DDTAcquistoArticolo.Where(a => a.DDT.Data >= DateTime.Now.Date.AddMonths(-12));
+                if (ddt.Count() == 0)
+                    ddt = this.DDTAcquistoArticolo;
+                if (ddt.Count() != 0)
+                    return ddt.Sum(a => a.ImportoUnitario*a.Quantita)/ddt.Sum(a=>a.Quantita);
+                
+                return this.CostoUnitario;
+            }
+        }
+
     }
 }

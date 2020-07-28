@@ -8,9 +8,8 @@ using System.Reflection;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(Tipo))]
     public partial class TipoArticolo
     {

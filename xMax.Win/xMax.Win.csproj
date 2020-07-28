@@ -212,17 +212,20 @@
       <Name>System.XML</Name>
       <Private>False</Private>
     </Reference>
+    <Reference Include="xApp.Module, Version=1.0.7507.31156, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\xApp\Deploy\V20.1.4.0\xApp.Module.dll</HintPath>
+    </Reference>
+    <Reference Include="xApp.Module.Win, Version=1.0.7507.31588, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\xApp\Deploy\V20.1.4.0\xApp.Module.Win.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Logo.svg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExpressApp.ico" />
-    <Content Include="Model_it-IT.xafml">
-      <DependentUpon>Model.xafml</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="ReadMe.txt" />
     <None Include="Images\ReadMe.txt" />
     <None Include="App.config" />
@@ -255,9 +258,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xMax.Module.Win\xMax.Module.Win.csproj">
-      <Project>{D976F285-1C97-4784-860A-5ED864C20671}</Project>
+      <Project>{d976f285-1c97-4784-860a-5ed864c20671}</Project>
       <Name>xMax.Module.Win</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\xMax.Module\xMax.Module.csproj">
       <Project>{A9AD6457-8267-4B33-9B59-E7D97274E004}</Project>

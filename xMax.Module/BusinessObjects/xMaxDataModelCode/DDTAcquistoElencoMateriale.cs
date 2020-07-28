@@ -8,7 +8,7 @@ using System.Reflection;
 using DevExpress.Persistent.Base;
 using System.Linq;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
 
     public partial class DDTAcquistoElencoMateriale
@@ -79,12 +79,25 @@ namespace xMax.Module.BusinessObjects.Database
         [NonPersistent]
         [DataSourceCriteria("Fornitore = '@This.DDT.Fornitore'")]
         public FornitoreArticolo ArticoloFornitore
-        { 
+        {
             get => articoloFornitore;
             set
             {
                 SetPropertyValue<FornitoreArticolo>(nameof(ArticoloFornitore), ref articoloFornitore, value);
                 this.Articolo = value?.Articolo;
+            }
+        }
+
+        public decimal ImportoTotale
+        {
+            get => ImportoUnitario * Quantita;
+            set
+            {
+                if (Quantita != 0)
+                {
+                    ImportoUnitario = value / Quantita;
+                    OnChanged(nameof(ImportoUnitario));
+                }
             }
         }
     }

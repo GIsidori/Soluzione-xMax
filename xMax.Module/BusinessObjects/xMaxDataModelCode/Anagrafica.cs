@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Reflection;
 using DevExpress.Persistent.Base;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
 
     public partial class Anagrafica

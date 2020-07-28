@@ -35,9 +35,9 @@
             // 
             this.simpleAction1.Caption = "Genera DDT";
             this.simpleAction1.ConfirmationMessage = null;
-            this.simpleAction1.Id = "81bb8bac-5ac9-4175-972d-06ebb4156093";
+            this.simpleAction1.Id = "GeneraDDT";
             this.simpleAction1.ImageName = "Action_PopupWindowShowAction";
-            this.simpleAction1.TargetObjectType = typeof(xMax.Module.BusinessObjects.Database.Intervento);
+            this.simpleAction1.TargetObjectType = typeof(xMax.Module.BusinessObjects.Intervento);
             this.simpleAction1.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.simpleAction1.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
             this.simpleAction1.ToolTip = null;

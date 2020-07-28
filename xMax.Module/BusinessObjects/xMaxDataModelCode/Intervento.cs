@@ -9,10 +9,9 @@ using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base.General;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
     [XafDefaultProperty(nameof(NomeCompleto))]
-    [DefaultClassOptions]
     public partial class Intervento
     {
         public Intervento(Session session) : base(session) { }
@@ -50,7 +49,7 @@ namespace xMax.Module.BusinessObjects.Database
 
         public override DateTime EndOn { get => DataIntervento.Date; set { DataIntervento = value; } }
 
- 
+
     }
 
 }

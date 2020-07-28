@@ -13,7 +13,7 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
 
     public partial class Articolo : BaseXPObject
@@ -69,6 +69,12 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fQuantitaIniziale; }
             set { SetPropertyValue<int>(nameof(QuantitaIniziale), ref fQuantitaIniziale, value); }
         }
+        decimal fCostoUnitario;
+        public decimal CostoUnitario
+        {
+            get { return fCostoUnitario; }
+            set { SetPropertyValue<decimal>(nameof(CostoUnitario), ref fCostoUnitario, value); }
+        }
         [Association(@"ApparatoReferencesArticolo")]
         public XPCollection<Apparato> Apparati { get { return GetCollection<Apparato>(nameof(Apparati)); } }
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
@@ -77,7 +83,7 @@ namespace xMax.Module.BusinessObjects.Database
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [MemberDesignTimeVisibility(false)]
         [Association(@"DTTAcquistoElencoMaterialeReferencesArticolo")]
-        public XPCollection<DDTAcquistoElencoMateriale> DTTAcquistoArticolo { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(DTTAcquistoArticolo)); } }
+        public XPCollection<DDTAcquistoElencoMateriale> DDTAcquistoArticolo { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(DDTAcquistoArticolo)); } }
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [MemberDesignTimeVisibility(false)]
         [Association(@"DDTVenditaElencoMaterialeReferencesArticolo")]

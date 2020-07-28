@@ -13,7 +13,7 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
 
     public partial class DDTAcquisto : BaseXPObject
@@ -30,6 +30,13 @@ namespace xMax.Module.BusinessObjects.Database
         {
             get { return fFornitore; }
             set { SetPropertyValue<Fornitore>(nameof(Fornitore), ref fFornitore, value); }
+        }
+        bool fArch;
+        [Browsable(false)]
+        public bool Arch
+        {
+            get { return fArch; }
+            set { SetPropertyValue<bool>(nameof(Arch), ref fArch, value); }
         }
         [Association(@"DDTAcquistoElencoMaterialeReferencesDDTAcquisto"), Aggregated]
         public XPCollection<DDTAcquistoElencoMateriale> ElencoMateriale { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(ElencoMateriale)); } }

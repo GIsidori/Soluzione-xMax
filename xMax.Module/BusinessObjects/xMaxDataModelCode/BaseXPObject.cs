@@ -8,7 +8,7 @@ using System.Reflection;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
     public partial class BaseXPObject
     {

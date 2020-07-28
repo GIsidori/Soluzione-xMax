@@ -7,9 +7,8 @@ using System.ComponentModel;
 using System.Reflection;
 using DevExpress.Persistent.Base;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     public partial class Impostazioni
     {
         public Impostazioni(Session session) : base(session) { }

@@ -13,7 +13,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
-using xMax.Module.BusinessObjects.Database;
+using xMax.Module.BusinessObjects;
 
 namespace xMax.Module.Controllers
 {
@@ -47,7 +47,7 @@ namespace xMax.Module.Controllers
             View.ObjectSpace.Delete(((ListView)View).CollectionSource.List);
 
             var l = System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
-                       .Where(f => f.BaseType == typeof(xMax.Module.BusinessObjects.Database.BaseXPObject)).ToList();
+                       .Where(f => f.BaseType == typeof(xMax.Module.BusinessObjects.BaseXPObject)).ToList();
 
             foreach (var classInfo in l)
             {

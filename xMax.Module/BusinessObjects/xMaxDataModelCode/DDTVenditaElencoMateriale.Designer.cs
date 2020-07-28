@@ -13,7 +13,7 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
 
     public partial class DDTVenditaElencoMateriale : XPObject
@@ -38,11 +38,11 @@ namespace xMax.Module.BusinessObjects.Database
             get { return fQuantita; }
             set { SetPropertyValue<int>(nameof(Quantita), ref fQuantita, value); }
         }
-        decimal fImporto;
-        public decimal Importo
+        decimal fImportoUnitario;
+        public decimal ImportoUnitario
         {
-            get { return fImporto; }
-            set { SetPropertyValue<decimal>(nameof(Importo), ref fImporto, value); }
+            get { return fImportoUnitario; }
+            set { SetPropertyValue<decimal>(nameof(ImportoUnitario), ref fImportoUnitario, value); }
         }
     }
 

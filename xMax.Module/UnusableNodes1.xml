@@ -1,12 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
-  <NavigationItems Id="NavigationItems">
-    <Items Id="Items">
-      <Item Id="Configurazione">
-        <Items Id="Items">
-          <Item Id="TipoIntervento_ListView" ViewId="TipoIntervento_ListView" />
-        </Items>
-      </Item>
-    </Items>
-  </NavigationItems>
+  <Views Id="Views">
+    <DetailView Id="Apparato_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Articolo">
+              <LayoutGroup Id="Articolo_col1">
+                <LayoutItem Id="Marca" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Articolo_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Articolo">
+              <LayoutGroup Id="Articolo_col1">
+                <LayoutItem Id="Marca" RelativeSize="17.647058823529413" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
 </Application>

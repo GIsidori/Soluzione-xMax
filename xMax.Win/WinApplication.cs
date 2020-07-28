@@ -27,6 +27,10 @@ namespace xMax.Win {
         }
         #endregion
         public xMaxWindowsFormsApplication() {
+
+            xApp.Module.MyODPManagedConnectionProvider.Register();
+            xApp.Module.MyMSSqlConnectionProvider.Register();
+
             InitializeComponent();
 			InitializeDefaults();
         }

@@ -37,9 +37,9 @@
             this.popupWindowShowAction1.CancelButtonCaption = null;
             this.popupWindowShowAction1.Caption = "Carica da DDT acquisto";
             this.popupWindowShowAction1.ConfirmationMessage = null;
-            this.popupWindowShowAction1.Id = "b73456bd-7ba5-4b04-8f65-04dfcaacd238";
+            this.popupWindowShowAction1.Id = "CaricaDDT";
             this.popupWindowShowAction1.ImageName = "Action_PopupWindowShowAction";
-            this.popupWindowShowAction1.TargetObjectType = typeof(xMax.Module.BusinessObjects.Database.Intervento);
+            this.popupWindowShowAction1.TargetObjectType = typeof(xMax.Module.BusinessObjects.Intervento);
             this.popupWindowShowAction1.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.popupWindowShowAction1.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
             this.popupWindowShowAction1.ToolTip = null;

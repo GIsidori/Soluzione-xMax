@@ -1,17 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
-  <NavigationItems Id="NavigationItems">
-    <Items Id="Items">
-      <Item Id="Configurazione">
-        <Items Id="Items">
-          <Item Id="TipoIntervento_ListView" ViewId="TipoIntervento_ListView" />
-        </Items>
-      </Item>
-      <Item Id="Default">
-        <Items Id="Items">
-          <Item Id="TipoIntervento_ListView" Removed="True" />
-        </Items>
-      </Item>
-    </Items>
-  </NavigationItems>
+  <Views Id="Views">
+    <ListView Id="DDTAcquisto_ElencoMateriale_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Importo" Width="256" />
+      </Columns>
+    </ListView>
+  </Views>
 </Application>

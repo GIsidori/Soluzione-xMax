@@ -35,8 +35,9 @@
             this.validationWindowsFormsModule = new DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule();
             this.viewVariantsModule1 = new DevExpress.ExpressApp.ViewVariantsModule.ViewVariantsModule();
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
             this.authenticationStandard1 = new DevExpress.ExpressApp.Security.AuthenticationStandard();
+            this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
+            this.xAppWindowsFormsModule1 = new xApp.Module.Win.xAppWindowsFormsModule();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // validationModule
@@ -70,6 +71,7 @@
             this.Modules.Add(this.module3);
             this.Modules.Add(this.schedulerWindowsFormsModule);
             this.Modules.Add(this.validationWindowsFormsModule);
+            this.Modules.Add(this.xAppWindowsFormsModule1);
             this.Modules.Add(this.module4);
             this.Modules.Add(this.securityModule1);
             this.Security = this.securityStrategyComplex1;
@@ -96,5 +98,6 @@
         private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
         private DevExpress.ExpressApp.Security.AuthenticationStandard authenticationStandard1;
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
+        private xApp.Module.Win.xAppWindowsFormsModule xAppWindowsFormsModule1;
     }
 }

@@ -10,9 +10,8 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base.General;
 using System.Data;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(Nome))]
     public partial class Installazione
     {
@@ -31,10 +30,10 @@ namespace xMax.Module.BusinessObjects.Database
         }
 
         public override string Subject { get => $"{Nome} - Pulizia"; set { } }
-        public override string Description { get => Nome ; set { } }
+        public override string Description { get => Nome; set { } }
         public override DateTime StartOn { get => DataProssimaPulizia; set => DataProssimaPulizia = value; }
         public override DateTime EndOn { get => DataProssimaPulizia; set => DataProssimaPulizia = value; }
-        
+
     }
 
 }

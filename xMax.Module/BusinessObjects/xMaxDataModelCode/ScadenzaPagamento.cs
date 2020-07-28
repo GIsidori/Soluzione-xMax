@@ -9,9 +9,8 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Base.General;
 using DevExpress.ExpressApp.DC;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(Pagamento))]
     public partial class ScadenzaPagamento
     {

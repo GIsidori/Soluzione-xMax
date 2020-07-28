@@ -9,9 +9,8 @@ using System.Reflection;
 using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.DC;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(NomeApparato))]
     public partial class Apparato
     {

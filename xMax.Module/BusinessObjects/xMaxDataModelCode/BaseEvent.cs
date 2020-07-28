@@ -7,10 +7,10 @@ using System.ComponentModel;
 using System.Reflection;
 using DevExpress.Persistent.Base.General;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
 
-    public partial class BaseEvent:IEvent
+    public partial class BaseEvent : IEvent
     {
         public BaseEvent(Session session) : base(session) { }
 

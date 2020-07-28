@@ -1,71 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="xMax">
+  <ActionDesign>
+    <Actions>
+      <Action Id="CaricaDDT" TargetObjectsCriteria="!IsNewObject(This)" ImageName="Action_ModelDifferences_Import" />
+      <Action Id="GeneraDDT" TargetObjectsCriteria="!IsNewObject(This)" ImageName="Action_ModelDifferences_Export" />
+    </Actions>
+  </ActionDesign>
   <BOModel>
-    <Class Name="xMax.Module.BusinessObjects.Database.Anagrafica">
+    <Class Name="xMax.Module.BusinessObjects.Anagrafica" IsVisibleInReports="True">
       <AppearanceRules>
         <AppearanceRule Id="AnagraficaBusinessRule" TargetItems="Nome;Cognome;CF" Criteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Business#" Visibility="Hide" IsNewNode="True" />
         <AppearanceRule Id="AnagraficaPrivatoRule" Visibility="Hide" Criteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" TargetItems="RagioneSociale;Piva" IsNewNode="True" />
       </AppearanceRules>
     </Class>
-    <Class Name="xMax.Module.BusinessObjects.Database.Articolo">
+    <Class Name="xMax.Module.BusinessObjects.Apparato" ImageName="BO_Order" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Articolo" ImageName="BO_Price_Item" IsVisibleInReports="True">
       <AppearanceRules>
         <AppearanceRule Id="ApparatoRule" Visibility="Hide" TargetItems="Apparati" Criteria="[Ricambio] = False" IsNewNode="True" />
         <AppearanceRule Id="RicambioRule" Criteria="[Ricambio] = True" Visibility="Hide" TargetItems="TipoApparato;Marca;Modello;Produttore" IsNewNode="True" />
       </AppearanceRules>
     </Class>
-    <Class Name="xMax.Module.BusinessObjects.Database.DDTAcquistoElencoMateriale" DefaultListViewAllowEdit="True" DefaultListViewNewItemRowPosition="Bottom" />
-    <Class Name="xMax.Module.BusinessObjects.Database.DDTVenditaElencoMateriale" DefaultListViewAllowEdit="True" DefaultListViewNewItemRowPosition="Bottom" />
-    <Class Name="xMax.Module.BusinessObjects.Database.Dipendente">
+    <Class Name="xMax.Module.BusinessObjects.Attestato" ImageName="Doctor" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Attrezzatura" ImageName="BO_Vendor" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Cliente" ImageName="BO_Customer" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Contratto" ImageName="BO_Contract" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.DDTAcquisto" ImageName="Action_ModelDifferences_Create" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.DDTAcquistoElencoMateriale" DefaultListViewAllowEdit="True" DefaultListViewNewItemRowPosition="Bottom" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.DDTVendita" ImageName="ModelEditor_ModelMerge" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.DDTVenditaElencoMateriale" DefaultListViewAllowEdit="True" DefaultListViewNewItemRowPosition="Bottom" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Dipendente" ImageName="BO_Employee" IsVisibleInReports="True">
       <AppearanceRules>
         <AppearanceRule Id="DipendeteTipoRule" Visibility="Hide" TargetItems="Tipo" IsNewNode="True" />
       </AppearanceRules>
     </Class>
-    <Class Name="xMax.Module.BusinessObjects.Database.Fornitore">
+    <Class Name="xMax.Module.BusinessObjects.Fornitore" ImageName="BO_Person" IsVisibleInReports="True">
       <AppearanceRules>
         <AppearanceRule Id="FornitoreTipoRule" Visibility="Hide" TargetItems="Tipo" IsNewNode="True" />
       </AppearanceRules>
     </Class>
-    <Class Name="xMax.Module.BusinessObjects.Database.Produttore">
+    <Class Name="xMax.Module.BusinessObjects.Installazione" ImageName="BO_Report" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Intervento" ImageName="ProductSpecificationsSummary" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Mansione" ImageName="BO_Contact" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.Produttore" ImageName="BO_Organization" IsVisibleInReports="True">
       <AppearanceRules>
         <AppearanceRule Id="ProduttoreTipoRule" TargetItems="Tipo" Visibility="Hide" IsNewNode="True" />
       </AppearanceRules>
     </Class>
+    <Class Name="xMax.Module.BusinessObjects.Rischi" ImageName="State_Validation_Warning" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.ScadenzaPagamento" ImageName="NewAppointment" IsVisibleInReports="True" />
+    <Class Name="xMax.Module.BusinessObjects.TipoArticolo" ImageName="BO_Price_Item" />
   </BOModel>
   <NavigationItems>
     <Items>
-      <Item Id="Default" Caption="Gestione Magazzino, Clienti e Interventi" Index="0">
-        <Items>
-          <Item Id="Cliente_ListView" Index="0" Caption="Clienti" />
-          <Item Id="Intervento_ListView" Caption="Interventi" Index="1" />
-          <Item Id="Installazione_ListView" Caption="Pulizia caldaie" Index="2" Removed="True" />
-          <Item Id="Contratto_ListView" Caption="Contratti" Index="3" />
-          <Item Id="ScadenzaPagamento_ListView" Caption="Scadenze contratti" Index="4" Removed="True" />
-          <Item Id="Scadenziario" Caption="Scadenziario" Index="5" ViewId="BaseEvent_ListView" IsNewNode="True">
-            <Items IsNewNode="True">
-              <Item Id="Installazione_ListView" Index="2" ObjectKey="" ViewId="Installazione_ListView" Caption="Pulizia caldaie" IsNewNode="True" />
-              <Item Id="ScadenzaPagamento" ViewId="ScadenzaPagamento_ListView" Caption="Scadenze Pagamento" IsNewNode="True" />
-            </Items>
-          </Item>
-          <Item Id="DDTAcquisto_ListView" Index="6" Caption="DDT di acquisto" />
-          <Item Id="DDTVendita_ListView" Index="7" Caption="DDT di vendita" />
-          <Item Id="Fornitore_ListView" Index="9" Caption="Fornitori" />
-          <Item Id="Produttore_ListView" Index="10" Caption="Produttori" />
-          <Item Id="Apparato_ListView" Index="11" Caption="Apparati" />
-          <Item Id="Articoli" ViewId="TipoArticolo_ListViewMasterDetail" Caption="Articoli" IsNewNode="True" />
-          <Item Id="Attestato_ListView" Removed="True" />
-          <Item Id="Attrezzatura_ListView" Removed="True" />
-          <Item Id="Dipendente_ListView" Removed="True" />
-          <Item Id="Event_ListView" Visible="False" Removed="True" />
-          <Item Id="Impostazioni_ListView" Removed="True" />
-          <Item Id="Mansione_ListView" Removed="True" />
-          <Item Id="Rischi_ListView" Removed="True" />
-          <Item Id="TipoArticolo_ListView" Removed="True" />
-          <Item Id="TipoAttrezzatura_ListView" Removed="True" />
-          <Item Id="TipoContratto_ListView" Removed="True" />
-          <Item Id="TipoIntervento_ListView" Removed="True" />
+      <Item Id="Gestione" Caption="Magazzino" Index="0" ImageName="BO_Order_Item" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Articoli" ViewId="TipoArticolo_ListViewMasterDetail" Caption="Articoli" Index="0" IsNewNode="True" />
+          <Item Id="DDTAcquisto_ListView" ViewId="DDTAcquisto_ListView" ObjectKey="" Index="1" Caption="DDT di acquisto" IsNewNode="True" />
+          <Item Id="DDTVendita_ListView" ViewId="DDTVendita_ListView" ObjectKey="" Index="2" Caption="DDT di vendita" IsNewNode="True" />
+          <Item Id="Fornitore_ListView" ViewId="Fornitore_ListView" ObjectKey="" Index="3" Caption="Fornitori" IsNewNode="True" />
+          <Item Id="Produttore_ListView" ViewId="Produttore_ListView" ObjectKey="" Index="4" Caption="Produttori" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Sicurezza" Index="1" IsNewNode="True">
+      <Item Id="Clienti" Caption="Clienti" Index="1" ImageName="BO_Customer" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Cliente_ListView" ViewId="Cliente_ListView" ObjectKey="" Index="0" Caption="Clienti" IsNewNode="True" />
+          <Item Id="Contratto_ListView" ViewId="Contratto_ListView" ObjectKey="" Caption="Contratti" Index="1" IsNewNode="True" />
+          <Item Id="Installazione_ListView" Index="2" ObjectKey="" ViewId="Installazione_ListView" Caption="Pulizia caldaie" ImageName="NewRecurringAppointment" IsNewNode="True" />
+          <Item Id="Intervento_ListView" ViewId="Intervento_ListView" ObjectKey="" Caption="Interventi" Index="3" IsNewNode="True" />
+          <Item Id="ScadenzaPagamento" ViewId="ScadenzaPagamento_ListView" Caption="Scadenze Pagamento" ImageName="GroupByDate" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Sicurezza" Index="2" ImageName="Security_Security" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Dipendente_ListView" ViewId="Dipendente_ListView" ObjectKey="" Caption="Dipendenti" Index="0" IsNewNode="True" />
           <Item Id="Mansione_ListView" ViewId="Mansione_ListView" ObjectKey="" Caption="Mansioni" Index="1" IsNewNode="True" />
@@ -74,14 +79,18 @@
           <Item Id="Attrezzatura_ListView" ViewId="Attrezzatura_ListView" ObjectKey="" Caption="Attrezzature" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Configurazione" IsNewNode="True">
+      <Item Id="Configurazione" ImageName="ModelEditor_Settings" ChildItemsDisplayStyle="List" IsNewNode="True">
         <Items IsNewNode="True">
-          <Item Id="TipoContratto_ListView" ViewId="TipoContratto_ListView" ObjectKey="" Index="0" IsNewNode="True" />
-          <Item Id="TipoApparato_ListView" ViewId="TipoApparato_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="TipoArticolo_ListView" ViewId="TipoArticolo_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+          <Item Id="TipoContratto_ListView" ViewId="TipoContratto_ListView" ObjectKey="" Index="1" IsNewNode="True" />
           <Item Id="TipoIntervento_ListView" ViewId="TipoIntervento_ListView" ObjectKey="" Index="2" IsNewNode="True" />
           <Item Id="TipoAttrezzatura_ListView" ViewId="TipoAttrezzatura_ListView" ObjectKey="" Index="3" IsNewNode="True" />
           <Item Id="Impostazioni_ListView" ViewId="Impostazioni_ListView" ObjectKey="" IsNewNode="True" />
-          <Item Id="TipoArticolo_ListView" ViewId="TipoArticolo_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Default">
+        <Items>
+          <Item Id="Event_ListView" Visible="False" />
         </Items>
       </Item>
     </Items>
@@ -97,59 +106,59 @@
   </SchemaModules>
   <Validation>
     <Rules>
-      <RuleRequiredField Id="Apparato.Marca.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Marca" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Apparato.Modello.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Modello" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Apparato.Produttore.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="Produttore" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Apparato.Tipo.Required" TargetType="xMax.Module.BusinessObjects.Database.Apparato" TargetPropertyName="TipoArticolo" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Articolo.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Articolo" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Attestato.Titolo.Required" TargetType="xMax.Module.BusinessObjects.Database.Attestato" TargetPropertyName="Titolo" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Attrezzatura.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Attrezzatura" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Attrezzatura.TipoAttrezzatura.Required" TargetType="xMax.Module.BusinessObjects.Database.Attrezzatura" TargetPropertyName="TipoAttrezzatura" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleUniqueValue Id="BaseXPObject.Codice.Unique" TargetType="xMax.Module.BusinessObjects.Database.BaseXPObject" TargetPropertyName="Codice" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Cliente.Business.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Business#" IsNewNode="True" />
-      <RuleRequiredField Id="Cliente.Indirizzo.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Indirizzo" TargetCriteria="" IsNewNode="True" />
-      <RuleRequiredField Id="Cliente.Privato.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Cognome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
-      <RuleRequiredField Id="Cliente.Privato.Nome.Required" TargetType="xMax.Module.BusinessObjects.Database.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
-      <RuleRequiredField Id="Contratto.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Contratto" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Contratto.DataInizio.Required" TargetType="xMax.Module.BusinessObjects.Database.Contratto" TargetPropertyName="DataInizio" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Contratto.TipoContratto.Required" TargetType="xMax.Module.BusinessObjects.Database.Contratto" TargetPropertyName="TipoContratto" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTAcquisto.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquisto" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTAcquisto.ElencoMateriale.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquisto" TargetPropertyName="ElencoMateriale" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTAcquisto.Fornitore.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquisto" TargetPropertyName="Fornitore" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTAcquistoElencoMateriale.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquistoElencoMateriale" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleValueComparison Id="DDTAcquistoElencoMateriale.Quantita.GreaterThan0" TargetType="xMax.Module.BusinessObjects.Database.DDTAcquistoElencoMateriale" TargetPropertyName="Quantita" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
-      <RuleRequiredField Id="DDTVendita.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVendita" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTVendita.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVendita" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTVendita.ElencoMateriale.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVendita" TargetPropertyName="ElencoMateriale" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="DDTVenditaElencoMateriale.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.DDTVenditaElencoMateriale" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleValueComparison Id="DDTVenditaElencoMateriale.Quantita.GreaterThan0" TargetType="xMax.Module.BusinessObjects.Database.DDTVenditaElencoMateriale" TargetPropertyName="Quantita" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
-      <RuleRequiredField Id="Dipendente.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Database.Dipendente" TargetPropertyName="Cognome" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Dipendente.Mansione.Required" TargetType="xMax.Module.BusinessObjects.Database.Dipendente" TargetPropertyName="Mansione" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Dipendente.Nome.Required" TargetType="xMax.Module.BusinessObjects.Database.Dipendente" TargetPropertyName="Nome" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="ElencoVerifiche.Attrezzatura.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="Attrezzatura" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="ElencoVerifiche.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="ElencoVerifiche.DataProssimaScadenza.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="DataProssimaScadenza" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="ElencoVerifiche.Responsabile.Required" TargetType="xMax.Module.BusinessObjects.Database.ElencoVerifiche" TargetPropertyName="Responsabile" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Fornitore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Fornitore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="FornitoreArticolo.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.FornitoreArticolo" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="IdoneitaAttestatiFormazione.Attestato.Required" TargetType="xMax.Module.BusinessObjects.Database.IdoneitaAttestatiFormazione" TargetPropertyName="Attestato" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="IdoneitaAttestatiFormazione.DataRilascio.Required" TargetType="xMax.Module.BusinessObjects.Database.IdoneitaAttestatiFormazione" TargetPropertyName="DataRilascio" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="IdoneitaAttestatiFormazione.Dipendente.Required" TargetType="xMax.Module.BusinessObjects.Database.IdoneitaAttestatiFormazione" TargetPropertyName="Dipendente" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Installazione.Apparato.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Apparato" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Installazione.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Installazione.DataInstallazione.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="DataInstallazione" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Installazione.DataProssimaPulizia.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="DataProssimaPulizia" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Installazione.Matricola.Required" TargetType="xMax.Module.BusinessObjects.Database.Installazione" TargetPropertyName="Matricola" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Intervento.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Intervento.Data.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="DataIntervento" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Intervento.Operatore.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="Operatore" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Intervento.TipoIntervento.Required" TargetType="xMax.Module.BusinessObjects.Database.Intervento" TargetPropertyName="TipoIntervento" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Mansione.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Mansione" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Produttore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Database.Produttore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="RicambiUtilizzati.Articolo.Required" TargetType="xMax.Module.BusinessObjects.Database.RicambiUtilizzati" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="RicambiUtilizzati.Intervento.Required" TargetType="xMax.Module.BusinessObjects.Database.RicambiUtilizzati" TargetPropertyName="Intervento" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleValueComparison Id="RicambiUtilizzati.QT.GreaterThan0" TargetType="xMax.Module.BusinessObjects.Database.RicambiUtilizzati" TargetPropertyName="QT" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
-      <RuleRequiredField Id="Rischi.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Database.Rischi" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Marca.Required" TargetType="xMax.Module.BusinessObjects.Apparato" TargetPropertyName="Marca" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Modello.Required" TargetType="xMax.Module.BusinessObjects.Apparato" TargetPropertyName="Modello" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Produttore.Required" TargetType="xMax.Module.BusinessObjects.Apparato" TargetPropertyName="Produttore" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Apparato.Tipo.Required" TargetType="xMax.Module.BusinessObjects.Apparato" TargetPropertyName="TipoArticolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Articolo.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Articolo" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Attestato.Titolo.Required" TargetType="xMax.Module.BusinessObjects.Attestato" TargetPropertyName="Titolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Attrezzatura.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Attrezzatura" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Attrezzatura.TipoAttrezzatura.Required" TargetType="xMax.Module.BusinessObjects.Attrezzatura" TargetPropertyName="TipoAttrezzatura" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleUniqueValue Id="BaseXPObject.Codice.Unique" TargetType="xMax.Module.BusinessObjects.BaseXPObject" TargetPropertyName="Codice" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Business.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Business#" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Indirizzo.Required" TargetType="xMax.Module.BusinessObjects.Cliente" TargetContextIDs="Save" TargetPropertyName="Indirizzo" TargetCriteria="" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Privato.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Cliente" TargetContextIDs="Save" TargetPropertyName="Cognome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
+      <RuleRequiredField Id="Cliente.Privato.Nome.Required" TargetType="xMax.Module.BusinessObjects.Cliente" TargetContextIDs="Save" TargetPropertyName="Nome" TargetCriteria="[Tipo] = ##Enum#xMax.Module.BusinessObjects.tipoAnagrafica,Privato#" IsNewNode="True" />
+      <RuleRequiredField Id="Contratto.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Contratto" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Contratto.DataInizio.Required" TargetType="xMax.Module.BusinessObjects.Contratto" TargetPropertyName="DataInizio" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Contratto.TipoContratto.Required" TargetType="xMax.Module.BusinessObjects.Contratto" TargetPropertyName="TipoContratto" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquisto.Data.Required" TargetType="xMax.Module.BusinessObjects.DDTAcquisto" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquisto.ElencoMateriale.Required" TargetType="xMax.Module.BusinessObjects.DDTAcquisto" TargetPropertyName="ElencoMateriale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquisto.Fornitore.Required" TargetType="xMax.Module.BusinessObjects.DDTAcquisto" TargetPropertyName="Fornitore" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTAcquistoElencoMateriale.Articolo.Required" TargetType="xMax.Module.BusinessObjects.DDTAcquistoElencoMateriale" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleValueComparison Id="DDTAcquistoElencoMateriale.Quantita.GreaterThan0" TargetType="xMax.Module.BusinessObjects.DDTAcquistoElencoMateriale" TargetPropertyName="Quantita" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVendita.Cliente.Required" TargetType="xMax.Module.BusinessObjects.DDTVendita" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVendita.Data.Required" TargetType="xMax.Module.BusinessObjects.DDTVendita" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVendita.ElencoMateriale.Required" TargetType="xMax.Module.BusinessObjects.DDTVendita" TargetPropertyName="ElencoMateriale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="DDTVenditaElencoMateriale.Articolo.Required" TargetType="xMax.Module.BusinessObjects.DDTVenditaElencoMateriale" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleValueComparison Id="DDTVenditaElencoMateriale.Quantita.GreaterThan0" TargetType="xMax.Module.BusinessObjects.DDTVenditaElencoMateriale" TargetPropertyName="Quantita" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleRequiredField Id="Dipendente.Cognome.Required" TargetType="xMax.Module.BusinessObjects.Dipendente" TargetPropertyName="Cognome" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Dipendente.Mansione.Required" TargetType="xMax.Module.BusinessObjects.Dipendente" TargetPropertyName="Mansione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Dipendente.Nome.Required" TargetType="xMax.Module.BusinessObjects.Dipendente" TargetPropertyName="Nome" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.Attrezzatura.Required" TargetType="xMax.Module.BusinessObjects.ElencoVerifiche" TargetPropertyName="Attrezzatura" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.Data.Required" TargetType="xMax.Module.BusinessObjects.ElencoVerifiche" TargetPropertyName="Data" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.DataProssimaScadenza.Required" TargetType="xMax.Module.BusinessObjects.ElencoVerifiche" TargetPropertyName="DataProssimaScadenza" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="ElencoVerifiche.Responsabile.Required" TargetType="xMax.Module.BusinessObjects.ElencoVerifiche" TargetPropertyName="Responsabile" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Fornitore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Fornitore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="FornitoreArticolo.Articolo.Required" TargetType="xMax.Module.BusinessObjects.FornitoreArticolo" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="IdoneitaAttestatiFormazione.Attestato.Required" TargetType="xMax.Module.BusinessObjects.IdoneitaAttestatiFormazione" TargetPropertyName="Attestato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="IdoneitaAttestatiFormazione.DataRilascio.Required" TargetType="xMax.Module.BusinessObjects.IdoneitaAttestatiFormazione" TargetPropertyName="DataRilascio" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="IdoneitaAttestatiFormazione.Dipendente.Required" TargetType="xMax.Module.BusinessObjects.IdoneitaAttestatiFormazione" TargetPropertyName="Dipendente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.Apparato.Required" TargetType="xMax.Module.BusinessObjects.Installazione" TargetPropertyName="Apparato" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Installazione" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.DataInstallazione.Required" TargetType="xMax.Module.BusinessObjects.Installazione" TargetPropertyName="DataInstallazione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.DataProssimaPulizia.Required" TargetType="xMax.Module.BusinessObjects.Installazione" TargetPropertyName="DataProssimaPulizia" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Installazione.Matricola.Required" TargetType="xMax.Module.BusinessObjects.Installazione" TargetPropertyName="Matricola" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.Cliente.Required" TargetType="xMax.Module.BusinessObjects.Intervento" TargetPropertyName="Cliente" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.Data.Required" TargetType="xMax.Module.BusinessObjects.Intervento" TargetPropertyName="DataIntervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.Operatore.Required" TargetType="xMax.Module.BusinessObjects.Intervento" TargetPropertyName="Operatore" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Intervento.TipoIntervento.Required" TargetType="xMax.Module.BusinessObjects.Intervento" TargetPropertyName="TipoIntervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Mansione.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Mansione" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="Produttore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Produttore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RicambiUtilizzati.Articolo.Required" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="RicambiUtilizzati.Intervento.Required" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="Intervento" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleValueComparison Id="RicambiUtilizzati.QT.GreaterThan0" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="QT" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleRequiredField Id="Rischi.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Rischi" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
     </Rules>
   </Validation>
   <Views>
@@ -162,12 +171,10 @@
                 <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
                 <LayoutItem Id="Descrizione" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Produttore" RelativeSize="17.647058823529413" />
-                <LayoutItem Id="Marca" RelativeSize="23.529411764705884" />
                 <LayoutItem Id="Quantita" Removed="True" />
               </LayoutGroup>
               <LayoutGroup Id="Articolo_col2" RelativeSize="50.049261083743843">
                 <LayoutItem Id="Modello" RelativeSize="23.529411764705884" />
-                <LayoutItem Id="UnitaMisura" RelativeSize="17.647058823529413" />
                 <LayoutGroup Id="Auto1cd4e061-130c-4979-a999-9d359127f15d" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="58.8235294117647" IsNewNode="True">
                   <LayoutGroup Id="Auto69eba9a7-93e2-44a3-a48b-eb5a51caf9ac" ShowCaption="False" Index="0" RelativeSize="62.795275590551178" IsNewNode="True">
                     <LayoutItem Id="QuantitaIniziale" ViewItem="QuantitaIniziale" Index="0" RelativeSize="30" IsNewNode="True" />
@@ -175,6 +182,7 @@
                   </LayoutGroup>
                   <LayoutItem Id="VisualizzaInSchedaIntervento" ViewItem="VisualizzaInSchedaIntervento" Index="1" RelativeSize="37.204724409448822" IsNewNode="True" />
                 </LayoutGroup>
+                <LayoutItem Id="UnitaMisura" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="QuantitaIniziale" Removed="True" />
                 <LayoutItem Id="VisualizzaInSchedaIntervento" Removed="True" />
               </LayoutGroup>
@@ -221,6 +229,23 @@
         <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="3" />
       </Columns>
     </ListView>
+    <ListView Id="Articolo_Apparati_ListView">
+      <Columns>
+        <ColumnInfo Id="CostoMedioPonderato" Index="-1" />
+        <ColumnInfo Id="CostoUnitario" Width="104" Index="-1" />
+        <ColumnInfo Id="Nome" Width="97" Index="-1" />
+        <ColumnInfo Id="Quantita" Index="-1" />
+        <ColumnInfo Id="QuantitaIniziale" Width="88" Index="-1" />
+        <ColumnInfo Id="RimanenzaTotale" Index="-1" />
+        <ColumnInfo Id="UnitaMisura" Width="124" Index="-1" />
+        <ColumnInfo Id="VisualizzaInSchedaIntervento" Width="88" Index="-1" />
+        <ColumnInfo Id="Descrizione" Width="124" Index="0" />
+        <ColumnInfo Id="TipoArticolo" Width="124" Index="1" />
+        <ColumnInfo Id="Produttore" Width="124" Index="2" />
+        <ColumnInfo Id="Marca" Width="124" Index="3" />
+        <ColumnInfo Id="Modello" Width="124" Index="4" />
+      </Columns>
+    </ListView>
     <DetailView Id="Articolo_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -230,12 +255,10 @@
                 <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
                 <LayoutItem Id="Descrizione" RelativeSize="23.529411764705884" />
                 <LayoutItem Id="Produttore" RelativeSize="17.647058823529413" />
-                <LayoutItem Id="Marca" RelativeSize="17.647058823529413" />
                 <LayoutItem Id="Quantita" Removed="True" />
               </LayoutGroup>
               <LayoutGroup Id="Articolo_col2" RelativeSize="49.064039408866996">
                 <LayoutItem Id="Modello" RelativeSize="17.647058823529413" />
-                <LayoutItem Id="UnitaMisura" RelativeSize="23.529411764705884" />
                 <LayoutGroup Id="Auto72218fdb-1410-4036-93fb-730865dcd61a" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="58.8235294117647" IsNewNode="True">
                   <LayoutGroup Id="Auto647580c7-ae19-42cb-87cd-7b12006fe164" ShowCaption="False" Index="0" RelativeSize="61.847389558232933" IsNewNode="True">
                     <LayoutItem Id="QuantitaIniziale" ViewItem="QuantitaIniziale" Index="0" RelativeSize="30" IsNewNode="True" />
@@ -243,6 +266,7 @@
                   </LayoutGroup>
                   <LayoutItem Id="VisualizzaInSchedaIntervento" ViewItem="VisualizzaInSchedaIntervento" Index="1" RelativeSize="38.152610441767067" IsNewNode="True" />
                 </LayoutGroup>
+                <LayoutItem Id="UnitaMisura" RelativeSize="23.529411764705884" />
                 <LayoutItem Id="QuantitaIniziale" Removed="True" />
                 <LayoutItem Id="VisualizzaInSchedaIntervento" Removed="True" />
               </LayoutGroup>
@@ -260,6 +284,13 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Articolo_Fornitori_ListView">
+      <Columns>
+        <ColumnInfo Id="Articolo" Index="-1" />
+        <ColumnInfo Id="Fornitore" Width="90" Index="0" />
+        <ColumnInfo Id="CodiceArticoloFornitore" Width="1031" Index="1" />
+      </Columns>
+    </ListView>
     <ListView Id="Articolo_ListView" AllowEdit="True" AllowLink="False" AllowUnlink="False" NewItemRowPosition="Bottom">
       <Columns>
         <ColumnInfo Id="Marca" Index="-1" />
@@ -275,7 +306,7 @@
     </ListView>
     <ListView Id="Articolo_LookupListView">
       <Columns>
-        <ColumnInfo Id="TipoArticoloGruppo" PropertyName="TipoArticolo" GroupIndex="0" Caption="Tipo" LookupEditorMode="AllItemsWithSearch" IsNewNode="True" />
+        <ColumnInfo Id="TipoArticoloGruppo" PropertyName="TipoArticolo" GroupIndex="0" Caption="Tipo" LookupEditorMode="AllItemsWithSearch" SortOrder="Ascending" IsNewNode="True" />
       </Columns>
     </ListView>
     <DetailView Id="Attrezzatura_DetailView">
@@ -318,7 +349,7 @@
         <ColumnInfo Id="MarcaturaCE" Width="158" />
       </Columns>
     </ListView>
-    <ListView Id="BaseEvent_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-12-31" SelectedIntervalEnd="2021-01-01" />
+    <ListView Id="BaseEvent_ListView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-08-01" SelectedIntervalEnd="2020-08-02" />
     <ListView Id="Cliente_Contratti_ListView">
       <Columns>
         <ColumnInfo Id="DataInizio" Width="161" />
@@ -330,34 +361,34 @@
     <DetailView Id="Cliente_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="40.03868471953578">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="38.878143133462281">
             <LayoutGroup Id="Anagrafica" Index="0" RelativeSize="100">
-              <LayoutGroup Id="Anagrafica_col1" RelativeSize="49.950738916256157">
-                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="20.930232558139537" IsNewNode="True" />
-                <LayoutItem Id="Tipo" Index="1" RelativeSize="18.6046511627907" />
-                <LayoutItem Id="Nome" Index="2" RelativeSize="13.953488372093023" />
-                <LayoutItem Id="Cognome" Index="3" RelativeSize="13.953488372093023" />
-                <LayoutItem Id="RagioneSociale" Index="4" RelativeSize="13.953488372093023" />
-                <LayoutItem Id="CF" Index="5" RelativeSize="18.6046511627907" />
+              <LayoutGroup Id="Anagrafica_col1" RelativeSize="49.825174825174827">
+                <LayoutItem Id="Codice" ViewItem="Codice" Index="0" RelativeSize="20" IsNewNode="True" />
+                <LayoutItem Id="Tipo" Index="1" RelativeSize="15" />
+                <LayoutItem Id="Nome" Index="2" RelativeSize="15" />
+                <LayoutItem Id="Cognome" Index="3" RelativeSize="15" />
+                <LayoutItem Id="RagioneSociale" Index="4" RelativeSize="15" />
+                <LayoutItem Id="CF" Index="5" RelativeSize="20" />
               </LayoutGroup>
-              <LayoutGroup Id="Anagrafica_col2" RelativeSize="50.049261083743843">
-                <LayoutItem Id="Piva" RelativeSize="13.953488372093023" />
-                <LayoutItem Id="Indirizzo" RelativeSize="18.6046511627907" />
-                <LayoutItem Id="Telefono" RelativeSize="13.953488372093023" />
-                <LayoutItem Id="EMail" RelativeSize="53.488372093023258" />
+              <LayoutGroup Id="Anagrafica_col2" RelativeSize="50.174825174825173">
+                <LayoutItem Id="Piva" RelativeSize="15" />
+                <LayoutItem Id="Indirizzo" RelativeSize="20" />
+                <LayoutItem Id="Telefono" RelativeSize="15" />
+                <LayoutItem Id="EMail" RelativeSize="50" />
               </LayoutGroup>
             </LayoutGroup>
             <LayoutGroup Id="BaseXPObject" Removed="True" />
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" RelativeSize="59.96131528046422">
-            <LayoutGroup Id="Interventi" RelativeSize="100">
-              <LayoutItem Id="Interventi" RelativeSize="100" />
+          <TabbedGroup Id="Tabs" RelativeSize="61.121856866537719">
+            <LayoutGroup Id="Installazioni" RelativeSize="100" Index="0">
+              <LayoutItem Id="Installazioni" RelativeSize="100" />
             </LayoutGroup>
-            <LayoutGroup Id="Contratti" RelativeSize="100">
+            <LayoutGroup Id="Contratti" RelativeSize="100" Index="1">
               <LayoutItem Id="Contratti" RelativeSize="100" />
             </LayoutGroup>
-            <LayoutGroup Id="Installazioni" RelativeSize="100">
-              <LayoutItem Id="Installazioni" RelativeSize="100" />
+            <LayoutGroup Id="Interventi" RelativeSize="100" Index="2">
+              <LayoutItem Id="Interventi" RelativeSize="100" />
             </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
@@ -423,9 +454,9 @@
     <ListView Id="DDTAcquisto_ElencoMateriale_ListView">
       <Columns>
         <ColumnInfo Id="ArticoloFornitore" Width="130" />
-        <ColumnInfo Id="Articolo" Width="354" />
-        <ColumnInfo Id="Quantita" Width="252" />
-        <ColumnInfo Id="Importo" Width="256" />
+        <ColumnInfo Id="Articolo" Width="354" Index="2" />
+        <ColumnInfo Id="Quantita" Width="252" Index="3" />
+        <ColumnInfo Id="ImportoTotale" Index="4" />
       </Columns>
     </ListView>
     <ListView Id="DDTAcquisto_ListView">
@@ -452,6 +483,14 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="DDTVendita_ElencoMateriale_ListView">
+      <Columns>
+        <ColumnInfo Id="Articolo" Index="0" />
+        <ColumnInfo Id="Quantita" Index="1" />
+        <ColumnInfo Id="ImportoUnitario" Index="2" />
+        <ColumnInfo Id="ImportoTotale" Index="3" />
+      </Columns>
+    </ListView>
     <DetailView Id="Dipendente_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -485,8 +524,8 @@
     </DetailView>
     <ListView Id="Fornitore_Articoli_ListView">
       <Columns>
-        <ColumnInfo Id="CodiceArticoloFornitore" Index="0" />
-        <ColumnInfo Id="Articolo" Index="1" />
+        <ColumnInfo Id="CodiceArticoloFornitore" Index="0" Width="79" />
+        <ColumnInfo Id="Articolo" Index="1" Width="1042" />
       </Columns>
     </ListView>
     <DetailView Id="Fornitore_DetailView">
@@ -549,7 +588,7 @@
         <Variant Id="CalendarioInstallazioni" ViewID="Installazione_ScheduleView" Caption="Calendario" Index="1" IsNewNode="True" />
       </Variants>
     </ListView>
-    <ListView Id="Installazione_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Database.Installazione" Criteria="[DataProssimaPulizia] Is Not Null" IsNewNode="True">
+    <ListView Id="Installazione_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Installazione" Criteria="[DataProssimaPulizia] Is Not Null" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Nome" PropertyName="Nome" Width="400" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="0" IsNewNode="True" />
@@ -566,7 +605,7 @@
         <ColumnInfo Id="Nome" SortOrder="Descending" />
       </Columns>
     </ListView>
-    <ListView Id="Installazione_ScheduleView" Criteria="[DataProssimaPulizia] Is Not Null" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-06-29" SelectedIntervalEnd="2020-08-03" SchedulerViewType="Month" ClassName="xMax.Module.BusinessObjects.Database.Installazione" IsNewNode="True">
+    <ListView Id="Installazione_ScheduleView" Criteria="[DataProssimaPulizia] Is Not Null" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-06-29" SelectedIntervalEnd="2020-08-03" SchedulerViewType="Month" ClassName="xMax.Module.BusinessObjects.Installazione" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Nome" PropertyName="Nome" Width="400" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Cliente" PropertyName="Cliente" Width="70" Index="0" IsNewNode="True" />
@@ -610,7 +649,7 @@
         <Variant Id="ElencoInterventi" Caption="Elenco" ViewID="Intervento_ListViewElenco" IsNewNode="True" />
       </Variants>
     </ListView>
-    <ListView Id="Intervento_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
+    <ListView Id="Intervento_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Intervento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="DescrizioneIntervento" PropertyName="DescrizioneIntervento" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="NomeCompleto" PropertyName="NomeCompleto" Width="400" Index="-1" IsNewNode="True" />
@@ -625,7 +664,7 @@
       </Columns>
     </ListView>
     <ListView Id="Intervento_RicambiUtilizzati_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="True" NewItemRowPosition="Bottom" />
-    <ListView Id="Intervento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-24" SelectedIntervalEnd="2020-07-25" ClassName="xMax.Module.BusinessObjects.Database.Intervento" IsNewNode="True">
+    <ListView Id="Intervento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-07-24" SelectedIntervalEnd="2020-07-25" ClassName="xMax.Module.BusinessObjects.Intervento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="DescrizioneIntervento" PropertyName="DescrizioneIntervento" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="NomeCompleto" PropertyName="NomeCompleto" Width="400" Index="-1" IsNewNode="True" />
@@ -667,16 +706,16 @@
     </DetailView>
     <ListView Id="Produttore_ListView">
       <Columns>
+        <ColumnInfo Id="CF" Index="-1" Width="122" />
+        <ColumnInfo Id="Cognome" Index="-1" Width="129" />
+        <ColumnInfo Id="Nome" Index="-1" Width="122" />
         <ColumnInfo Id="Tipo" Index="-1" />
         <ColumnInfo Id="NomeCompleto" Width="160" />
         <ColumnInfo Id="RagioneSociale" Index="0" Width="122" />
-        <ColumnInfo Id="Nome" Index="2" Width="122" />
-        <ColumnInfo Id="Cognome" Index="3" Width="129" />
-        <ColumnInfo Id="Indirizzo" Index="4" Width="122" />
-        <ColumnInfo Id="Telefono" Index="5" Width="122" />
-        <ColumnInfo Id="EMail" Index="6" Width="122" />
-        <ColumnInfo Id="Piva" Index="7" Width="122" />
-        <ColumnInfo Id="CF" Index="8" Width="122" />
+        <ColumnInfo Id="Indirizzo" Index="2" Width="122" />
+        <ColumnInfo Id="Telefono" Index="3" Width="122" />
+        <ColumnInfo Id="EMail" Index="4" Width="122" />
+        <ColumnInfo Id="Piva" Index="5" Width="122" />
       </Columns>
     </ListView>
     <ListView Id="RicambiUtilizzati_ListView" AllowEdit="True" AllowLink="False" AllowUnlink="False" NewItemRowPosition="Bottom" />
@@ -686,7 +725,7 @@
         <Variant Id="ElencoScadenzaPagamento" Caption="Elenco" ViewID="ScadenzaPagamento_ListViewElenco" IsNewNode="True" />
       </Variants>
     </ListView>
-    <ListView Id="ScadenzaPagamento_ListViewElenco" ClassName="xMax.Module.BusinessObjects.Database.ScadenzaPagamento" IsNewNode="True">
+    <ListView Id="ScadenzaPagamento_ListViewElenco" ClassName="xMax.Module.BusinessObjects.ScadenzaPagamento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Pagamento" PropertyName="Pagamento" Width="400" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="0" IsNewNode="True" />
@@ -694,7 +733,7 @@
         <ColumnInfo Id="Importo" PropertyName="Importo" Width="50" Index="2" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="ScadenzaPagamento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-08-01" SelectedIntervalEnd="2020-08-02" SchedulerViewType="Day" ClassName="xMax.Module.BusinessObjects.Database.ScadenzaPagamento" IsNewNode="True">
+    <ListView Id="ScadenzaPagamento_ScheduleView" DayViewTimeScale="00:30:00" WorkWeekViewTimeScale="00:30:00" FullWeekViewTimeScale="00:30:00" SelectedIntervalStart="2020-08-01" SelectedIntervalEnd="2020-08-02" SchedulerViewType="Day" ClassName="xMax.Module.BusinessObjects.ScadenzaPagamento" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Pagamento" PropertyName="Pagamento" Width="400" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Contratto" PropertyName="Contratto" Width="70" Index="0" IsNewNode="True" />
@@ -702,7 +741,24 @@
         <ColumnInfo Id="Importo" PropertyName="Importo" Width="50" Index="2" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="TipoArticolo_ListViewMasterDetail" ClassName="xMax.Module.BusinessObjects.Database.TipoArticolo" MasterDetailMode="ListViewAndDetailView" IsNewNode="True">
+    <ListView Id="TipoArticolo_Articoli_ListView" AllowEdit="True" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="CostoUnitario" Index="-1" />
+        <ColumnInfo Id="Marca" Index="-1" Width="102" />
+        <ColumnInfo Id="Modello" Index="-1" Width="102" />
+        <ColumnInfo Id="Nome" Index="-1" Width="189" />
+        <ColumnInfo Id="Produttore" Index="-1" Width="102" />
+        <ColumnInfo Id="QuantitaIniziale" Index="-1" Width="87" />
+        <ColumnInfo Id="VisualizzaInSchedaIntervento" Index="-1" Width="72" />
+        <ColumnInfo Id="Codice" Index="0" Width="139" />
+        <ColumnInfo Id="Descrizione" Index="1" Width="285" />
+        <ColumnInfo Id="UnitaMisura" Index="2" Width="102" />
+        <ColumnInfo Id="Quantita" Index="3" Width="184" />
+        <ColumnInfo Id="CostoMedioPonderato" Index="4" Width="128" />
+        <ColumnInfo Id="RimanenzaTotale" Index="5" Width="133" />
+      </Columns>
+    </ListView>
+    <ListView Id="TipoArticolo_ListViewMasterDetail" ClassName="xMax.Module.BusinessObjects.TipoArticolo" MasterDetailMode="ListViewAndDetailView" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Tipo" PropertyName="Tipo" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
       </Columns>

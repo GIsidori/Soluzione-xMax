@@ -8,14 +8,15 @@ using System.Reflection;
 using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.DC;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(Nome))]
     public partial class DDTAcquisto
     {
         public DDTAcquisto(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public override void AfterConstruction() {
+            this.Data = System.DateTime.Now.Date;
+            base.AfterConstruction(); }
 
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]

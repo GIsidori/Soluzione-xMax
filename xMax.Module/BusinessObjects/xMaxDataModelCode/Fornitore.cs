@@ -9,14 +9,14 @@ using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.DC;
 using System.Linq;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(NomeCompleto))]
     public partial class Fornitore
     {
         public Fornitore(Session session) : base(session) { }
-        public override void AfterConstruction() {
+        public override void AfterConstruction()
+        {
             base.AfterConstruction();
 
             Tipo = tipoAnagrafica.Business;

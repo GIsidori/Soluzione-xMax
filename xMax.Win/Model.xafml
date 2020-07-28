@@ -1,24 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Logo="ExpressAppLogo">
-  <NavigationItems NavigationStyle="Accordion" ShowImages="False" DefaultChildItemsDisplayStyle="List">
-    <Items>
-      <Item Id="Default">
-        <Items>
-          <Item Id="MyDetails" Removed="True" />
-          <Item Id="PermissionPolicyRole_ListView" Removed="True" />
-          <Item Id="PermissionPolicyUser_ListView" Removed="True" />
-        </Items>
-      </Item>
-      <Item Id="Configurazione">
-        <Items>
-          <Item Id="MyDetails" ViewId="PermissionPolicyUser_DetailView" ObjectKey="@CurrentUserID" Caption="My Details" ImageName="BO_MyDetails" IsNewNode="True" />
-          <Item Id="PermissionPolicyRole_ListView" ViewId="PermissionPolicyRole_ListView" ObjectKey="" IsNewNode="True" />
-          <Item Id="PermissionPolicyUser_ListView" ViewId="PermissionPolicyUser_ListView" ObjectKey="" IsNewNode="True" />
-        </Items>
-      </Item>
-    </Items>
-  </NavigationItems>
-  <Options UIType="TabbedMDI" FormStyle="Ribbon" ShowTabImage="False">
+  <Options UIType="TabbedMDI" FormStyle="Ribbon" RestoreTabbedMdiLayout="False">
     <LayoutManagerOptions EnableLayoutGroupImages="False" />
   </Options>
   <SchemaModules>

@@ -13,7 +13,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
-using xMax.Module.BusinessObjects.Database;
+using xMax.Module.BusinessObjects;
 
 namespace xMax.Module.Controllers
 {

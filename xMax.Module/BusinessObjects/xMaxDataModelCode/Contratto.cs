@@ -8,9 +8,8 @@ using System.Reflection;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
-    [DefaultClassOptions]
     [XafDefaultProperty(nameof(Nome))]
     public partial class Contratto
     {
@@ -22,7 +21,7 @@ namespace xMax.Module.BusinessObjects.Database
             base.OnChanged(propertyName, oldValue, newValue);
             if (propertyName == "TipoContratto")
             {
-                if (ImportoAnnuale == 0 &&  TipoContratto != null)
+                if (ImportoAnnuale == 0 && TipoContratto != null)
                     ImportoAnnuale = TipoContratto.ImportoAnnuale;
             }
         }

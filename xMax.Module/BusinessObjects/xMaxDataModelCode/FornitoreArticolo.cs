@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Reflection;
 using DevExpress.ExpressApp.DC;
 
-namespace xMax.Module.BusinessObjects.Database
+namespace xMax.Module.BusinessObjects
 {
     [XafDefaultProperty(nameof(Articolo))]
     public partial class FornitoreArticolo

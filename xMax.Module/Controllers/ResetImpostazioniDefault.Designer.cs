@@ -37,7 +37,7 @@
             this.simpleAction1.ConfirmationMessage = "Si è sicuri di voler resettare tutte le impostazioni?";
             this.simpleAction1.Id = "e5ff1cd3-a70f-4774-9a9a-04b69cb0bfa7";
             this.simpleAction1.ImageName = "Actions_DeleteCircled";
-            this.simpleAction1.TargetObjectType = typeof(xMax.Module.BusinessObjects.Database.Impostazioni);
+            this.simpleAction1.TargetObjectType = typeof(xMax.Module.BusinessObjects.Impostazioni);
             this.simpleAction1.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.simpleAction1.TargetViewType = DevExpress.ExpressApp.ViewType.ListView;
             this.simpleAction1.ToolTip = null;
