@@ -14,12 +14,7 @@
       </AppearanceRules>
     </Class>
     <Class Name="xMax.Module.BusinessObjects.Apparato" ImageName="BO_Order" IsVisibleInReports="True" />
-    <Class Name="xMax.Module.BusinessObjects.Articolo" ImageName="BO_Price_Item" IsVisibleInReports="True">
-      <AppearanceRules>
-        <AppearanceRule Id="ApparatoRule" Visibility="Hide" TargetItems="Apparati" Criteria="[Ricambio] = False" IsNewNode="True" />
-        <AppearanceRule Id="RicambioRule" Criteria="[Ricambio] = True" Visibility="Hide" TargetItems="TipoApparato;Marca;Modello;Produttore" IsNewNode="True" />
-      </AppearanceRules>
-    </Class>
+    <Class Name="xMax.Module.BusinessObjects.Articolo" ImageName="BO_Price_Item" IsVisibleInReports="True" />
     <Class Name="xMax.Module.BusinessObjects.Attestato" ImageName="Doctor" IsVisibleInReports="True" />
     <Class Name="xMax.Module.BusinessObjects.Attrezzatura" ImageName="BO_Vendor" IsVisibleInReports="True" />
     <Class Name="xMax.Module.BusinessObjects.Cliente" ImageName="BO_Customer" IsVisibleInReports="True" />
@@ -157,7 +152,7 @@
       <RuleRequiredField Id="Produttore.RagioneSociale.Required" TargetType="xMax.Module.BusinessObjects.Produttore" TargetPropertyName="RagioneSociale" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="RicambiUtilizzati.Articolo.Required" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="Articolo" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="RicambiUtilizzati.Intervento.Required" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="Intervento" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleValueComparison Id="RicambiUtilizzati.QT.GreaterThan0" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="QT" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
+      <RuleValueComparison Id="RicambiUtilizzati.Quantità.GreaterThan0" TargetType="xMax.Module.BusinessObjects.RicambiUtilizzati" TargetPropertyName="QT" OperatorType="GreaterThan" TargetContextIDs="Save" RightOperand="0" IsNewNode="True" />
       <RuleRequiredField Id="Rischi.Descrizione.Required" TargetType="xMax.Module.BusinessObjects.Rischi" TargetPropertyName="Descrizione" TargetContextIDs="Save" IsNewNode="True" />
     </Rules>
   </Validation>
@@ -330,9 +325,6 @@
             </LayoutGroup>
             <LayoutGroup Id="BaseXPObject" Removed="True" />
           </LayoutGroup>
-          <LayoutGroup Id="ElencoVerifiche_Group" Direction="Vertical" Index="1" RelativeSize="64.739884393063591">
-            <LayoutItem Id="ElencoVerifiche" RelativeSize="100" />
-          </LayoutGroup>
           <LayoutGroup Id="SizeableEditors" Removed="True" />
         </LayoutGroup>
       </Layout>
@@ -423,11 +415,11 @@
             <LayoutGroup Id="BaseXPObject" Removed="True" />
           </LayoutGroup>
           <TabbedGroup Id="Tabs" RelativeSize="70.406189555125721">
-            <LayoutGroup Id="Interventi" RelativeSize="100">
-              <LayoutItem Id="Interventi" RelativeSize="100" />
-            </LayoutGroup>
             <LayoutGroup Id="ScadenzePagamento" RelativeSize="100">
               <LayoutItem Id="ScadenzePagamento" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Interventi" RelativeSize="100">
+              <LayoutItem Id="Interventi" RelativeSize="100" />
             </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
@@ -444,9 +436,6 @@
               <LayoutItem Id="Fornitore" Index="2" RelativeSize="34.883720930232556" />
             </LayoutGroup>
             <LayoutGroup Id="BaseXPObject" Removed="True" />
-          </LayoutGroup>
-          <LayoutGroup Id="ElencoMateriale_Group" Direction="Vertical" RelativeSize="83.36557059961315">
-            <LayoutItem Id="ElencoMateriale" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -476,9 +465,6 @@
               <LayoutItem Id="Cliente" Index="2" RelativeSize="34.883720930232556" />
             </LayoutGroup>
             <LayoutGroup Id="BaseXPObject" Removed="True" />
-          </LayoutGroup>
-          <LayoutGroup Id="ElencoMateriale_Group" Direction="Vertical" RelativeSize="83.36557059961315">
-            <LayoutItem Id="ElencoMateriale" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -515,9 +501,6 @@
             </LayoutGroup>
             <LayoutGroup Id="BaseXPObject" Removed="True" />
             <LayoutGroup Id="Dipendente" Removed="True" />
-          </LayoutGroup>
-          <LayoutGroup Id="IdoneitaAttestatiFormazione_Group" Direction="Vertical" RelativeSize="61.271676300578036">
-            <LayoutItem Id="IdoneitaAttestatiFormazione" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -629,7 +612,6 @@
               <LayoutGroup Id="Intervento_col2" RelativeSize="50.144508670520231">
                 <LayoutItem Id="FatturaRicevuta" RelativeSize="28.571428571428573" />
                 <LayoutItem Id="ImportoIncassato" RelativeSize="21.428571428571427" />
-                <LayoutItem Id="Contratto" RelativeSize="50" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
@@ -760,7 +742,8 @@
     </ListView>
     <ListView Id="TipoArticolo_ListViewMasterDetail" ClassName="xMax.Module.BusinessObjects.TipoArticolo" MasterDetailMode="ListViewAndDetailView" IsNewNode="True">
       <Columns IsNewNode="True">
-        <ColumnInfo Id="Tipo" PropertyName="Tipo" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Tipo" PropertyName="Tipo" Width="57" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Descrizione" PropertyName="Descrizione" Index="1" Width="169" IsNewNode="True" />
       </Columns>
     </ListView>
   </Views>

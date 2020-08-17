@@ -15,12 +15,12 @@ namespace xMax.Module.BusinessObjects
 
         public decimal ImportoTotale
         {
-            get => ImportoUnitario * Quantita;
+            get => (decimal)((float)ImportoUnitario * Quantita);
             set
             {
                 if (Quantita != 0)
                 {
-                    ImportoUnitario = value / Quantita;
+                    ImportoUnitario = (decimal)((float) value / Quantita);
                     OnChanged(nameof(ImportoUnitario));
                 }
             }

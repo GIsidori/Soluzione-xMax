@@ -38,6 +38,8 @@ namespace xMax.Module.BusinessObjects
             get { return fProgressivo; }
             set { SetPropertyValue<string>(nameof(Progressivo), ref fProgressivo, value); }
         }
+        [Association(@"DocumentoReferencesBaseXPObject"), Aggregated]
+        public XPCollection<Documento> Documenti { get { return GetCollection<Documento>(nameof(Documenti)); } }
     }
 
 }

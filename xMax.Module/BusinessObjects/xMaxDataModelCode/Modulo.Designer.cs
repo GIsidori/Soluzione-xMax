@@ -16,22 +16,32 @@ using System.Reflection;
 namespace xMax.Module.BusinessObjects
 {
 
-    public partial class TipoArticolo : XPObject
+    public partial class Modulo : XPObject
     {
-        string fTipo;
-        public string Tipo
-        {
-            get { return fTipo; }
-            set { SetPropertyValue<string>(nameof(Tipo), ref fTipo, value); }
-        }
         string fDescrizione;
         public string Descrizione
         {
             get { return fDescrizione; }
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
         }
-        [Association(@"ArticoloReferencesTipoArticolo")]
-        public XPCollection<Articolo> Articoli { get { return GetCollection<Articolo>(nameof(Articoli)); } }
+        string fModello;
+        public string Modello
+        {
+            get { return fModello; }
+            set { SetPropertyValue<string>(nameof(Modello), ref fModello, value); }
+        }
+        int fValidità;
+        public int Validità
+        {
+            get { return fValidità; }
+            set { SetPropertyValue<int>(nameof(Validità), ref fValidità, value); }
+        }
+        bool fStampaQRCode;
+        public bool StampaQRCode
+        {
+            get { return fStampaQRCode; }
+            set { SetPropertyValue<bool>(nameof(StampaQRCode), ref fStampaQRCode, value); }
+        }
     }
 
 }

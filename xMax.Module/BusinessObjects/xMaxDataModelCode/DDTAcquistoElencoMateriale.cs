@@ -65,11 +65,20 @@ namespace xMax.Module.BusinessObjects
             get => codiceArticoloFornitore;
             set
             {
-                if (this.DDT.Fornitore != null && string.IsNullOrWhiteSpace(value) == false)
                 {
-                    var artForn = this.DDT.Fornitore.GetArticolo(value);
+                    var artForn = this.ArticoloFornitore;
+                    if (artForn == null && this.DDT.Fornitore != null && string.IsNullOrWhiteSpace(value) == false)
+                        artForn = this.DDT.Fornitore.GetArticolo(value);
                     if (artForn != null)
-                        this.Articolo = artForn.Articolo;
+                    {
+                        if (string.IsNullOrWhiteSpace(value))
+                            artForn.Delete();
+                        else
+                        {
+                            artForn.CodiceArticoloFornitore = value;
+                            this.Articolo = artForn.Articolo;
+                        }
+                    }
                 }
                 SetPropertyValue<string>(nameof(CodiceArticoloFornitore), ref codiceArticoloFornitore, value);
             }
@@ -90,12 +99,12 @@ namespace xMax.Module.BusinessObjects
 
         public decimal ImportoTotale
         {
-            get => ImportoUnitario * Quantita;
+            get => (decimal)((Single) ImportoUnitario * Quantita);
             set
             {
                 if (Quantita != 0)
                 {
-                    ImportoUnitario = value / Quantita;
+                    ImportoUnitario = (decimal)((float)value / Quantita);
                     OnChanged(nameof(ImportoUnitario));
                 }
             }

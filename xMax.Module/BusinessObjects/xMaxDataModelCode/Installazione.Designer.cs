@@ -62,8 +62,7 @@ namespace xMax.Module.BusinessObjects
             get { return fContratto; }
             set { SetPropertyValue<Contratto>(nameof(Contratto), ref fContratto, value); }
         }
-        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
-        [Association(@"InterventiReferencesInstallazione")]
+        [Association(@"InterventoReferencesInstallazione"), Aggregated]
         public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
     }
 

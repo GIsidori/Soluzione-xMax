@@ -54,7 +54,7 @@ namespace xMax.Module.Controllers
                 {
                     RicambiUtilizzati ricambio = space.CreateObject<RicambiUtilizzati>();
                     ricambio.Articolo = materiale.Articolo;
-                    ricambio.QT = materiale.Quantita;
+                    ricambio.Quantità = materiale.Quantita;
                     ricambio.Intervento = intervento;
                 }
             }

@@ -31,11 +31,11 @@ namespace xMax.Module.BusinessObjects
             get { return fArticolo; }
             set { SetPropertyValue<Articolo>(nameof(Articolo), ref fArticolo, value); }
         }
-        int fQT;
-        public int QT
+        float fQuantità;
+        public float Quantità
         {
-            get { return fQT; }
-            set { SetPropertyValue<int>(nameof(QT), ref fQT, value); }
+            get { return fQuantità; }
+            set { SetPropertyValue<float>(nameof(Quantità), ref fQuantità, value); }
         }
     }
 

@@ -21,7 +21,7 @@ namespace xMax.Module.BusinessObjects
     {
         [Association(@"ApparatoReferencesArticolo")]
         public XPCollection<Articolo> Ricambi { get { return GetCollection<Articolo>(nameof(Ricambi)); } }
-        [Association(@"InstallazioneReferencesApparato")]
+        [Association(@"InstallazioneReferencesApparato"), Aggregated]
         public XPCollection<Installazione> Installazioni { get { return GetCollection<Installazione>(nameof(Installazioni)); } }
     }
 

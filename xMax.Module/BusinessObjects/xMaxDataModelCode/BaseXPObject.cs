@@ -32,7 +32,7 @@ namespace xMax.Module.BusinessObjects
                     if (f == null)
                         f = String.Concat(this.ClassInfo.TableName.Substring(0, 4).ToUpper(), "{Numero:00000}/{Progressivo}");
 
-                    fCodice = ObjectFormatter.Format(f, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
+                    Codice = ObjectFormatter.Format(f, this, EmptyEntriesMode.RemoveDelimiterWhenEntryIsEmpty);
                 }
             }
 

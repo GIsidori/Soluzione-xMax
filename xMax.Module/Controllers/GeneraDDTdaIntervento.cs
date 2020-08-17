@@ -55,7 +55,7 @@ namespace xMax.Module.Controllers
             {
                 DDTVenditaElencoMateriale elencoMateriale = space.CreateObject<DDTVenditaElencoMateriale>();
                 elencoMateriale.Articolo = materiale.Articolo;
-                elencoMateriale.Quantita = materiale.QT;
+                elencoMateriale.Quantita = materiale.Quantità;
                 elencoMateriale.DDT = ddtvendita;
             }
 

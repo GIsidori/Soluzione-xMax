@@ -18,12 +18,12 @@ namespace xMax.Module.BusinessObjects
 
     public partial class Cliente : Anagrafica
     {
-        [Association(@"InterventoReferencesCliente")]
-        public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
-        [Association(@"InstallazioneReferencesCliente")]
+        [Association(@"InstallazioneReferencesCliente"), Aggregated]
         public XPCollection<Installazione> Installazioni { get { return GetCollection<Installazione>(nameof(Installazioni)); } }
-        [Association(@"ContrattoReferencesCliente")]
+        [Association(@"ContrattoReferencesCliente"), Aggregated]
         public XPCollection<Contratto> Contratti { get { return GetCollection<Contratto>(nameof(Contratti)); } }
+        [Association(@"InterventoReferencesCliente"), Aggregated]
+        public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
     }
 
 }

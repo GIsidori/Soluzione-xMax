@@ -1,10 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
   <Views Id="Views">
-    <ListView Id="DDTAcquisto_ElencoMateriale_ListView">
-      <Columns Id="Columns">
-        <ColumnInfo Id="Importo" Width="256" />
-      </Columns>
-    </ListView>
+    <DetailView Id="Attrezzatura_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="ElencoVerifiche_Group" Direction="Vertical" Index="1" RelativeSize="64.739884393063591">
+            <LayoutItem Id="ElencoVerifiche" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DDTAcquisto_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="ElencoMateriale_Group" Direction="Vertical" RelativeSize="83.36557059961315">
+            <LayoutItem Id="ElencoMateriale" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DDTVendita_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="ElencoMateriale_Group" Direction="Vertical" RelativeSize="83.36557059961315">
+            <LayoutItem Id="ElencoMateriale" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Dipendente_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="IdoneitaAttestatiFormazione_Group" Direction="Vertical" RelativeSize="61.271676300578036">
+            <LayoutItem Id="IdoneitaAttestatiFormazione" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>

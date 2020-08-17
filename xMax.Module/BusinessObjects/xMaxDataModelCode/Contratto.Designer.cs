@@ -50,11 +50,10 @@ namespace xMax.Module.BusinessObjects
             get { return fImportoAnnuale; }
             set { SetPropertyValue<decimal>(nameof(ImportoAnnuale), ref fImportoAnnuale, value); }
         }
-        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
-        [Association(@"InterventoReferencesContratto")]
-        public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
         [Association(@"ScadenzaPagamentoReferencesContratto"), Aggregated]
         public XPCollection<ScadenzaPagamento> ScadenzePagamento { get { return GetCollection<ScadenzaPagamento>(nameof(ScadenzePagamento)); } }
+        [Association(@"InterventoReferencesContratto"), Aggregated]
+        public XPCollection<Intervento> Interventi { get { return GetCollection<Intervento>(nameof(Interventi)); } }
     }
 
 }

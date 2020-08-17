@@ -18,8 +18,6 @@ namespace xMax.Module.BusinessObjects
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-
-            Ricambio = false;
         }
 
         [VisibleInDetailView(false)]

@@ -20,17 +20,7 @@ namespace xMax.Module.BusinessObjects
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            Ricambio = true;
             UnitaMisura = UnitaMisura.GetOrCreate(Session, "Nr");
-        }
-
-        Boolean fRicambio;
-        [ImmediatePostData]
-        [Browsable(false)]
-        public Boolean Ricambio
-        {
-            get { return fRicambio; }
-            set { SetPropertyValue<Boolean>(nameof(Ricambio), ref fRicambio, value); }
         }
 
         [VisibleInDetailView(false)]
@@ -44,11 +34,11 @@ namespace xMax.Module.BusinessObjects
         }
 
         [NonPersistent]
-        public Int32 Quantita
+        public Single Quantita
         {
             get
             {
-                //I movimenti di acquisto e vendita possono essere archiviati (arch=true) e le relative quantità movimentate sommate algebricamente alla quantità totale
+                //I movimenti di acquisto e vendita possono essere archiviati (arch=true) e le relative quantità movimentate sommate algebricamente alla quantità iniziale
                 return QuantitaIniziale - DDTVenditaArticolo.Where(a=>a.DDT.Arch == false).Sum(s => s.Quantita) + DDTAcquistoArticolo.Where(a => a.DDT.Arch == false).Sum(s => s.Quantita);
             }
             set
@@ -62,7 +52,7 @@ namespace xMax.Module.BusinessObjects
         {
             get
             {
-                return CostoMedioPonderato * Quantita;
+                return (decimal)((Single)CostoMedioPonderato * Quantita);
             }
         }
 
@@ -75,8 +65,7 @@ namespace xMax.Module.BusinessObjects
                 if (ddt.Count() == 0)
                     ddt = this.DDTAcquistoArticolo;
                 if (ddt.Count() != 0)
-                    return ddt.Sum(a => a.ImportoUnitario*a.Quantita)/ddt.Sum(a=>a.Quantita);
-                
+                    return (decimal) (ddt.Sum(a => (Single)a.ImportoUnitario*a.Quantita)/ddt.Sum(a=>a.Quantita));
                 return this.CostoUnitario;
             }
         }

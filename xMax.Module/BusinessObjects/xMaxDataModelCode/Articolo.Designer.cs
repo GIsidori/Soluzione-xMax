@@ -63,11 +63,11 @@ namespace xMax.Module.BusinessObjects
             get { return fVisualizzaInSchedaIntervento; }
             set { SetPropertyValue<bool>(nameof(VisualizzaInSchedaIntervento), ref fVisualizzaInSchedaIntervento, value); }
         }
-        int fQuantitaIniziale;
-        public int QuantitaIniziale
+        float fQuantitaIniziale;
+        public float QuantitaIniziale
         {
             get { return fQuantitaIniziale; }
-            set { SetPropertyValue<int>(nameof(QuantitaIniziale), ref fQuantitaIniziale, value); }
+            set { SetPropertyValue<float>(nameof(QuantitaIniziale), ref fQuantitaIniziale, value); }
         }
         decimal fCostoUnitario;
         public decimal CostoUnitario
@@ -82,7 +82,7 @@ namespace xMax.Module.BusinessObjects
         public XPCollection<FornitoreArticolo> Fornitori { get { return GetCollection<FornitoreArticolo>(nameof(Fornitori)); } }
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [MemberDesignTimeVisibility(false)]
-        [Association(@"DTTAcquistoElencoMaterialeReferencesArticolo")]
+        [Association(@"DDTAcquistoElencoMaterialeReferencesArticolo")]
         public XPCollection<DDTAcquistoElencoMateriale> DDTAcquistoArticolo { get { return GetCollection<DDTAcquistoElencoMateriale>(nameof(DDTAcquistoArticolo)); } }
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [MemberDesignTimeVisibility(false)]

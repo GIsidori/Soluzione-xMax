@@ -45,7 +45,7 @@ namespace xMax.Module.BusinessObjects
             set { SetPropertyValue<TipoIntervento>(nameof(TipoIntervento), ref fTipoIntervento, value); }
         }
         Installazione fInstallazione;
-        [Association(@"InterventiReferencesInstallazione")]
+        [Association(@"InterventoReferencesInstallazione")]
         public Installazione Installazione
         {
             get { return fInstallazione; }

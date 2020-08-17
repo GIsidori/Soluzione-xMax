@@ -169,6 +169,10 @@
     <Compile Include="BusinessObjects\xMaxDataModelCode\DDTAcquistoElencoMateriale.Designer.cs">
       <DependentUpon>DDTAcquistoElencoMateriale.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Documento.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Documento.Designer.cs">
+      <DependentUpon>Documento.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessObjects\xMaxDataModelCode\ElencoVerifiche.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\ElencoVerifiche.Designer.cs">
       <DependentUpon>ElencoVerifiche.cs</DependentUpon>
@@ -200,6 +204,10 @@
     <Compile Include="BusinessObjects\xMaxDataModelCode\Mansione.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Mansione.Designer.cs">
       <DependentUpon>Mansione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Modulo.cs" />
+    <Compile Include="BusinessObjects\xMaxDataModelCode\Modulo.Designer.cs">
+      <DependentUpon>Modulo.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessObjects\xMaxDataModelCode\Produttore.cs" />
     <Compile Include="BusinessObjects\xMaxDataModelCode\Produttore.Designer.cs">
@@ -303,12 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Welcome.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="UnusableNodes.xml">
-      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,23 +13,41 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace xMax.Module.BusinessObjects.xMaxDataModel
+namespace xMax.Module.BusinessObjects
 {
 
-    public partial class Documento : XPObject
+    public partial class Documento : DevExpress.Persistent.BaseImpl.FileAttachmentBase
     {
-        OggettoBase fOggettoBase;
-        [Association(@"DocumentoReferencesOggettoBase")]
-        public OggettoBase OggettoBase
+        BaseXPObject fOggettoBase;
+        [Association(@"DocumentoReferencesBaseXPObject")]
+        public BaseXPObject OggettoBase
         {
             get { return fOggettoBase; }
-            set { SetPropertyValue<OggettoBase>(nameof(OggettoBase), ref fOggettoBase, value); }
+            set { SetPropertyValue<BaseXPObject>(nameof(OggettoBase), ref fOggettoBase, value); }
         }
-        DevExpress.Persistent.BaseImpl.FileData fFile;
-        public DevExpress.Persistent.BaseImpl.FileData File
+        DateTime fDataCreazione;
+        public DateTime DataCreazione
         {
-            get { return fFile; }
-            set { SetPropertyValue<DevExpress.Persistent.BaseImpl.FileData>(nameof(File), ref fFile, value); }
+            get { return fDataCreazione; }
+            set { SetPropertyValue<DateTime>(nameof(DataCreazione), ref fDataCreazione, value); }
+        }
+        DateTime? fDataScadenza;
+        public DateTime? DataScadenza
+        {
+            get { return fDataScadenza; }
+            set { SetPropertyValue<DateTime?>(nameof(DataScadenza), ref fDataScadenza, value); }
+        }
+        string fTitolo;
+        public string Titolo
+        {
+            get { return fTitolo; }
+            set { SetPropertyValue<string>(nameof(Titolo), ref fTitolo, value); }
+        }
+        Modulo fModulo;
+        public Modulo Modulo
+        {
+            get { return fModulo; }
+            set { SetPropertyValue<Modulo>(nameof(Modulo), ref fModulo, value); }
         }
     }
 

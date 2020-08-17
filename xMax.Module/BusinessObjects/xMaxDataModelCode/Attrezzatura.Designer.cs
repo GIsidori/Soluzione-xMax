@@ -69,7 +69,7 @@ namespace xMax.Module.BusinessObjects
             get { return fNote; }
             set { SetPropertyValue<string>(nameof(Note), ref fNote, value); }
         }
-        [Association(@"ElencoVerificheReferencesAttrezzatura")]
+        [Association(@"ElencoVerificheReferencesAttrezzatura"), Aggregated]
         public XPCollection<ElencoVerifiche> ElencoVerifiche { get { return GetCollection<ElencoVerifiche>(nameof(ElencoVerifiche)); } }
     }
 
